@@ -1,0 +1,91 @@
+@import "settings.less";
+
+/*********************************** 
+ * 	Updated: November 2018
+ *  Grid:: Grid with text and images)
+ **********************************/
+.listing {
+	margin						: 0 0 @padding*3 0;
+}
+.listing .post-title {
+	padding						: .33em @padding;
+	font-size					: 1.3em;
+    line-height					: 1.5em;
+    padding-bottom				: 0;
+}
+.listing img.featured {
+	width						: 100%;
+}
+/* Triangle effect on 1/6 
+.listing .thumbcrop:before {
+	content						: "";
+	display						: block;
+	position					: absolute;
+	left						: 16%;
+	border						: .6em solid @bkg;
+	border-color				: @bkg transparent transparent transparent;
+	z-index						: 1;
+	left						: 16%;
+}
+*/
+.listing img.featuredwrapper {
+	max-height					: @maxheightfeaturedimage;
+	overflow					: hidden;
+}
+
+.listing .entry-title,
+.listing .entry-content {
+	padding						: 0 7%;
+}
+
+.listing  .entry-border {
+	margin						: 0 5%;
+	box-shadow					: 2px 2px 2px @menulight;
+}
+.listing footer  {
+	padding						: 1em 7%;
+}
+.listing  .excerpt {
+	padding						: .5em;
+	word-break					: break-word;
+}
+.listing footer,
+.listing .entry-metas
+ {
+	background					: @bkg;
+	font-size					: @font-small;
+	padding						: @padding;
+	line-height					: 1.25em;
+	color						: @txtcolorL;
+	letter-spacing				: 1px;
+	text-transform				: uppercase;
+	border-top					: 1px solid @menulight;
+}
+.listing .entry-meta,
+.listing .entry-meta a {
+	color						: @txtcolor2;
+	display						: inline-block;
+	font						: @font2;
+}
+
+/** Post Formats **/
+.listing.format-aside .entry-border {
+	border						: 0;
+	background					: rgba(255,255,255,0);
+}
+.listing.format-aside .post-title {
+	border-top					: 2px solid @color2;
+	color						: @color2;
+	margin-top					: @font-size*1.5;
+	margin-bottom				: -@font-size*1.5;
+}
+.listing.format-aside .post-title  span {
+	top							: -@font-size*1.5;
+	position					: relative;
+	padding						: 0 @padding;
+	background-color			: @bkg;
+}
+.listing.format-aside .excerpt {
+	font-family					: @font1;
+	color						: @color2;
+}

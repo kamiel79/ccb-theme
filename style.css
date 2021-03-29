@@ -1,0 +1,16 @@
+/*
+Theme Name: CCB 
+Author: Kamiel Choi
+Author URI: http://creativechoice.org
+Description: A chic and simple black and white theme for blogs and multiblogs
+Version: 1.1 January 2017
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: ccb
+Domain Path: /languages/
+Tags: custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, sticky-post, translation-ready
+Based on: Underscores http://underscores.me/
+Special postmetas: ccb_highlight, ccb_headmedia
+*/
+
+@import url ("css/custom.css");

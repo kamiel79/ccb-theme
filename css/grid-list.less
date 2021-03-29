@@ -1,0 +1,170 @@
+@import "settings.less";
+/** Stylesheet for grid list; (chronological) list of posts
+ *	November 2018 (dumb as ever)
+ *  Updated March 2021 (still alive)
+ */
+
+#container.grid-list{
+	 margin:	0 25%;
+	 width: 	75%;
+ }
+
+.grid-list .thumbnail img {
+	padding:2px;
+	border:1px solid @color1;
+	float: left;
+}
+.grid-list .entry-meta {
+	text-align:right;
+	margin:1em 0;
+}
+.grid-list .posted-on {
+	margin-right:16px;
+	top:12px;
+	position:relative;
+}
+.grid-list .posted-on a{
+	font-size: 12px;
+	color: @color2;
+	font-style: italic;
+}
+.grid-list .posted-on:before {
+	display:none;
+}
+
+.grid-list .entry {
+	border-left:2px solid @color2;
+	padding: 0 30px;
+	padding-bottom:40px;	/*exact pixel value */
+	margin-left:15%;
+	width:50%;
+}
+.withsidebar .grid-list .entry {
+	width: 90%;
+}
+.grid-list .entry .post-title {
+	font-size: 1.6rem;
+}
+.grid-list .entry-header {
+	margin-left:-300px;
+	width: 250px;
+	float:left;
+	position:relative;
+}
+.grid-list .details {
+	float:left;
+	margin: 0 0 10px 0;
+}
+.grid-list .details a {
+	color: #333;
+}
+.grid-list .thumbcrop {
+    float: right;
+    clear: both;
+	margin:@margin 0;
+	max-width:100%;
+	max-height:480px;	//some max-height
+	max-height:100vw;
+}
+.grid-list .thumbcrop img {
+	transform:none;
+	width: auto;
+}
+.grid-list .category a {
+	font-family:@font3;
+	color:@color2;
+	word-break:break-word;	/* for multi-word category names */
+	text-transform:uppercase;
+}
+.grid-list .entry-footer {
+	border-bottom:1px solid @menulight;
+	font-size: @font-small;
+	color:@color1L;
+	padding-top:10px;
+	padding-bottom:10px;
+	float:left;
+	clear:both;
+	width: 100%;
+	border-top:1px solid @menulight;
+	font-family:@font3;
+}
+.grid-list .entry-footer a {
+	color: @color1L;
+}
+.grid-list .comments-link {
+    float: right;
+}
+.grid-list .line {
+    border-bottom: 2px solid @color2;
+    position: absolute;
+    width: 30px;
+    right: 0;
+    margin-top: -16px;
+	margin-right: -20px;
+}
+.line:after {
+    font: 300 32px/2 dashicons;
+    content: "\f141";
+    color: @color2;
+    margin-left: 8px;
+    top: -31px;
+    position: absolute;
+}
+.grid-list .sticky .post-title {
+    background: @color2;
+    color: @bkg;
+    padding: @padding;
+    margin-left: -32px;
+    padding-left: 32px;
+}
+.grid-list .sticky .post-excerpt {
+	margin-top:1em;
+}
+.grid-list .updated {
+    display: none;
+}
+
+/* Styles for post formats */
+.grid-list .format-aside .entry-content,
+.grid-list .format-aside .post-title,
+.grid-list .format-aside .post-excerpt,
+.grid-list .format-aside .post-excerpt a {
+	font-family					: @font-aside;
+	color						: @color2;
+}
+.grid-list .format-quote .post-title {
+	display						: none;
+}
+
+/* Mobile style */
+@media @mobile {
+	#container.grid-list {
+		margin: 0;
+		width:100%;
+	}
+	.grid-list .entry {
+		width:100%;
+		margin-left:0;
+		padding-bottom:50px;
+	}
+	.grid-list .entry-header {
+		position:static;
+		width:auto;
+		margin-left:0;
+	}
+	.grid-list .line {
+		right:auto;
+		margin-left:-30px;
+	}
+	.grid-list .line:after{
+		content: "\f139";
+		margin-left: -14px;
+	}
+	.grid-list .entry .post-title {
+		font-size: 1.4rem;
+		line-height: 1;
+	}
+	.grid-list .entry-meta {
+		text-align: left;
+	}
+}

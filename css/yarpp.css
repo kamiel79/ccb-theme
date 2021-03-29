@@ -1,0 +1,43 @@
+
+/* YARPP */
+.yarpp-related h3 {
+  text-transform						: uppercase!important;
+  margin								: 0!important;
+  line-height							: 1.2!important;
+  font-size								: 1.2em!important;
+  font-weight							: normal!important;
+}
+.yarpp-container{
+	left								:0;
+	width								:100%;
+}
+.yarpp-related {
+	left									:0;
+}
+.yarpp-related h2 {
+	line-height							: 1.2;
+}
+.yarpp-related ol {
+	margin								:0;
+}
+.yarpp-related li {
+	list-style							: none;
+    float								: left;
+    padding								: .5em;
+    font-size							: small;
+	overflow							: hidden;
+
+}
+.yarpp-related a {
+  font-weight							: inherit!important;
+  border								: none;
+}
+.yarpp-related h2{
+	font-size							: 1.2em;
+}
+.yarpp-related img {
+    float: left;
+    margin: 0 .5em 0 0;
+    padding: 0;
+	float:none;
+}

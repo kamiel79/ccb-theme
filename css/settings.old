@@ -1,0 +1,105 @@
+/** Settings.less
+  * Main settings for .less file
+  * File is copied to child theme directory; changes can be made here or in the settings.less file
+  * December 2015
+  */
+
+/** Import Google fonts **/
+/* Playfair+Display:900&text=Creative%20ChoiceMiru&effect=canvas-print|3d-float
+*/
+@import url(http://fonts.googleapis.com/css?family=Oswald:300|Droid+serif|Lato:400|Merienda);
+
+/** https://typekit.com/plans offers 130+ fonts (April 2015) **/
+
+@import "more.less";
+
+/** Nice Fonts
+ *	Headers:		Oswald, Century Gothic, Knockout, Bodoni Poster, Steinem
+					Lato, Raleway, Amaranth, Signika, Josephine slab, Tikal sans, Italiana
+ *	Quirky:			Playfair+Display, Tangerine					
+ *	Good reading:	Noto serif, Open sans, Droid sans, Lora, Libre Baskerville
+					Old Standard, Vollkorn, EB Garamond, PT Serif
+ *	Sans Serif: 	Ubuntu
+ *	Handwriting:	Cookie, Zaphino, Great Vibes, Dancing script, Pacifico, Lobster Two
+					Courgette, Playball
+ */
+ 
+/* Special Use Classes
+  *	blockquote.highlight	blockquote outside of text flow
+  *
+  *
+  */
+
+/** Main definitions for settings.php of the base theme
+  * These need to be defined before importing the custom.less of the base theme
+  * More child-theme specific variables can be defined below
+  */
+  
+/** Measures **/
+ @adminbarheight				: 32px;						/* Standard adminbar height */
+ @adminbarheightmobile			: 46px;						/* Standard Mobile height */
+ @brandingheight				: 200px; 					/* Height of header (branding) */
+ @brandingminheight				: 16vw;						/* Min height on large screens */
+ @brandingpaddingtop			: 80px;						/* Padding for logo or title */
+ @col-max-width					: auto;
+ @col-min-width					: 100px;
+ @headbartop					: 58px;
+ @navigationheight				: 7em;
+ @margin						: .5em; 
+ @maxheightfeaturedimage		: 332px; 
+ @menubuttonwidth				: 25%;						/* % width of mobile buttons */
+ @metacolumn					: 250px;					/* Meta info floats left */
+ @metainfowidth					: 200px;
+ @metainfomargin				: 250px;
+ @mobilewidth					: 600px;
+ @padding						: .5em;	
+ @sidebarvw						: 30vw;						
+ @sidebarwidth					: 30%;						/* Default sidebar width */
+ @sitemargin					: 4em;					/* Main site margin */
+ @sitepadding					: 46px;						/* Main site padding */
+ @sitepaddingbottom				: 2em;
+ @sitetitlesize					: @font-size*3;
+ @square-min					: 100px;					/* Minimal size for square layout grid1 */
+ @thumbnailmaxheight			: 50vw;						/* Prevent too tall thumbnails */
+ 
+/** Colors **/
+ @color1						: #53a1b8;					/*#53a1b8;					/* First color */
+ @color2						: #df5b57;					/* darken(spin(@color1,180),10%); Complentary color */
+ @bkg							: #fff;						/* Background and text on color1 */
+ @bkg2							: darken(@bkg, 2%);			/* Background site */
+ @bkg3							: darken(@bkg, 5%);			 /* Background overlayed element */
+ @bordercolor					: darken(@bkg, 20%);		/* Border */
+ @color1L						: lighten(@color1, 10%);	/* Lightened color1 */
+ @highlighted					: @color2;		 			/* Highlighting eg. in searches */
+ @menubkg						: @color1;
+ @menutext						: @bkg;
+ @menulight						: lighten(@menubkg,10%);
+ @txtcolor						: #333;						/* Readable dark grey */
+ @txtcolorL						: #666;						/* Lightened txtcolor */
+ @txtcolor3						: #999; 						/* Lightened txtcolor */
+ @colorerror					: @color2;
+ @transparent					: rgba(255,255,255,.75);		/* Standard transparency */
+ 
+/** Fonts **/
+ @font1							: "Droid serif", serif;			/* Main font */
+ @font2							: "Oswald", "Bodoni Poster", "Raleway", arial, sans-serif;	/* Header */
+ @font3							: "Lato", arial, sans-serif;		/* for entry meta */
+ @font-site-title				: @font2;
+ @font-quote					: "Merienda", @font2, sans-serif;
+ @font-aside					: @font-quote;
+ @font-size						: 1em;						/* Main font size */
+ @font-content					: 1.5em;
+ @font-small					: .75em;
+ @font-large					: 1.4em;
+ @font-size-nav					: 1em;
+ @font-size-buttons				: 24px;
+ @font-size-quote				: 2em;
+ @line-height					: 1.5em;
+
+/** Icons, delays, transitions **/
+ @dashicons						: 200 1em/1 dashicons;
+ @delay							: .4s;		 /* Standard transition delay */
+ @boxshadow						: none;
+ @transparent					: .75;
+ @transitionbezier				: cubic-bezier(0.66, 0.25, 0.37, 0.86);
+ @searchthrobber				: "../img/load.gif";

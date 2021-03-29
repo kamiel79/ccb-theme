@@ -1,0 +1,922 @@
+# Copyright (C) 2014 Automattic
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: ccb1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
+"POT-Creation-Date: 2015-04-20 03:43-0000\n"
+"PO-Revision-Date: 2015-12-28 22:27+0000\n"
+"Last-Translator: kamiel <kamielchoi@gmail.com>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: c:/wamp/www/cc/wp-content/themes//ccb\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Language-Team: \n"
+"X-Poedit-SearchPath-0: c:/wamp/www/cc/wp-content/themes/ccb\n"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/404.php:16
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "패지 못 잤압았어요"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/404.php:20
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/404.php:28
+msgid "Most Used Categories"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/404.php:45
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive.php:24
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive_grid.php:24
+msgid "All about: "
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive.php:28
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive_grid.php:28
+#, fuzzy, php-format
+msgid "Author: %s"
+msgstr "일: %s"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive.php:31
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive_grid.php:31
+#, php-format
+msgid "Day: %s"
+msgstr "일: %s"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive.php:34
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive_grid.php:34
+#, php-format
+msgid "Month: %s"
+msgstr "월: %s"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive.php:37
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive_grid.php:37
+#, php-format
+msgid "Year: %s"
+msgstr "년: %s"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive.php:40
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive_grid.php:40
+msgid "Asides"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive.php:43
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive_grid.php:43
+msgid "Galleries"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive.php:46
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive_grid.php:46
+msgid "Images"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive.php:49
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive_grid.php:49
+msgid "Videos"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive.php:52
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive_grid.php:52
+msgid "Quotes"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive.php:55
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive_grid.php:55
+msgid "Links"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive.php:58
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive_grid.php:58
+msgid "Statuses"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive.php:61
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive_grid.php:61
+msgid "Audios"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive.php:64
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive_grid.php:64
+msgid "Chats"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive.php:67
+#: c:\wamp\www\cc\wp-content\themes\ccb/archive_grid.php:67
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/breadcrumbs.php:181
+#: c:\wamp\www\cc\wp-content\themes\ccb/sidebar.php:19
+msgid "Archives"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/comments.php:35
+#: c:\wamp\www\cc\wp-content\themes\ccb/comments.php:52
+msgid "Comment navigation"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/comments.php:36
+#: c:\wamp\www\cc\wp-content\themes\ccb/comments.php:53
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/comments.php:37
+#: c:\wamp\www\cc\wp-content\themes\ccb/comments.php:54
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/comments.php:64
+msgid "Comments are closed."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/comments.php:70
+msgid "Name"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/comments.php:76
+msgid "Email"
+msgstr "이메일"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/comments.php:82
+msgid "Website"
+msgstr "웹사이트"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-grid2.php:21
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-list.php:37
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-list.php:47
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-original.php:40
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-search.php:30
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-search.php:40
+#: c:\wamp\www\cc\wp-content\themes\ccb/content.php:15
+msgid ", "
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-landing.php:18
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-original.php:26
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-page.php:18
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-single.php:44
+msgid "Pages:"
+msgstr "페이지 :"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-landing.php:24
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-list.php:60
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-original.php:54
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-page.php:24
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-search.php:53
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-single.php:52
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/breadcrumbs.php:1135
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/breadcrumbs.php:1171
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/breadcrumbs.php:1188
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/breadcrumbs.php:1219
+msgid "Edit"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-list.php:41
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-search.php:34
+#, fuzzy, php-format
+msgid "Posted in %1$s"
+msgstr "일: %s"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-list.php:51
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-search.php:44
+#, fuzzy, php-format
+msgid "Tagged %1$s"
+msgstr "일: %s"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-list.php:57
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-original.php:52
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-search.php:50
+msgid "Leave a comment"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-list.php:57
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-original.php:52
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-search.php:50
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-widget.php:31
+msgid "1 Comment"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-list.php:57
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-original.php:52
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-search.php:50
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-widget.php:31
+msgid "% Comments"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-none.php:13
+msgid "Nothing Found"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-none.php:19
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-none.php:23
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-none.php:28
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/content-original.php:23
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/footer.php:29
+msgid "http://wordpress.org/"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/footer.php:29
+#, php-format
+msgid "powered by %s"
+msgstr "%s 에 의해 가능하게"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/footer.php:31
+#, php-format
+msgid "Theme: %1$s by %2$s."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/functions.php:93
+msgid "Tags"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/functions.php:94
+#: c:\wamp\www\cc\wp-content\themes\ccb/js/custom.js:161
+#: c:\wamp\www\cc\wp-content\themes\ccb/js/custom.min.js:5
+msgid "Context"
+msgstr "문맥"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/functions.php:105
+msgid "Primary Menu"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/functions.php:106
+msgid "Top Menu"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/functions.php:157
+msgid "Sidebar"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/functions.php:166
+msgid "Headbar"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/header.php:24
+msgid "Skip to content"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/breadcrumbs.php:178
+msgid "Browse:"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/breadcrumbs.php:179
+msgid "Home"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/breadcrumbs.php:180
+msgid "404 Not Found"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/breadcrumbs.php:183
+#, fuzzy, php-format
+msgid "Search results for &#8220;%s&#8221;"
+msgstr "잗아 봐써:"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/breadcrumbs.php:185
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/extras.php:63
+#, fuzzy, php-format
+msgid "Page %s"
+msgstr "일: %s"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/breadcrumbs.php:187
+#, fuzzy, php-format
+msgid "Minute %s"
+msgstr "일: %s"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/breadcrumbs.php:189
+#, fuzzy, php-format
+msgid "Week %s"
+msgstr "일: %s"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/breadcrumbs.php:1163
+msgid "Split"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/breadcrumbs.php:1167
+msgid "Merge"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/ccb_widgets.php:20
+msgid "One Post Widget"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/ccb_widgets.php:23
+msgid "One post widget"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/ccb_widgets.php:67
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/ccb_widgets.php:188
+msgid "New title"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/ccb_widgets.php:77
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/ccb_widgets.php:193
+msgid "Title:"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/ccb_widgets.php:79
+msgid "Query:"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/ccb_widgets.php:81
+msgid "Number of rows:"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/ccb_widgets.php:105
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/ccb_widgets.php:107
+msgid "Category Description Widget"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/ccb_widgets.php:132
+msgid "Glidejs Widget"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/ccb_widgets.php:135
+msgid "Glidejs in a widget"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/multisite.php:339
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/template-tags.php:21
+msgid "Posts navigation"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/multisite.php:341
+#, fuzzy
+msgid "No results"
+msgstr "잗아 봐써:"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/multisite.php:346
+msgid "<span class=\"meta-nav\"></span> Older posts"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/multisite.php:354
+msgid "Newer posts<span class=\"meta-nav\"></span>"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/template-tags.php:25
+msgid "Older posts"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/template-tags.php:29
+msgid "Newer posts "
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/inc/template-tags.php:52
+msgid "Post navigation"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/landingpage.php:28
+msgid "Go to site"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:30
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:98
+msgid "Basic Settings"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:39
+msgid "Upload a logo"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:40
+msgid "Upload a custom logo."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:44
+msgid "Upload a header image"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:45
+msgid "Upload a custom <b>header</b>."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:49
+msgid "Use AJAX page load"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:50
+msgid "Load single posts on archive pages with AJAX."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:54
+msgid "Fix nav on scroll"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:55
+msgid "Fix the navigation bar when the user scrolls the page down."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:60
+msgid "Short excerpt length"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:61
+msgid ""
+"In addition to the Wordpress excerpt length, ccb features a short excerpt "
+"for mobile devices and crowded grids."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:68
+#, fuzzy
+msgid "Highlight search terms"
+msgstr "수색..."
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:74
+#, fuzzy
+msgid "Use AJAX for search"
+msgstr "수색..."
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:80
+msgid "Grid Settings"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:97
+msgid "Number of columns"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:98
+msgid "Number of columns in the grid."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:111
+msgid "Grid style layout"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:112
+msgid "Lay out your blog posts in squares"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:119
+msgid "InPostThumbnails"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:120
+msgid "Generate thumbnail from post body if no thumbnail is set"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:125
+msgid "Flickr"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:126
+msgid "Show images from Flickr for posts without images"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:132
+msgid "Flickr API key"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:133
+msgid ""
+"You can request one <a href=\"https://www.flickr.com/services/api/misc."
+"api_keys.html\">here.</a>"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:139
+msgid "Use Masonry"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:140
+msgid "Use masonry to fill in the gaps on the layout."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:144
+msgid "Upload a fallback thumbnail image"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:149
+msgid "Font Size effect"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:150
+msgid ""
+"Adjust font size of titles to fit the containing element (use with care)."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:155
+msgid "Advanced settings"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:158
+msgid ""
+"This theme can be fully adapted. It is recommended that you create a child "
+"theme first and edit the file @settings.less.\n"
+"\t\t<ul>\n"
+"\t\t<li> You can change the colors, backgrounds and spacings</li>\n"
+"\t\t<li> To change fonts for this theme, you have to work with the .LESS "
+"file. The google font is imported there. See <a href=\"https://developers."
+"google.com/fonts/docs/getting_started#Quick_Start\">Google Fonts "
+"Documentation</a> for details.</li></ul>"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:165
+msgid "Multisite Settings"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:172
+msgid "Multisite"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:173
+msgid "Enable to aggregate several sites (blogs)"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:179
+msgid "Multisite: Select Sites to aggregate"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options.php:180
+msgid "Select the sites to use"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-framework-admin.php:90
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-framework-admin.php:91
+msgid "Theme Options"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-framework-admin.php:198
+msgid "Click OK to reset. Any theme settings will be lost!"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-framework-admin.php:229
+msgid "Default options restored."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-framework-admin.php:283
+msgid "Options saved."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-media-uploader.php:61
+msgid "No file chosen"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-media-uploader.php:64
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-media-uploader.php:117
+msgid "Upload"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-media-uploader.php:66
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-media-uploader.php:118
+msgid "Remove"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-media-uploader.php:69
+msgid "Upgrade your version of WordPress for full media support."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-media-uploader.php:93
+msgid "View File"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:316
+msgid "No Repeat"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:317
+msgid "Repeat Horizontally"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:318
+msgid "Repeat Vertically"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:319
+msgid "Repeat All"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:331
+msgid "Top Left"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:332
+msgid "Top Center"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:333
+msgid "Top Right"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:334
+msgid "Middle Left"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:335
+msgid "Middle Center"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:336
+msgid "Middle Right"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:337
+msgid "Bottom Left"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:338
+msgid "Bottom Center"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:339
+msgid "Bottom Right"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:351
+msgid "Scroll Normally"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:352
+msgid "Fixed in Place"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:424
+msgid "Normal"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:425
+msgid "Italic"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:426
+msgid "Bold"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/inc/includes/class-options-sanitization.php:427
+msgid "Bold Italic"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:24
+msgid "One"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:25
+msgid "Two"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:26
+msgid "Three"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:27
+msgid "Four"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:28
+msgid "Five"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:33
+msgid "French Toast"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:34
+msgid "Pancake"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:35
+msgid "Omelette"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:36
+msgid "Crepe"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:37
+msgid "Waffle"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:102
+msgid "Input Text Mini"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:103
+msgid "A mini text input field."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:110
+msgid "Input Text"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:111
+msgid "A text input field."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:117
+msgid "Input with Placeholder"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:118
+msgid "A text input field with an HTML5 placeholder."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:124
+msgid "Textarea"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:125
+msgid "Textarea description."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:131
+msgid "Input Select Small"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:132
+msgid "Small Select Box."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:140
+msgid "Input Select Wide"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:141
+msgid "A wider select box."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:149
+msgid "Select a Category"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:150
+msgid "Passed an array of categories with cat_ID and cat_name"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:158
+msgid "Select a Tag"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:159
+msgid "Passed an array of tags with term_id and term_name"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:166
+msgid "Select a Page"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:167
+msgid "Passed an pages with ID and post_title"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:173
+msgid "Input Radio (one)"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:174
+msgid "Radio select with default options \"one\"."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:181
+msgid "Example Info"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:182
+msgid "This is just some example information you can put in the panel."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:186
+msgid "Input Checkbox"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:187
+msgid "Example checkbox, defaults to true."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:193
+msgid "Advanced Settings"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:197
+msgid "Check to Show a Hidden Text Input"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:198
+msgid "Click here and see what happens."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:203
+msgid "Hidden Text Input"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:204
+msgid "This option is hidden unless activated by a checkbox click."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:211
+msgid "Uploader Test"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:212
+msgid "This creates a full size uploader that previews the image."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:229
+msgid "Example Background"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:230
+msgid "Change the background CSS."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:236
+msgid "Multicheck"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:237
+msgid "Multicheck description."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:244
+msgid "Colorpicker"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:245
+msgid "No color selected by default."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:250
+msgid "Typography"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:251
+msgid "Example typography."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:257
+msgid "Custom Typography"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:258
+msgid "Custom typography options."
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:265
+msgid "Text Editor"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:283
+msgid "Default Text Editor"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/options/options.php:284
+#, php-format
+msgid ""
+"You can also pass settings to the editor.  Read more about wp_editor in <a "
+"href=\"%1$s\" target=\"_blank\">the WordPress codex</a>"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/search.php:16
+#, php-format
+msgid "Search Results for: %s"
+msgstr "잗아 봐써 %s:"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/searchform.php:4
+#, fuzzy
+msgid "Search for:"
+msgstr "수색..."
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/searchform.php:6
+msgid "Search..."
+msgstr "수색..."
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/searchform.php:8
+msgid "Search"
+msgstr "수색"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/sidebar.php:26
+msgid "Meta"
+msgstr ""
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/js/custom.js:170
+#: c:\wamp\www\cc\wp-content\themes\ccb/js/custom.min.js:5
+msgid "No context"
+msgstr "문맥 없음"
+
+#: c:\wamp\www\cc\wp-content\themes\ccb/js/searchajax.js:32
+msgid "Creative Choice: Searching for "
+msgstr "Creative Choice: 수색"

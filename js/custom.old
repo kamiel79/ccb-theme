@@ -1,0 +1,241 @@
+/* ccb.js
+ * jquery functions for Creative Choice Blog
+ * November 2014
+ * @since 1.0
+ */
+
+/* Emulate the PHP _e function
+ * Use the script handle as unique function name
+ */ 
+function _e(s) {
+	return ccb_e_ccb_custom[s];
+}
+
+
+jQuery(document).ready(function($) {
+/* Define container */
+$container = $("#container");
+
+/* Define offset for scrolling */
+var headerHeight = $('#site-navigation').offset().top;
+const offset = headerHeight/2;
+
+/* Define options array */
+if (ccb_options == 'undefined') ccb_options = array();
+ 
+/* Tag Cloud Slide
+ * Assumes ".toggletags{n} is first class of menu item, corresponding with nth widget
+ */
+
+$('[class^="toggletags"]').click(function() {
+	var m = this.className.split(" ", 1)[0].slice(-1);
+	$(".ccb_headbar .widget:nth-child("+m+")").siblings().slideUp(500);
+	$(".ccb_headbar .widget:nth-child("+m+")").slideToggle(500);
+	
+	/* Scroll to top */
+	if ($(window).scrollTop() > headerHeight)
+		$('html,body').animate({scrollTop: 0}, 300);
+	
+ });
+ $(".ccb_headbar .widget").click(function() {
+		$(this).slideUp(1000);
+});
+
+
+ $('#secondary .ctc').css("display","none");		//hide tag cloud for non Javascript use?
+
+
+	
+/* Smooth scroll to top 
+ * http://css-tricks.com/snippets/jquery/smooth-scrolling/
+ */
+$('.tothetop').click(function(e){
+	e.preventDefault();
+	$('html,body').animate({scrollTop: 0}, 300);
+	$(this).unbind("mouseenter mouseleave");
+	return false;
+});
+
+/* Fix menu and show "top"-link after scrolling
+ * http://stackoverflow.com/questions/13274592/leave-menu-bar-fixed-on-top-when-scrolled
+ */
+if (ccb_options.ccb_fix_nav) {
+	var foo = false;
+	$(window).scroll(function(e){
+			if ($(window).scrollTop() > headerHeight && foo != "bar") {
+				$('#site-navigation').addClass('fixed');
+				$('.tothetop').fadeIn(1000);
+				foo = "bar";
+			} 
+			if ($(window).scrollTop() <= headerHeight - offset) {
+				$('#site-navigation').removeClass('fixed');
+				$('.tothetop').fadeOut(500);
+				foo = false;
+			}
+		});
+}	// end ccb_fix_nav
+
+	
+/* Show Sidebar 
+ */
+$(".show_sidebar.refresh").click(function() {
+	$("#secondary").toggle(
+		function() {
+			$(this).animate({left:"75%"},600)
+		},
+		function() {
+			$(this).animate({left:"100%"},200);
+		}
+	);
+
+	$("#secondary").fadeToggle (400);
+	$(".site-content").toggleClass("withsidebar");
+	
+	/* trigger masonry reload */
+	if (typeof($container.masonry) !== 'undefined') {
+		$container.masonry('reloadItems');
+		$container.masonry();
+	}
+	if ($(".site-content").hasClass("withsidebar")) $(this).find("a").html(_e("No context"));
+	else $(this).find("a").html(_e("Context"));
+});
+	
+	
+/* Fun Stuff: Font Size Adjustment. Set option title_stretch to use this 
+ * - better calculate width of current rendering, then of full-length rendering and containing element
+ *	  divide up, calculate number of lines. If under (n=1.5) lines, do something
+ */	
+if (ccb_options.ccb_font_sizing) {
+	$.fn.font_resize = function() {
+	// queue this and execute callback queue the right way
+		$(".post-title").each(function() {
+			//var l = $(this).text().length;
+			var w = $(this).prop("offsetWidth");
+			var old_pos = $(this).find("span").css("position");	//save old position
+			var old_w = $(this).find("span").css("width");
+			$(this).find("span").css("position", "absolute");		//set to absolute
+			$(this).find("span").css("width", "auto");				//set width
+			var w2 = $(this).find("span").prop("offsetWidth");		//read real width
+			var f = $(this).css("font-size").substring(0,2).valueOf();
+			var c = w/w2; 								//current proportion of font width
+			f = (c < 0.5)?f : f * c * 0.55;				//width/length of word/correction 
+			f = (f<10)?10:f;				//limit min
+			f = (f>40)?40:f;				//limit max
+			$(this).css("font-size",f+"px");				//set font size
+			$(this).find("span").css("position", old_pos);	//restore old position
+			$(this).find("span").css("width", old_w);
+		});
+	};
+	$container.font_resize();
+}
+	
+/* Infinite Scroll by Paul Irish
+ * http://www.infinite-scroll.com/infinite-scroll-jquery-plugin/
+ * https://github.com/paulirish/infinite-scroll/issues/247
+ * Load only if defined and nextSelector exists  
+ */
+if (ccb_options.ccb_infinitescroll && typeof($container.infinitescroll) !== 'undefined' && jQuery('.nav-links a').length ) {
+$container.imagesLoaded(function(){
+	$container.infinitescroll({
+	  navSelector  : '.paging-navigation .nav-links',    			// selector for the paged navigation 
+	  nextSelector : '.nav-links a:first',		// selector for the NEXT link (to page 2)
+	  itemSelector : '.entry',     				// selector for all items you'll retrieve
+	  debug:true,
+	  //bufferPX : 0,
+	  pixelsFromNavToBottom:40,
+	  //extraScrollPx: 40,
+	  animate:true,
+	  loading: {
+		  finishedMsg: _e("No more pages to load."),
+		  img: ccb_options.ccb_uri+'/img/o.gif',
+		  msgText: "<div class=\"loading\">" + _e("Loading") + "...</div>",
+		  speed: 'fast'
+		}
+	  },
+	  
+	  // trigger other scripts as a callback
+	  function( newElements ) {
+		// hide new items while they are loading
+		var $newElems = $( newElements ).css({ opacity: 0 });
+		// ensure new elements have bindings
+		if (typeof($container.infinitescroll) !== 'undefined') {
+			if (typeof($container.masonrybind) !== 'undefined') $container.masonrybind();
+		
+			// ensure that images load before adding to masonry layout
+			$newElems.imagesLoaded(function(){
+			  // show elems now they're ready
+			  $newElems.animate({ opacity: 1 });
+			  if (typeof($container.font_resize) !== 'undefined') $container.font_resize();
+			  if (typeof($container.apply_design) !== 'undefined') $container.apply_design();
+			  $container.masonry( 'appended', $newElems, true ).fadeIn();
+			});
+		}
+		else {
+			if (typeof(design) !== 'undefined') design();
+			$newElems.animate({ opacity: 1 });
+		}
+		
+		if (newElements.length < ccb_options.ccb_postperpage) {
+			$container.unbind('.infinitescroll');
+			$container.infinitescroll('destroy');
+		}
+	  } 
+	);
+	});  //imagesLoaded
+}	//infinite scroll defined
+
+
+/* AJAX post load 
+  $('.fullwidth .post-title').click(function( e ){ 
+  e.preventDefault();
+	target = $(this).find("a").prop("href");
+
+  $.ajax({
+	url: target,
+	type: 'POST',
+	beforeSend: function(){
+		$('.loading').fadeIn();
+	},
+	done: function(data){
+	alert("loaded");
+	$('.fullwidth').html( $(data).find('.post') );
+	}
+  });
+
+}); 
+*/	
+	
+/* History for AJAX pageloads	*/
+$(function() {
+	var History = window.History; // Note: We are using a capital H instead of a lower h
+	if ( !History.enabled ) {
+		 // History.js is disabled for this browser.
+		 // This is because we can optionally choose to support HTML4 browsers or not.
+		return false;
+	}
+	History.Adapter.bind(window,'statechange',function(){ 
+		var State = History.getState(); // Note: We are using History.getState() instead of event.state
+	});
+});
+
+
+/* Unslider */
+$(function() {
+    var unslider = $('.slider').unslider({
+		speed: 500,               //  The speed to animate each slide (in milliseconds)
+		delay: 3000,              //  The delay between slide animations (in milliseconds)
+		complete: function() {},
+		keys: true,               //  Enable keyboard (left, right) arrow shortcuts
+		dots: true,               //  Display dot navigation
+		fluid: true              //  Support responsive design. May break non-responsive designs
+	});
+
+    $('.unslider-arrow').click(function() {
+	   var fn = this.className.split(' ')[1];
+        //  Either do unslider.data('unslider').next() or .prev() depending on the className
+        unslider.data('unslider')[fn]();
+		//  Hide arrow if at begin or end
+    });
+});
+	
+});		//document.ready

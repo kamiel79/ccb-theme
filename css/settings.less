@@ -1,0 +1,100 @@
+/** Settings.less
+  * Main settings for .less file
+  */
+
+/** Import Google fonts **/
+@import url(https://fonts.googleapis.com/css?family=Oswald:300|Lora|Lato);
+
+@import "../../ccb/css/more.less";
+
+/** Nice Fonts
+ *	Headers:		Oswald, Century Gothic, Knockout, Bodoni Poster, Steinem
+					Lato, Raleway, Amaranth, Signika, Josephine slab, Tikal sans, Italiana, Arsenal
+ *	Good reading:	Noto serif, Open sans, Droid sans, Lora, Libre Baskerville
+					Old Standard, Vollkorn, EB Garamond
+ *	Sans Serif: 	Ubuntu
+ *	Handwriting:	Cookie, Zaphino, Great Vibes, Dancing script, Pacifico, Lobster Two
+					Courgette, Playball, Merienda
+ */
+ 
+ /* Special Use Classes
+  *	blockquote.highlight	blockquote outside of text flow
+  *
+  *
+  */
+
+  
+/** Measures **/
+ @adminbarheight				: 32px;						/* Standard adminbar height */
+ @adminbarheightmobile			: 46px;						/* Standard Mobile height */
+ @brandingpaddingtop			: 4vw;						/* Padding for logo or title */
+ @buttonheight					: 40px;						/* Set explicitly for precision */
+ @col-max-width					: 500px;
+ @col-min-width					: 100px;
+ @headbartop					: 58px;
+ @margin						: .5em;						/*.5*/ 
+ @margin-buttons				: 5px;
+ @maxheightfeaturedimage		: 332px;
+ @metacolumn					: 300px;					/* Meta info floats left on larger screens */
+ @metainfoheight				: 250px;
+ @metainfowidth					: 200px;
+ @mobilewidth					: 600px;
+ @mediumwidth					: 950px;
+ @menubuttonwidth				: 25%;						/* % width of mobile buttons */
+ @navigationheight				: auto;
+ @padding						: .5em;	
+ @sidebarvw						: 25vw;						
+ @sidebarwidth					: 25%;						/* Default sidebar width */
+ @sitemargin					: 2em 0;					/* Main site margin */
+ @sitepadding					: 3%;						/* Main site padding */
+ @sitepaddingbottom				: 2em;
+ @square-min					: 100px;					/* Minimal size for square layout grid1 */
+ @thumbnailmaxheight			: 150px;					/* Prevent too tall thumbnails */
+ @gridimagemaxheight			: 480px;
+ 
+/** Colors **/
+ @bkg							: #fff;						/* Background and text on color1 */
+ @bkg2							: darken(@bkg, 2%);			/* Background site */
+ @bkg3							: darken(@bkg, 5%);			/* Background overlayed element */
+ @bordercolor					: darken(@bkg, 20%);		/* Border */
+ @color1						: #111;						/* #53a1b8; */
+ @color1L						: lighten(@color1, 10%);	/* Lightened color1 */
+ @color2						: #A22; 				 /* Complementary color */
+ @color2L						: lighten(@color2, 10%);
+ @colorerror					: red;
+ @highlighted					: @color2;					/* Highlighting eg. in searches */
+ @menubkg						: @bkg;
+ @menulight						: #f4f4f4;
+ @menutext						: #333;
+ @transparent					: rgba(255,255,255,.65);	/* Standard transparency */
+ @txtcolor						: #333;						/* Readable dark grey */
+ @txtcolor2						: #666;						/* Lightened txtcolor */
+ @txtcolor3						: #A22;						/* Lightened txtcolor */
+ @txtcolorL						: #AAA;
+ 
+/** Fonts **/
+ @font1							: "Lora", serif;			/* Main font */
+ @font2							: "Oswald", arial, sans-serif;			/* Header */
+ @font3							: "Lato", arial, sans-serif;					/* for entry meta */
+ @font-quote					: "Lora", @font2, sans-serif;
+ @font-aside					: @font-quote;
+ @font-site-title				: @font2;
+ @font-content					: 1.1rem;								/* 15pt */
+ @font-size						: 1rem;
+ @font-small					: .75em;
+ @font-large					: 32pt;
+ @font-title					: 2rem;
+ @font-size-nav					: 1em;
+ @font-size-buttons				: 16px;
+ @font-size-widgettitle			: 20pt;
+ @padding-buttons				: 10px;
+ @font-size-quote				: 20pt;
+ @line-height					: 1.5em;
+ @sitetitlesize					: 4em;
+
+/** Icons, delays, transitions **/
+ @dashicons						: 200 @line-height/1 dashicons;		/* Standard size dashicons */
+ @delay							: .5s;						 	/* Standard transition delay */
+ @boxshadow						: none; 						/*2px 2px 4px @txtcolor; */
+ @transitionbezier				: cubic-bezier(0.66, 0.25, 0.37, 0.86);
+ @searchthrobber				: "../img/load.gif";

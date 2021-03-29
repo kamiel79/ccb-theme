@@ -1,0 +1,281 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald:300|Lora|Lato);
+/** Settings.less
+  * Main settings for .less file
+  */
+/** Import Google fonts **/
+/* http://designshack.net/articles/css/10-less-css-examples-you-should-steal-for-your-projects/ 
+*/
+/** Colors **/
+/** Screen sizes **/
+/** Mixins **/
+/** http://designshack.net/articles/css/12-fun-css-text-shadows-you-can-copy-and-paste/ **/
+.3dshadow {
+  text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+}
+/** http://demosthenes.info/blog/532/Convert-Images-To-Black-And-White-With-CSS **/
+/** Animations **/
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform: translateY(-100%);
+    opacity: 0;
+  }
+  5% {
+    -webkit-transform: translateY(-100%);
+    opacity: 0;
+  }
+  15% {
+    -webkit-transform: translateY(0);
+    padding-bottom: 5px;
+  }
+  30% {
+    -webkit-transform: translateY(-50%);
+  }
+  40% {
+    -webkit-transform: translateY(0%);
+    padding-bottom: 6px;
+  }
+  50% {
+    -webkit-transform: translateY(-30%);
+  }
+  70% {
+    -webkit-transform: translateY(0%);
+    padding-bottom: 7px;
+  }
+  80% {
+    -webkit-transform: translateY(-15%);
+  }
+  90% {
+    -webkit-transform: translateY(0%);
+    padding-bottom: 8px;
+  }
+  95% {
+    -webkit-transform: translateY(-10%);
+  }
+  97% {
+    -webkit-transform: translateY(0%);
+    padding-bottom: 9px;
+  }
+  99% {
+    -webkit-transform: translateY(-5%);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    padding-bottom: 9px;
+    opacity: 1;
+  }
+}
+/** Nice Fonts
+ *	Headers:		Oswald, Century Gothic, Knockout, Bodoni Poster, Steinem
+					Lato, Raleway, Amaranth, Signika, Josephine slab, Tikal sans, Italiana, Arsenal
+ *	Good reading:	Noto serif, Open sans, Droid sans, Lora, Libre Baskerville
+					Old Standard, Vollkorn, EB Garamond
+ *	Sans Serif: 	Ubuntu
+ *	Handwriting:	Cookie, Zaphino, Great Vibes, Dancing script, Pacifico, Lobster Two
+					Courgette, Playball, Merienda
+ */
+/* Special Use Classes
+  *	blockquote.highlight	blockquote outside of text flow
+  *
+  *
+  */
+/** Measures **/
+/* Standard adminbar height */
+/* Standard Mobile height */
+/* Padding for logo or title */
+/* Set explicitly for precision */
+/*.5*/
+/* Meta info floats left on larger screens */
+/* % width of mobile buttons */
+/* Default sidebar width */
+/* Main site margin */
+/* Main site padding */
+/* Minimal size for square layout grid1 */
+/* Prevent too tall thumbnails */
+/** Colors **/
+/* Background and text on color1 */
+/* Background site */
+/* Background overlayed element */
+/* Border */
+/* #53a1b8; */
+/* Lightened color1 */
+/* Complementary color */
+/* Highlighting eg. in searches */
+/* Standard transparency */
+/* Readable dark grey */
+/* Lightened txtcolor */
+/* Lightened txtcolor */
+/** Fonts **/
+/* Main font */
+/* Header */
+/* for entry meta */
+/* 15pt */
+/** Icons, delays, transitions **/
+/* Standard size dashicons */
+/* Standard transition delay */
+/*2px 2px 4px @txtcolor; */
+/** Stylesheet for grid list; (chronological) list of posts
+ *	November 2018 (dumb as ever)
+ *  Updated March 2021 (still alive)
+ */
+#container.grid-list {
+  margin: 0 25%;
+  width: 75%;
+}
+.grid-list .thumbnail img {
+  padding: 2px;
+  border: 1px solid #111111;
+  float: left;
+}
+.grid-list .entry-meta {
+  text-align: right;
+  margin: 1em 0;
+}
+.grid-list .posted-on {
+  margin-right: 16px;
+  top: 12px;
+  position: relative;
+}
+.grid-list .posted-on a {
+  font-size: 12px;
+  color: #aa2222;
+  font-style: italic;
+}
+.grid-list .posted-on:before {
+  display: none;
+}
+.grid-list .entry {
+  border-left: 2px solid #aa2222;
+  padding: 0 30px;
+  padding-bottom: 40px;
+  /*exact pixel value */
+  margin-left: 15%;
+  width: 50%;
+}
+.withsidebar .grid-list .entry {
+  width: 90%;
+}
+.grid-list .entry .post-title {
+  font-size: 1.6rem;
+}
+.grid-list .entry-header {
+  margin-left: -300px;
+  width: 250px;
+  float: left;
+  position: relative;
+}
+.grid-list .details {
+  float: left;
+  margin: 0 0 10px 0;
+}
+.grid-list .details a {
+  color: #333;
+}
+.grid-list .thumbcrop {
+  float: right;
+  clear: both;
+  margin: 0.5em 0;
+  max-width: 100%;
+  max-height: 480px;
+  max-height: 100vw;
+}
+.grid-list .thumbcrop img {
+  transform: none;
+  width: auto;
+}
+.grid-list .category a {
+  font-family: "Lato", arial, sans-serif;
+  color: #aa2222;
+  word-break: break-word;
+  /* for multi-word category names */
+  text-transform: uppercase;
+}
+.grid-list .entry-footer {
+  border-bottom: 1px solid #f4f4f4;
+  font-size: 0.75em;
+  color: #2b2b2b;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  float: left;
+  clear: both;
+  width: 100%;
+  border-top: 1px solid #f4f4f4;
+  font-family: "Lato", arial, sans-serif;
+}
+.grid-list .entry-footer a {
+  color: #2b2b2b;
+}
+.grid-list .comments-link {
+  float: right;
+}
+.grid-list .line {
+  border-bottom: 2px solid #aa2222;
+  position: absolute;
+  width: 30px;
+  right: 0;
+  margin-top: -16px;
+  margin-right: -20px;
+}
+.line:after {
+  font: 300 32px/2 dashicons;
+  content: "\f141";
+  color: #aa2222;
+  margin-left: 8px;
+  top: -31px;
+  position: absolute;
+}
+.grid-list .sticky .post-title {
+  background: #aa2222;
+  color: #ffffff;
+  padding: 0.5em;
+  margin-left: -32px;
+  padding-left: 32px;
+}
+.grid-list .sticky .post-excerpt {
+  margin-top: 1em;
+}
+.grid-list .updated {
+  display: none;
+}
+/* Styles for post formats */
+.grid-list .format-aside .entry-content,
+.grid-list .format-aside .post-title,
+.grid-list .format-aside .post-excerpt,
+.grid-list .format-aside .post-excerpt a {
+  font-family: "Lora", "Oswald", arial, sans-serif, sans-serif;
+  color: #aa2222;
+}
+.grid-list .format-quote .post-title {
+  display: none;
+}
+/* Mobile style */
+@media only screen and (max-width: 599px) {
+  #container.grid-list {
+    margin: 0;
+    width: 100%;
+  }
+  .grid-list .entry {
+    width: 100%;
+    margin-left: 0;
+    padding-bottom: 50px;
+  }
+  .grid-list .entry-header {
+    position: static;
+    width: auto;
+    margin-left: 0;
+  }
+  .grid-list .line {
+    right: auto;
+    margin-left: -30px;
+  }
+  .grid-list .line:after {
+    content: "\f139";
+    margin-left: -14px;
+  }
+  .grid-list .entry .post-title {
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+  .grid-list .entry-meta {
+    text-align: left;
+  }
+}

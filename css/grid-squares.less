@@ -1,0 +1,91 @@
+@import "settings.less";			/* Theme-specific settings */
+
+/*********************************** 
+ *  6.1 Squares
+ ***********************************/
+.squares.entry {
+	padding-bottom				: 100%;
+	margin-bottom				: 10px;
+}
+.squares.entry.col {
+	min-width					: @square-min;
+	min-height					: @square-min;
+}	
+.squares.entry.col.col2 { padding-bottom: 50%; }
+.squares.entry.col.col3 { padding-bottom: 33%; }
+.squares.entry.col.col4 { padding-bottom: 25%; }
+.squares.entry.col.col5 { padding-bottom: 20%; }
+.squares.entry.col.col6 { padding-bottom: 16.66%; }
+.squares.entry.col.col7 { padding-bottom: 14.42%; }
+.squares.entry.col.col8 { padding-bottom: 12.5%; }
+.squares.entry.col.col9 { padding-bottom: 11.11%; }
+.squares.entry.col.col10 { padding-bottom: 10%; }
+
+.squares .entry-border {
+	position					: absolute!important;
+	float						: left;
+	height						: 90%;
+	width						: 90%;
+	margin						: @margin;
+}
+.squares .details {
+	position					: absolute;
+	overflow					: hidden;
+	padding						: 0;
+	height						: 200%;
+	width						: 100%;
+	top							: 100%;
+	background-color			: @bkg;
+	.opacity(@transparent);
+	.translate(0,-3em);
+	.transition(all, @delay, ease-in-out);
+}
+.squares .details .post-title {
+	width						: 100%;
+	text-align					: center;
+	overflow					: hidden;
+	height						: 3em;
+	padding						: @padding;
+	bottom						: 0;
+}
+.squares .details .excerpt {
+	height						: 100%;
+	padding						: 0 5%;
+	font-size					: 1em;
+}
+.squares .details.textonly {
+	background-color			: @color1;
+	color						: @bkg;
+}
+
+.squares .details.textonly .post-title{
+	color						: @bkg;
+    font-size					: 1em;
+}
+.squares .details:hover, .squares .details.textonly {
+	top							: 0;
+	.opacity(@transparent);
+	.translate(0,0);
+	.transition(all, @delay, ease-in-out);
+}
+.squares .details:hover  .post-title,
+.squares .details.textonly .post-title {
+	height						: auto;
+	overflow					: visible;
+	margin-top					: 0;
+	position 					: static;
+}
+.squares .details:hover .excerpt,
+.squares .details.textonly .excerpt {
+	.opacity(1);
+}
+.squares .thumbcrop  {
+	.opacity (1);
+	margin 						: 5%;
+	width						: 90%;
+	height						: 90%;
+}
+.squares .thumbcrop img {
+	position					: absolute;
+	.opacity (0);
+}

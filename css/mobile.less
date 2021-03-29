@@ -1,0 +1,66 @@
+/* 
+ * Mobile LESS file for Creative Choice Blog
+ */
+@import "more.less";
+@import "custom.less";
+
+@square-min					: 50px;
+
+.admin-bar .main-navigation.fixed {
+	top						: 0;
+}
+
+/** Navigation **/
+.main-navigation {
+	padding						: 0;
+	height						: auto;
+}
+.main-navigation li {
+	clear						: left;
+	width						: 100%;
+	border						: 1px solid @color1;
+	border-top					: none;
+}
+.main-navigation li:first-child {
+	border-top					: 1px solid @color1;
+}
+.main-navigation li:hover {
+	background					: @color1;
+	color						: @bkg;
+}
+.main-navigation ul ul li {
+	border						: none;
+}
+.main-navigation .ccb_navsearch {
+	position					: relative;
+	background					: @bkg;
+	color						: @color1;
+}
+
+/** Headbar **/
+.admin-bar .ccb_headbar.fixed  {
+	top							: 84px;
+}
+ 
+/** Content **/
+.post.listing {
+	margin					: 0;
+}
+.col {
+  min-width					: @square-min;
+  min-height				: @square-min;
+ }
+ 
+/** Sidebar **/
+ .withsidebar .content-area{
+	margin						: 0;
+}
+ .withsidebar .site-main {
+	margin						: 0;
+}
+ .withsidebar .ccb_headbar {
+	width						: 100%;
+}
+#sidebar {
+	width						: 100%;
+}

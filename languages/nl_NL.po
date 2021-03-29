@@ -1,0 +1,1207 @@
+# Copyright (C) 2014 Automattic
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: ccb 1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
+"POT-Creation-Date: 2017-01-22 00:29+0900\n"
+"PO-Revision-Date: 2018-11-03 22:45+0900\n"
+"Last-Translator: kamiel <kamielchoi@gmail.com>\n"
+"Language-Team: LANGUAGE <kamiel@creativechoice.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _e;__;_a;_nx:4c,1,2;_n:1,2;_x\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: js/custom.js:24 js/custom.min.js:1
+msgid "Type at least {0} characters"
+msgstr "Vul tenminste {0} tekens in"
+
+#: js/custom.js:25 js/custom.min.js:1
+msgid "Please specify your name"
+msgstr "Vul hier je naam in"
+
+#: js/custom.js:28 js/custom.min.js:1
+msgid "Please provide an email address"
+msgstr "Vul een e-mailadres in b.v. naam@domain.nl"
+
+#: js/custom.js:29 js/custom.min.js:1
+msgid "Your email address must be in the format of name@domain.com"
+msgstr "Uw e-mailadres moet het formaat naam@domain.nl hebben"
+
+#: js/custom.js:31 js/custom.min.js:1
+msgid "Please enter a valid website"
+msgstr "Vul een geldige website in"
+
+#: js/custom.js:33 js/custom.min.js:1
+msgid "Please enter at least a few words."
+msgstr "Schrijf minstens een paar woorden!"
+
+#: js/custom.js:34 js/custom.min.js:1
+msgid "This field is required!"
+msgstr "Dit veld is verplicht!"
+
+#: js/custom.js:244 js/custom.js:276 js/custom.min.js:1
+msgid "No context"
+msgstr "Geen context"
+
+#: js/custom.js:247 js/custom.js:262 js/custom.min.js:1 functions.php:150
+msgid "Context"
+msgstr "Context"
+
+#: js/searchajax.js:48 js/searchajax.min.js:1
+msgid "Creative Choice: Searching for "
+msgstr "Creative Choice: zoeken naar "
+
+#: 404.php:15
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Helaas. De pagina kan niet worden gevonden."
+
+#: 404.php:21
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr "Hier is niks. Probeer de links hieronder of een zoekopdracht."
+
+#: archive.php:24 archive_grid.php:24 ccb-archive.php:22
+msgid "All about: "
+msgstr "Alles over: "
+
+#: archive.php:28 archive_grid.php:28 author.php:20 ccb-archive.php:26
+#, php-format
+msgid "Author: %s"
+msgstr "Auteur: %s"
+
+#: archive.php:31 archive_grid.php:31 ccb-archive.php:29
+#, php-format
+msgid "Day: %s"
+msgstr "Dag: %s"
+
+#: archive.php:34 archive_grid.php:34 ccb-archive.php:32
+#, php-format
+msgid "Month: %s"
+msgstr "Maand: %s"
+
+#: archive.php:34 archive_grid.php:34 ccb-archive.php:32
+msgid "F Y"
+msgstr ""
+
+#: archive.php:37 archive_grid.php:37 ccb-archive.php:35
+#, php-format
+msgid "Year: %s"
+msgstr "Jaar: %s"
+
+#: archive.php:37 archive_grid.php:37 ccb-archive.php:35
+#: inc/breadcrumbs.php:766 inc/breadcrumbs.php:795 inc/breadcrumbs.php:822
+#: inc/breadcrumbs.php:849 inc/breadcrumbs.php:1036
+msgid "Y"
+msgstr "J"
+
+#: archive.php:40 archive_grid.php:40 ccb-archive.php:38
+msgid "Asides"
+msgstr ""
+
+#: archive.php:43 archive_grid.php:43 ccb-archive.php:41
+msgid "Galleries"
+msgstr ""
+
+#: archive.php:46 archive_grid.php:46 ccb-archive.php:44
+msgid "Images"
+msgstr "Afbeeldingen"
+
+#: archive.php:49 archive_grid.php:49 ccb-archive.php:47
+msgid "Videos"
+msgstr "Video's"
+
+#: archive.php:52 archive_grid.php:52 ccb-archive.php:50
+msgid "Quotes"
+msgstr "Citaten"
+
+#: archive.php:55 archive_grid.php:55 ccb-archive.php:53
+msgid "Links"
+msgstr "Links"
+
+#: archive.php:58 archive_grid.php:58 ccb-archive.php:56
+msgid "Statuses"
+msgstr "Statussen"
+
+#: archive.php:61 archive_grid.php:61 ccb-archive.php:59
+msgid "Audios"
+msgstr ""
+
+#: archive.php:64 archive_grid.php:64 ccb-archive.php:62
+msgid "Chats"
+msgstr ""
+
+#: archive.php:67 archive_grid.php:67 ccb-archive.php:65
+#: inc/breadcrumbs.php:181 sidebar.php:19
+msgid "Archives"
+msgstr "Archieven"
+
+#: comments.php:28
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "Een reactie op &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s commentaren op &ldquo;%2$s&rdquo;"
+
+#: comments.php:35 comments.php:52
+msgid "Comment navigation"
+msgstr "Reactienavigatie"
+
+#: comments.php:36 comments.php:53
+msgid "&larr; Older Comments"
+msgstr "&larr; Oudere reacties"
+
+#: comments.php:37 comments.php:54
+msgid "Newer Comments &rarr;"
+msgstr "Nieuwere reacties &rarr;"
+
+#: comments.php:64
+msgid "Comments are closed."
+msgstr "Geen reacties mogelijk."
+
+#: comments.php:71
+msgid "Name"
+msgstr "Naam"
+
+#: comments.php:77
+msgid "Email"
+msgstr "E-mail"
+
+#: comments.php:83
+msgid "Website"
+msgstr "Website"
+
+#: content-grid2.php:23 content-list.php:52 content-original.php:40
+#: content-search.php:30 content-search.php:40 content.php:13
+msgid ", "
+msgstr ", "
+
+#: content-list.php:56 content-search.php:44
+#, php-format
+msgid "Tagged %1$s"
+msgstr "Tags: %1$s"
+
+#: content-list.php:62 content-original.php:52 content-search.php:50
+msgid "Leave a comment"
+msgstr "Een reactie plaatsen"
+
+#: content-list.php:62 content-original.php:52 content-search.php:50
+#: content-widget.php:31
+msgid "1 Comment"
+msgstr "1 reactie"
+
+#: content-list.php:62 content-original.php:52 content-search.php:50
+#: content-widget.php:31
+msgid "% Comments"
+msgstr "% reacties"
+
+#: content-list.php:65 content-original.php:54 content-page.php:24
+#: content-search.php:53 content-single.php:65 inc/breadcrumbs.php:1135
+#: inc/breadcrumbs.php:1171 inc/breadcrumbs.php:1188 inc/breadcrumbs.php:1219
+msgid "Edit"
+msgstr "Bewerken"
+
+#: content-none.php:13
+msgid "Nothing Found"
+msgstr "Niets gevonden"
+
+#: content-none.php:19
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "Eerste bericht publiceren? <a href=\"%1$s\">Hier beginnen</a>."
+
+#: content-none.php:23
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Sorry, we konden het niet vinden. Probeer het opnieuw met andere trefwoorden."
+
+#: content-none.php:28
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr "Dat kunnen we niet vinden. Misschien helpt zoeken."
+
+#: content-original.php:23
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Verder lezen <span class=\"meta-nav\">&rarr;</span>"
+
+#: content-original.php:26 content-page.php:18 content-single.php:57
+msgid "Pages:"
+msgstr "Pagina's:"
+
+#: content-search.php:34
+#, php-format
+msgid "Posted in %1$s"
+msgstr "Gepubliceerd in %1$s"
+
+#: content-single.php:38
+msgid "By"
+msgstr "Door"
+
+#: content-single.php:41
+msgid "On"
+msgstr "Op"
+
+#: content-single.php:41
+msgid "Updated"
+msgstr "Bijgewerkt"
+
+#: footer.php:29
+#, php-format
+msgid "%1$s"
+msgstr "%1$s"
+
+#: functions.php:147
+msgid "Tags"
+msgstr "Trefwoorden"
+
+#: functions.php:163
+msgid "In focus: "
+msgstr "In focus: "
+
+#: functions.php:176
+msgid "Primary Menu"
+msgstr "Primair menu"
+
+#: functions.php:177
+msgid "Top Menu"
+msgstr "Topmenu"
+
+#: functions.php:242
+msgid "Sidebar"
+msgstr "Zijbalk"
+
+#: functions.php:251
+msgid "Headbar"
+msgstr "Kopbalk"
+
+#: functions.php:260
+msgid "Entrymeta Widgets"
+msgstr ""
+
+#: header.php:25
+msgid "Skip to content"
+msgstr "Naar inhoud"
+
+#: inc/breadcrumbs.php:178
+msgid "Browse:"
+msgstr "U ziet:"
+
+#: inc/breadcrumbs.php:179
+msgid "Home"
+msgstr "Start"
+
+#: inc/breadcrumbs.php:180
+msgid "404 Not Found"
+msgstr "Niets gevonden (404)"
+
+#: inc/breadcrumbs.php:183
+#, fuzzy, php-format
+msgid "Search results for &#8220;%s&#8221;"
+msgstr "Zoekresultaten voor: %s"
+
+#: inc/breadcrumbs.php:185 inc/extras.php:63
+#, php-format
+msgid "Page %s"
+msgstr "Pagina %s"
+
+#: inc/breadcrumbs.php:187
+#, fuzzy, php-format
+msgid "Minute %s"
+msgstr "Auteur: %s"
+
+#: inc/breadcrumbs.php:189
+#, fuzzy, php-format
+msgid "Week %s"
+msgstr "Auteur: %s"
+
+#: inc/breadcrumbs.php:716
+msgid "g:i a"
+msgstr ""
+
+#: inc/breadcrumbs.php:733
+msgid "i"
+msgstr ""
+
+#: inc/breadcrumbs.php:750
+msgid "g a"
+msgstr ""
+
+#: inc/breadcrumbs.php:767 inc/breadcrumbs.php:823 inc/breadcrumbs.php:1040
+msgid "F"
+msgstr ""
+
+#: inc/breadcrumbs.php:768 inc/breadcrumbs.php:1044
+msgid "j"
+msgstr ""
+
+#: inc/breadcrumbs.php:796
+msgid "W"
+msgstr ""
+
+#: inc/breadcrumbs.php:1163
+msgid "Split"
+msgstr "Splitsen"
+
+#: inc/breadcrumbs.php:1167
+msgid "Merge"
+msgstr "Samenvoegen"
+
+#: inc/ccb_widgets.php:31 inc/ccb_widgets.php:108 inc/ccb_widgets.php:234
+msgid "New title"
+msgstr "Nieuwe titel"
+
+#: inc/ccb_widgets.php:34 inc/ccb_widgets.php:118 inc/ccb_widgets.php:239
+msgid "Title:"
+msgstr "Ttitel"
+
+#: inc/ccb_widgets.php:60
+msgid "One Post Widget"
+msgstr "Een post widget"
+
+#: inc/ccb_widgets.php:63
+#, fuzzy
+msgid "One post widget"
+msgstr "Een post widget"
+
+#: inc/ccb_widgets.php:120
+msgid "Query:"
+msgstr ""
+
+#: inc/ccb_widgets.php:122
+msgid "Number of rows:"
+msgstr "Aantal rijen:"
+
+#: inc/ccb_widgets.php:146 inc/ccb_widgets.php:148
+msgid "Category Description Widget"
+msgstr "Widget categoriebeschrijving"
+
+#: inc/ccb_widgets.php:178
+#, fuzzy
+msgid "Glidejs Widget"
+msgstr "Widget-instellingen"
+
+#: inc/ccb_widgets.php:181
+#, fuzzy
+msgid "Glidejs in a widget"
+msgstr "Widget-instellingen"
+
+#: inc/ccb_widgets.php:266
+msgid "Extended Search Widget"
+msgstr "Widget uitgebreid zoeken"
+
+#: inc/ccb_widgets.php:267
+msgid "Search using a date period and ..."
+msgstr "Zoeke met datumperiode"
+
+#: inc/ccb_widgets.php:278 searchform.php:4
+msgid "Search for:"
+msgstr "Zoeken naar:"
+
+#: inc/ccb_widgets.php:279 searchform.php:5
+msgid "Search term..."
+msgstr "Zoekbegrip..."
+
+#: inc/ccb_widgets.php:281
+msgid "From"
+msgstr "Vanaf"
+
+#: inc/ccb_widgets.php:283
+msgid "Until"
+msgstr "Tot"
+
+#: inc/ccb_widgets.php:285 searchform.php:6
+msgid "Search"
+msgstr "Zoeken"
+
+#: inc/multisite.php:389 inc/template-tags.php:21
+msgid "Posts navigation"
+msgstr "Berichtnavigatie"
+
+#: inc/multisite.php:392
+msgid "No results"
+msgstr "Geen resultaten"
+
+#: inc/multisite.php:401
+msgid "<span class=\"meta-nav\"></span> Older posts"
+msgstr "<span class=\"meta-nav\"></span>Oudere berichten"
+
+#: inc/multisite.php:410
+msgid "Newer posts<span class=\"meta-nav\"></span>"
+msgstr "Nieuwere berichten <span class=\"meta-nav\">&rarr;</span>"
+
+#: inc/template-tags.php:25
+msgid "Older posts"
+msgstr "Oudere berichten"
+
+#: inc/template-tags.php:29
+msgid "Newer posts "
+msgstr "Nieuwere berichten"
+
+#: inc/template-tags.php:52
+msgid "Post navigation"
+msgstr "Postnavigatie"
+
+#: inc/template-tags.php:55
+msgid "<span class=\"meta-nav\">&larr;</span> %title"
+msgstr "<span class=\"meta-nav\">&larr;</span> %title"
+
+#: inc/template-tags.php:56
+msgid "%title <span class=\"meta-nav\">&rarr;</span>"
+msgstr "%title <span class=\"meta-nav\">&rarr;</span>"
+
+#: inc/template-tags.php:76 inc/template-tags.php:86
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: options.php:22 options/options.php:98
+msgid "Basic Settings"
+msgstr "Basisinstellingen"
+
+#: options.php:28
+msgid "Upload a logo"
+msgstr "Een logo uploaden"
+
+#: options.php:29
+msgid "Upload a custom logo."
+msgstr "Een eigen logo uploaden."
+
+#: options.php:33
+msgid "Upload a header image"
+msgstr "Een header-afbeelding uploaden"
+
+#: options.php:34
+msgid "Upload a custom <b>header</b>."
+msgstr "Een <b>aangepaste</b> header uploaden."
+
+#: options.php:38
+msgid "Breadcrumb trail"
+msgstr "Broodkruimels"
+
+#: options.php:39
+msgid "Display a breadcrumb trail for your site"
+msgstr "Broodkruimelpad weergeven"
+
+#: options.php:43
+msgid "Fix nav on scroll"
+msgstr "Navigatiebalk vastzetten bij scrollen"
+
+#: options.php:44
+msgid "Fix the navigation bar when the user scrolls the page down."
+msgstr "De navigatiebalk vastzetten wanneer de gebruiker naar beneden scrollt."
+
+#: options.php:48
+msgid "Float metacolumn (left sidebar) on scroll"
+msgstr ""
+
+#: options.php:49
+msgid "Float the metacolumn when the user scrolls the page down."
+msgstr ""
+
+#: options.php:54
+msgid "Add tags to menu"
+msgstr "Trefwoorden aan menu toevoegen"
+
+#: options.php:55
+msgid "Add a menu item for showing tags."
+msgstr "Menu-item toevoegen voor tags."
+
+#: options.php:59
+msgid "Add context to menu"
+msgstr "Context aan menu toevoegen"
+
+#: options.php:60
+msgid "Add a menu item for showing context (sidebar)."
+msgstr "Menu-item toevoegen voor context (rechter zijbalk)."
+
+#: options.php:64
+msgid "Add InFocus to menu"
+msgstr "In focus toevoegen aan menu"
+
+#: options.php:65
+msgid "Add a menu item for a tag in focus."
+msgstr "Menu-item voor een tag in focus toevoegen."
+
+#: options.php:69
+msgid "Number of posts per tag"
+msgstr "Aantal posts per tag"
+
+#: options.php:70
+msgid "Minimal number of posts for a tag to be eligible for in-focus."
+msgstr ""
+
+#: options.php:76
+msgid "Short excerpt length"
+msgstr "Lengte korte samenvatting"
+
+#: options.php:77
+msgid ""
+"In addition to the Wordpress excerpt length, ccb features a short excerpt "
+"for mobile devices and crowded grids."
+msgstr ""
+"Naast Wordpress lengte samenvatting, heeft ccb een korte samenvatting voor "
+"mobiel en rasterweergave."
+
+#: options.php:83
+msgid "Highlight search terms"
+msgstr "Zoekresultaten arceren"
+
+#: options.php:84
+msgid "Highlight the search term on the search results page"
+msgstr ""
+
+#: options.php:89
+msgid "AJAX search"
+msgstr "Zoeken met AJAX"
+
+#: options.php:90
+msgid "Use AJAX for search"
+msgstr "AJAX gebruiken voor zoeken"
+
+#: options.php:96
+msgid "Grid Settings"
+msgstr "Instellingen voor grid"
+
+#: options.php:110
+msgid "Number of columns"
+msgstr "Aantal kolommen"
+
+#: options.php:111
+msgid ""
+"Number of columns in the grid. You can change this on individual pages using "
+"the templates {mu-archive} and putting the shortcode [ccb-page cols=XXX] in "
+"the content"
+msgstr ""
+"Aantal kolommen in het raster. Op individuele pagina's kun je dit aanpassen "
+"door de shortcode [ccb-page cols=XXX] te gebruiken"
+
+#: options.php:125
+#, fuzzy
+msgid "Grid style layout"
+msgstr "Soort grid"
+
+#: options.php:126
+msgid "Configure the layout of the grid"
+msgstr "Layout van het raster vastleggen"
+
+#: options.php:132
+msgid "Grid style layout for Front page"
+msgstr ""
+
+#: options.php:133
+msgid "Grid style for front page (main blog page)"
+msgstr ""
+
+#: options.php:139
+msgid "In Post Thumbnails"
+msgstr "In post pictogrammen"
+
+#: options.php:140
+msgid "Generate thumbnail from post body if no thumbnail is set"
+msgstr ""
+"Een pictogram genereren uit de body van het bericht wanneer deze niet is "
+"ingesteld."
+
+#: options.php:144
+msgid "Flickr"
+msgstr "Flickr"
+
+#: options.php:145
+msgid "Show images from Flickr for posts without images"
+msgstr "Afbeeldingen van Flickr tonen voor berichten zonder afbeeldingen"
+
+#: options.php:150
+msgid "Flickr API key"
+msgstr "Flickr API-sleutel"
+
+#: options.php:151
+msgid ""
+"You can request one <a href=\"https://www.flickr.com/services/api/misc."
+"api_keys.html\">here.</a>"
+msgstr ""
+"Hier <a href=\"https://www.flickr.com/services/api/misc.api_keys.html"
+"\">aanvragen.</a>"
+
+#: options.php:157
+msgid "Persistent Thumbnails"
+msgstr "Onthoud pictogrammen"
+
+#: options.php:158
+msgid ""
+"Make thumbnails persistent using cookies (requires this <a href\"https://"
+"wordpress.org/plugins/wp-session-manager/\">plugin</a>)"
+msgstr ""
+"Onthoud pictogrammen met cookies (vereist deze <a href\"https://wordpress."
+"org/plugins/wp-session-manager/\">plugin</a>)"
+
+#: options.php:163
+msgid "Use Masonry"
+msgstr "Masonry gebruiken"
+
+#: options.php:164
+msgid "Use masonry to fill in the gaps on the layout."
+msgstr "Masonry gebruiken om de gaten in de layout te vullen."
+
+#: options.php:168
+msgid "Upload a fallback thumbnail image"
+msgstr "Een standaardpictogram uploaden"
+
+#: options.php:173
+#, fuzzy
+msgid "Advanced settings"
+msgstr "Geavanceerde Instellingen"
+
+#: options.php:176
+msgid ""
+"This theme can be fully adapted. It is recommended that you create a child "
+"theme first and edit the file @settings.less.\n"
+"\t\t<ul>\n"
+"\t\t<li> You can change the colors, backgrounds and spacings</li>\n"
+"\t\t<li> To change fonts for this theme, you have to work with the .LESS "
+"file. The google font is imported there. See <a href=\"https://developers."
+"google.com/fonts/docs/getting_started#Quick_Start\">Google Fonts "
+"Documentation</a> for details.</li></ul>"
+msgstr ""
+
+#: options.php:185
+msgid "Multisite Settings"
+msgstr "Instellingen voor multisite"
+
+#: options.php:189
+msgid "Multisite"
+msgstr "Multisite"
+
+#: options.php:190
+msgid "Enable to aggregate several sites (blogs)"
+msgstr "Meerdere sites (blogs) samenvoegen"
+
+#: options.php:196
+msgid "Multisite: Select Sites to aggregate"
+msgstr "Multisite: selecteer de sites"
+
+#: options.php:197
+msgid "Select the sites to use"
+msgstr "Selecteer de sites"
+
+#: options/inc/includes/class-options-framework-admin.php:90
+#: options/inc/includes/class-options-framework-admin.php:91
+msgid "Theme Options"
+msgstr "Thema-opties"
+
+#: options/inc/includes/class-options-framework-admin.php:198
+msgid "Click OK to reset. Any theme settings will be lost!"
+msgstr "Klik op OK om te resetten. Alle themawijzigingen gaan verloren!"
+
+#: options/inc/includes/class-options-framework-admin.php:229
+msgid "Default options restored."
+msgstr "Standaardopties hersteld."
+
+#: options/inc/includes/class-options-framework-admin.php:283
+msgid "Options saved."
+msgstr "Opties opgeslagen."
+
+#: options/inc/includes/class-options-media-uploader.php:61
+msgid "No file chosen"
+msgstr "Geen bestand gekozen"
+
+#: options/inc/includes/class-options-media-uploader.php:64
+#: options/inc/includes/class-options-media-uploader.php:117
+msgid "Upload"
+msgstr "Uploaden"
+
+#: options/inc/includes/class-options-media-uploader.php:66
+#: options/inc/includes/class-options-media-uploader.php:118
+msgid "Remove"
+msgstr "Verwijderen"
+
+#: options/inc/includes/class-options-media-uploader.php:69
+msgid "Upgrade your version of WordPress for full media support."
+msgstr ""
+
+#: options/inc/includes/class-options-media-uploader.php:93
+msgid "View File"
+msgstr "Bestand tonen"
+
+#: options/inc/includes/class-options-sanitization.php:316
+msgid "No Repeat"
+msgstr "Geen herhaling"
+
+#: options/inc/includes/class-options-sanitization.php:317
+msgid "Repeat Horizontally"
+msgstr "Horizontaal herhalen"
+
+#: options/inc/includes/class-options-sanitization.php:318
+msgid "Repeat Vertically"
+msgstr "Verticaal herhalen"
+
+#: options/inc/includes/class-options-sanitization.php:319
+msgid "Repeat All"
+msgstr "Alles herhalen"
+
+#: options/inc/includes/class-options-sanitization.php:331
+msgid "Top Left"
+msgstr "Boven links"
+
+#: options/inc/includes/class-options-sanitization.php:332
+msgid "Top Center"
+msgstr "Boven midden"
+
+#: options/inc/includes/class-options-sanitization.php:333
+msgid "Top Right"
+msgstr "Boven rechts"
+
+#: options/inc/includes/class-options-sanitization.php:334
+#, fuzzy
+msgid "Middle Left"
+msgstr "Boven links"
+
+#: options/inc/includes/class-options-sanitization.php:335
+#, fuzzy
+msgid "Middle Center"
+msgstr "Boven midden"
+
+#: options/inc/includes/class-options-sanitization.php:336
+#, fuzzy
+msgid "Middle Right"
+msgstr "Boven rechts"
+
+#: options/inc/includes/class-options-sanitization.php:337
+#, fuzzy
+msgid "Bottom Left"
+msgstr "Boven links"
+
+#: options/inc/includes/class-options-sanitization.php:338
+#, fuzzy
+msgid "Bottom Center"
+msgstr "Boven midden"
+
+#: options/inc/includes/class-options-sanitization.php:339
+#, fuzzy
+msgid "Bottom Right"
+msgstr "Boven rechts"
+
+#: options/inc/includes/class-options-sanitization.php:351
+msgid "Scroll Normally"
+msgstr "Normaal scrollen"
+
+#: options/inc/includes/class-options-sanitization.php:352
+msgid "Fixed in Place"
+msgstr ""
+
+#: options/inc/includes/class-options-sanitization.php:424
+msgid "Normal"
+msgstr ""
+
+#: options/inc/includes/class-options-sanitization.php:425
+msgid "Italic"
+msgstr ""
+
+#: options/inc/includes/class-options-sanitization.php:426
+msgid "Bold"
+msgstr ""
+
+#: options/inc/includes/class-options-sanitization.php:427
+msgid "Bold Italic"
+msgstr ""
+
+#: options/options.php:24
+msgid "One"
+msgstr "Een"
+
+#: options/options.php:25
+msgid "Two"
+msgstr "Twee"
+
+#: options/options.php:26
+msgid "Three"
+msgstr "Drie"
+
+#: options/options.php:27
+msgid "Four"
+msgstr "Vier"
+
+#: options/options.php:28
+msgid "Five"
+msgstr "Vijf"
+
+#: options/options.php:33
+msgid "French Toast"
+msgstr ""
+
+#: options/options.php:34
+msgid "Pancake"
+msgstr ""
+
+#: options/options.php:35
+msgid "Omelette"
+msgstr ""
+
+#: options/options.php:36
+msgid "Crepe"
+msgstr ""
+
+#: options/options.php:37
+msgid "Waffle"
+msgstr ""
+
+#: options/options.php:102
+msgid "Input Text Mini"
+msgstr ""
+
+#: options/options.php:103
+msgid "A mini text input field."
+msgstr ""
+
+#: options/options.php:110
+msgid "Input Text"
+msgstr ""
+
+#: options/options.php:111
+msgid "A text input field."
+msgstr ""
+
+#: options/options.php:117
+msgid "Input with Placeholder"
+msgstr ""
+
+#: options/options.php:118
+msgid "A text input field with an HTML5 placeholder."
+msgstr ""
+
+#: options/options.php:124
+msgid "Textarea"
+msgstr ""
+
+#: options/options.php:125
+#, fuzzy
+msgid "Textarea description."
+msgstr "Widget categoriebeschrijving"
+
+#: options/options.php:131
+#, fuzzy
+msgid "Input Select Small"
+msgstr "Selecteer een categorie"
+
+#: options/options.php:132
+#, fuzzy
+msgid "Small Select Box."
+msgstr "Selecteer een categorie"
+
+#: options/options.php:140
+#, fuzzy
+msgid "Input Select Wide"
+msgstr "Selecteer een categorie"
+
+#: options/options.php:141
+#, fuzzy
+msgid "A wider select box."
+msgstr "Selecteer een categorie"
+
+#: options/options.php:149
+msgid "Select a Category"
+msgstr "Selecteer een categorie"
+
+#: options/options.php:150
+msgid "Passed an array of categories with cat_ID and cat_name"
+msgstr ""
+
+#: options/options.php:158
+#, fuzzy
+msgid "Select a Tag"
+msgstr "Selecteer een categorie"
+
+#: options/options.php:159
+msgid "Passed an array of tags with term_id and term_name"
+msgstr ""
+
+#: options/options.php:166
+#, fuzzy
+msgid "Select a Page"
+msgstr "Selecteer een categorie"
+
+#: options/options.php:167
+msgid "Passed an pages with ID and post_title"
+msgstr ""
+
+#: options/options.php:173
+#, fuzzy
+msgid "Input Radio (one)"
+msgstr "Een"
+
+#: options/options.php:174
+msgid "Radio select with default options \"one\"."
+msgstr ""
+
+#: options/options.php:181
+msgid "Example Info"
+msgstr ""
+
+#: options/options.php:182
+msgid "This is just some example information you can put in the panel."
+msgstr ""
+
+#: options/options.php:186
+msgid "Input Checkbox"
+msgstr ""
+
+#: options/options.php:187
+msgid "Example checkbox, defaults to true."
+msgstr ""
+
+#: options/options.php:193
+msgid "Advanced Settings"
+msgstr "Geavanceerde Instellingen"
+
+#: options/options.php:197
+msgid "Check to Show a Hidden Text Input"
+msgstr ""
+
+#: options/options.php:198
+msgid "Click here and see what happens."
+msgstr ""
+
+#: options/options.php:203
+msgid "Hidden Text Input"
+msgstr ""
+
+#: options/options.php:204
+msgid "This option is hidden unless activated by a checkbox click."
+msgstr ""
+
+#: options/options.php:211
+msgid "Uploader Test"
+msgstr ""
+
+#: options/options.php:212
+msgid "This creates a full size uploader that previews the image."
+msgstr ""
+
+#: options/options.php:229
+msgid "Example Background"
+msgstr ""
+
+#: options/options.php:230
+msgid "Change the background CSS."
+msgstr ""
+
+#: options/options.php:236
+msgid "Multicheck"
+msgstr ""
+
+#: options/options.php:237
+#, fuzzy
+msgid "Multicheck description."
+msgstr "Widget categoriebeschrijving"
+
+#: options/options.php:244
+msgid "Colorpicker"
+msgstr ""
+
+#: options/options.php:245
+#, fuzzy
+msgid "No color selected by default."
+msgstr "Standaardopties hersteld."
+
+#: options/options.php:250
+msgid "Typography"
+msgstr "Typografie"
+
+#: options/options.php:251
+#, fuzzy
+msgid "Example typography."
+msgstr "Typografie"
+
+#: options/options.php:257
+#, fuzzy
+msgid "Custom Typography"
+msgstr "Typografie"
+
+#: options/options.php:258
+#, fuzzy
+msgid "Custom typography options."
+msgstr "Typografie"
+
+#: options/options.php:265
+msgid "Text Editor"
+msgstr ""
+
+#: options/options.php:283
+#, fuzzy
+msgid "Default Text Editor"
+msgstr "Standaardopties hersteld."
+
+#: options/options.php:284
+#, php-format
+msgid ""
+"You can also pass settings to the editor.  Read more about wp_editor in <a "
+"href=\"%1$s\" target=\"_blank\">the WordPress codex</a>"
+msgstr ""
+
+#: search.php:18
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Zoekresultaten voor: %s"
+
+#: search.php:24
+msgid "From: "
+msgstr "Vanaf:"
+
+#: search.php:27
+msgid "Until: "
+msgstr "Tot:"
+
+#: sidebar.php:26
+msgid "Meta"
+msgstr "Meta"
+
+#: yarpp-template-ccb.php:11
+msgid "Related Posts"
+msgstr "Gerelateerde berichten"
+
+#~ msgid "Updated "
+#~ msgstr "Bijgewerkt"
+
+#~ msgid "By "
+#~ msgstr "Door"
+
+#~ msgid "On "
+#~ msgstr "Op"
+
+#~ msgid "powered by %s"
+#~ msgstr "ondersteund door %s"
+
+#~ msgid "Theme: %1$s by %2$s."
+#~ msgstr "Thema: %1$s door %2$s."
+
+#~ msgid "Go to site"
+#~ msgstr "Naar de site"
+
+#~ msgid "Font Size effect"
+#~ msgstr "Lettergrootte-effect"
+
+#~ msgid ""
+#~ "Adjust font size of titles to fit the containing element (use with care)."
+#~ msgstr "Lettergrootte aanpassen aan element (voorzichtig)."
+
+#~ msgid "Most Used Categories"
+#~ msgstr "Meest gebruikte categorieën"
+
+#~ msgid "Try looking in the monthly archives."
+#~ msgstr "Kijk eens in de maandarchieven."
+
+#~ msgid "Lay out your blog posts in squares"
+#~ msgstr "Berichten in vierkanten rangschikken"
+
+#~ msgid "No related posts."
+#~ msgstr "Geen gerelateerde berichten"
+
+#~ msgid "Type at least 3 characters"
+#~ msgstr "Vul meer dan 2 letters in"
+
+#~ msgid "Use AJAX page load"
+#~ msgstr "AJAX gebruiken voor pagina's"
+
+#~ msgid "Load single posts on archive pages with AJAX."
+#~ msgstr "Enkele berichten laden met AJAX."
+
+#~ msgid "Type at leaste 3 characters"
+#~ msgstr "Vul tenminste 3 letters in"
+
+#~ msgid "Try looking in the monthly archives. %1$s"
+#~ msgstr "Kijk eens in de maandarchieven. %1$s"
+
+#~ msgid "Number of columns in the grid."
+#~ msgstr "Aantal kolommen in de grid"
+
+#~ msgid "InPostThumbnails"
+#~ msgstr "Pictogrammen genereren"
+
+#~ msgid "Search..."
+#~ msgstr "Zoeken..."
+
+#~ msgid "Use infinitescroll"
+#~ msgstr "Infinitescroll gebruiken"
+
+#~ msgid "Load new content below current content when the user scrolls down."
+#~ msgstr ""
+#~ "Nieuwe artikelen laden onder huidige inhoud wanneer de gebruiker naar "
+#~ "beneden scrollt."
+
+#~ msgid "Lay out in squares"
+#~ msgstr "In vierkanten rangschikken"
+
+#~ msgid "Google font String"
+#~ msgstr "Google fonts"
+
+#~ msgid ""
+#~ "See <a href=\"https://developers.google.com/fonts/docs/"
+#~ "getting_started#Quick_Start\">Google Fonts Documentation</a> for details. "
+#~ "You can use the fonts with an inline CSS-editor, such as Jetpack's"
+#~ msgstr ""
+#~ "Zie <a href=\"https://developers.google.com/fonts/docs/"
+#~ "getting_started#Quick_Start\">Google Fonts Documentation</a>voor details. "
+#~ "Je kunt deze lettertypes gebruiken met externe CSS-editor, zoals die van "
+#~ "Jetpack."
+
+#~ msgid "Widget settings"
+#~ msgstr "Widget-instellingen"
+
+#~ msgid "Number of slides"
+#~ msgstr "Aantal slides"
+
+#~ msgid "No more pages to load."
+#~ msgstr "Laatste pagina geladen."
+
+#~ msgid "Loading"
+#~ msgstr "Laden"
+
+#~ msgid "In"
+#~ msgstr "In"
+
+#~ msgid "Newer posts <span class=\"meta-nav\"></span>"
+#~ msgstr "Nieuwere berichten <span class=\"meta-nav\">&rarr;</span>"
+
+#~ msgid "by"
+#~ msgstr "door"
+
+#~ msgid "top"
+#~ msgstr "boven"
+
+#~ msgid "Kind of grid"
+#~ msgstr "Soort grid"
+
+#~ msgid "Select the grid markup."
+#~ msgstr "Selecteer markup voor grid."
+
+#~ msgid "Translating"
+#~ msgstr "Wordt vertaald"
+
+#~ msgid "Translate"
+#~ msgstr "Vertaal"
+
+#, fuzzy
+#~ msgctxt "post date"
+#~ msgid "Posted on %s"
+#~ msgstr "Auteur: %s"
+
+#, fuzzy
+#~ msgctxt "post author"
+#~ msgid "by %s"
+#~ msgstr "Auteur: %s"
+
+#, fuzzy
+#~ msgid "_s"
+#~ msgstr "Auteur: %s"

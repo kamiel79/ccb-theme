@@ -1,0 +1,1738 @@
+@import "../style.css";
+@import url(http://fonts.googleapis.com/css?family=Oswald:300|Noto+serif|Bodoni+Poster:300|Pacifico);
+/* 
+ * Mobile LESS file for Creative Choice Blog
+ */
+/* http://designshack.net/articles/css/10-less-css-examples-you-should-steal-for-your-projects/ 
+*/
+/** Colors **/
+/** Screen sizes **/
+/** Mixins **/
+/** http://designshack.net/articles/css/12-fun-css-text-shadows-you-can-copy-and-paste/ **/
+.3dshadow {
+  text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+}
+/** http://demosthenes.info/blog/532/Convert-Images-To-Black-And-White-With-CSS **/
+/** Main LESS file for Creative Choice Blog
+ * 	Custom.less
+ * 	@Since: 1.0
+ *	Changes on the theme or a child theme should be made in 
+ *	- settings.less
+ *	- settings.php (functions.php)
+ * 
+ * 	= Responsive =
+ *	Responsiveness is mostly implemented through @media queries using the LESS definitions
+ *	for resolutions in more.less
+ *
+ * 	Useful articles and resources
+ * 	http://www.w3schools.com/css/css3_gradients.asp
+ * 	http://css-tricks.com/snippets/css/a-guide-to-flexbox/
+ *	http://tools.konstruktors.com/
+ *	http://davidwalsh.name/web-development-tools
+ *	https://developer.mozilla.org/en-US/demos/tag/tech:css3/
+ *	http://blog.triphp.com/design/10-of-the-best-free-high-quality-fonts-available.html
+ *	http://kuttler.eu/code/custom-wordpress-sql-query-for-multiple-meta-values/
+ *	http://www.garyc40.com/2010/03/5-tips-for-using-ajax-in-wordpress/
+ *	http://calebserna.com/dashicons-cheatsheet/
+ *	http://ifontyou.com/combos/popular
+ */
+/* Import base style to be overriden */
+/* Basic mixins, constants, functions */
+/** Settings.less
+  * Main settings for .less file
+  * File is copied to child theme directory; changes can be made here or in the settings.less file
+  */
+/** Import Google fonts **/
+/* Playfair+Display:900&text=Creative%20ChoiceMiru&effect=canvas-print|3d-float
+*/
+/** https://typekit.com/plans offers 130+ fonts (April 2015) **/
+/** Nice Fonts
+ *	Headers:		Oswald, Century Gothic, Knockout, Bodoni Poster, Steinem
+					Lato, Raleway, Amaranth, Signika, Josephine slab, Tikal sans, Italiana
+ *	Quirky:			Playfair+Display, Tangerine					
+ *	Good reading:	Noto serif, Open sans, Droid sans, Lora, Libre Baskerville
+					Old Standard, Vollkorn, EB Garamond
+ *	Sans Serif: 	Ubuntu
+ *	Handwriting:	Cookie, Zaphino, Great Vibes, Dancing script, Pacifico, Lobster Two
+					Courgette, Playball
+ */
+/* Special Use Classes
+  *	blockquote.highlight	blockquote outside of text flow
+  *
+  *
+  */
+/** Main definitions for settings.php of the base theme
+  * These need to be defined before importing the custom.less of the base theme
+  * More child-theme specific variables can be defined below
+  */
+/** Measures **/
+/* Standard adminbar height */
+/* Standard Mobile height */
+/* Height of header (branding) */
+/* Min height on large screens */
+/* Padding for logo or title */
+/* Meta info floats left */
+/* Default sidebar width */
+/* Main site margin */
+/* Main site padding */
+/* Minimal size for square layout grid1 */
+/* Prevent too tall thumbnails */
+/** Colors **/
+/*#53a1b8;					/* First color */
+/* darken(spin(@color1,180),10%); Complentary color */
+/* Background and text on color1 */
+/* Background site */
+/* Background overlayed element */
+/* Border */
+/* Lightened color1 */
+/* Highlighting eg. in searches */
+/* Readable dark grey */
+/* Lightened txtcolor */
+/* Lightened txtcolor */
+/* Standard transparency */
+/** Fonts **/
+/* Main font */
+/* Header */
+/* for entry meta */
+/** Icons, delays, transitions **/
+/* Standard transition delay */
+/* Theme-specific settings */
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 - Elements
+2.0 - Helper Classes
+3.0 - Typography
+4.0 - Layout
+	4.1 - Header
+	4.2 - Content
+5.0 - Navigation
+	5.1 - Links
+	5.2 - Menus
+	5.3 - Mobile Menu
+6.0 - Grid Styling
+7.0 - Thumbnails
+8.0 - List Styling
+9.0 - Widgets
+	9.1 - Headbar
+10.0 - Content
+	10.1 - Posts and Pages
+	10.2 - Quotes
+	10.3 - Categories, tags
+	10.4 - Comments
+	10.5 - Formats: Quote
+11.0 - Forms
+12.0 - Media
+	12.1 - Captions
+	12.2 - Galleries
+	12.3 - Slider
+13.0 - Extras
+
+14.0 - Search Form
+	15.1 - Mobile Search Form
+15.0 - Media Queries (except menu)
+--------------------------------------------------------------*/
+/*********************************** 
+ *  1.0 Elements
+ **********************************/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-decoration: none;
+  clear: none;
+}
+h1 {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+h2 {
+  font-size: 1.6em;
+}
+h3 {
+  font-size: 1.4em;
+}
+h4 {
+  font-size: 1.25em;
+}
+h5 {
+  font-size: 1.2em;
+}
+h6 {
+  font-size: 1.1em;
+}
+a,
+a:active,
+a:hover,
+a:focus,
+a:visited {
+  color: #666666;
+  text-decoration: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+p {
+  margin: 0 0 1.5em;
+}
+ul,
+ol {
+  margin: 0 0 1.5em;
+}
+/*********************************** 
+ *  2.0 Helper Classes
+ **********************************/
+.bottomborder {
+  border-bottom: 2px solid #53a1b8;
+}
+.floatleft {
+  float: left;
+}
+.floatright {
+  float: right;
+}
+.fullwidth {
+  width: 100%;
+}
+.highlighted {
+  background: #df5b57;
+  padding: 2px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.fixed {
+  position: fixed;
+  z-index: 99999;
+}
+.ccb-search-throbber {
+  background-image: url("../img/load.gif");
+}
+/*********************************** 
+ *  3.0 Typography
+ **********************************/
+body,
+html {
+  font-family: "Noto serif", "Open Sans", "Helvetica Neue", serif;
+  font-size: 1em;
+  -webkit-font-smoothing: antialiased;
+}
+/*********************************** 
+ *  4.0 Layout
+ **********************************/
+.site-content {
+  background-color: #fafafa;
+  padding-bottom: 2em;
+}
+.site-main {
+  width: 100%;
+  margin: 2em 0;
+  padding: 0 46px;
+}
+/***********************************
+ *  4.1 Header 
+ ***********************************/
+.site-branding {
+  background-position: top right;
+  background-size: cover;
+  background-color: #df5b57;
+  height: 200px;
+  min-height: 16vw;
+  overflow: hidden;
+  /* If hiding header */
+}
+#ccb-logo {
+  padding-left: 46px;
+  padding-top: 80px;
+}
+.site-title {
+  font-family: "Oswald", "Bodoni Poster", "Raleway", arial, sans-serif;
+  font-size: 3em;
+  color: #ffffff;
+  text-shadow: 1px 1px 1px #333333;
+}
+.site-description {
+  font-family: "Oswald", "Bodoni Poster", "Raleway", arial, sans-serif;
+  background: #ffffff;
+  margin-left: 46px;
+  padding: 0 0.5em;
+  -webkit-opacity: 0.8;
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+}
+/*********************************** 
+ *  4.2 Content
+ **********************************/
+.content-area {
+  margin: 0;
+  width: 100%;
+}
+.withsidebar .content-area {
+  float: left;
+  width: 100%;
+  margin: 0 -30% 0 0;
+}
+.withsidebar .site-main {
+  margin: 0 30% 0 0;
+  width: 70%;
+  width: 70vw;
+}
+.withsidebar .ccb_headbar {
+  width: 100%;
+}
+.page-header {
+  width: 100%;
+}
+.page-title {
+  font-family: "Noto serif", "Open Sans", "Helvetica Neue", serif;
+  text-transform: uppercase;
+  padding: 1.5em 0 0.5em;
+  text-align: center;
+}
+/*********************************** 
+ *  4.3 Sidebar
+ **********************************/
+#sidebar {
+  overflow: hidden;
+  /* essential */
+  width: 30%;
+}
+#sidebar .widget,
+#sidebar .widget a {
+  background: #77b5c7;
+  color: #ffffff;
+}
+#sidebar .widget-title {
+  border-radius: 2em 0 0 2em;
+  background: #77b5c7;
+  margin-left: -2.5em;
+  color: #ffffff;
+  text-align: center;
+  border: none;
+}
+#secondary {
+  margin-left: 100%;
+  width: 100%;
+  display: none;
+  /* for position of footer */
+}
+.withsidebar #secondary {
+  display: block;
+  margin-left: 0;
+}
+/*********************************** 
+ *  4.4 Footer
+ **********************************/
+.footercontainer {
+  border-top: 4px solid #53a1b8;
+  background-color: rgba(83, 161, 184, 0.25);
+  background-image: repeating-linear-gradient(135deg, rgba(83, 161, 184, 0.25), rgba(83, 161, 184, 0.2) 300px, rgba(83, 161, 184, 0.15) 300px, rgba(83, 161, 184, 0) 600px);
+}
+.footerwrapper {
+  background-color: rgba(83, 161, 184, 0.25);
+  background-image: repeating-linear-gradient(45deg, rgba(83, 161, 184, 0.25), rgba(83, 161, 184, 0.2) 150px, rgba(83, 161, 184, 0.15) 150px, rgba(83, 161, 184, 0) 300px);
+}
+.footercontainer .widget {
+  float: left;
+  text-align: center;
+}
+.footercontainer .widget,
+.footercontainer .widget a,
+.footercontainer .widget-title {
+  color: #53a1b8;
+}
+.footercontainer .widget p,
+.footercontainer .widget ul,
+.footercontainer .widget ol {
+  text-align: left;
+}
+.site-footer {
+  clear: both;
+  width: 100%;
+  background: #53a1b8;
+  color: #ffffff;
+  padding: 0.5em;
+}
+.site-footer a {
+  color: #ffffff;
+}
+.tothetop {
+  position: fixed;
+  bottom: 0.5em;
+  right: 2em;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #53a1b8;
+  font: 200 1em/1 dashicons;
+  padding: 0.5em;
+  display: none;
+  -webkit-opacity: 0.8;
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+  -webkit-transition: bottom 0.4s ease-in-out;
+  -moz-transition: bottom 0.4s ease-in-out;
+  -o-transition: bottom 0.4s ease-in-out;
+  -ms-transition: bottom 0.4s ease-in-out;
+  transition: bottom 0.4s ease-in-out;
+}
+.tothetop:before {
+  content: '\f343';
+  font-size: 1em;
+  color: #ffffff;
+}
+.tothetop:hover {
+  bottom: 1em;
+  -webkit-transition: bottom 0.4s ease-in-out;
+  -moz-transition: bottom 0.4s ease-in-out;
+  -o-transition: bottom 0.4s ease-in-out;
+  -ms-transition: bottom 0.4s ease-in-out;
+  transition: bottom 0.4s ease-in-out;
+}
+/** Mobile footer **/
+@media only screen and (max-width: 599px) {
+  .footercontainer .col {
+    width: 100%!important;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 949px) {
+  .footercontainer .col {
+    width: 50%;
+  }
+}
+/*********************************** 
+ *  5.0 Navigation
+ **********************************/
+.navigation {
+  clear: both;
+  width: 100%;
+}
+.top-navigation {
+  text-align: right;
+  background: #ffffff;
+  position: absolute;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+.top-navigation li {
+  font-size: 0.75em;
+  padding: 0 0.5em;
+  display: inline;
+  list-style: none;
+}
+.main-navigation {
+  background: #53a1b8;
+  color: #ffffff;
+  border-bottom: 2px solid #53a1b8;
+  font-family: "Oswald", "Bodoni Poster", "Raleway", arial, sans-serif;
+  font-size: 1em;
+  padding: 0 46px;
+  top: 0;
+  max-height: 7em;
+  width: 100%;
+  background-color: #53a1b8;
+  background-image: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
+}
+.main-navigation ul {
+  max-width: 95%;
+  /* leave room for looking glass */
+}
+.admin-bar .main-navigation.fixed {
+  top: 32px;
+}
+.nav-menu .menu-item a {
+  color: #ffffff;
+  padding: 1em;
+  height: auto;
+}
+.nav-menu > .menu-item {
+  height: 3.5em;
+}
+.menu-item a,
+.menu-item a:hover {
+  text-decoration: none;
+}
+.main-navigation li:hover > a {
+  cursor: pointer;
+}
+.main-navigation ul {
+  -webkit-box-shadow: 0;
+  -moz-box-shadow: 0;
+  box-shadow: 0;
+}
+.main-navigation ul ul {
+  top: 0;
+  width: 0;
+  position: relative;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
+}
+.main-navigation ul ul ul {
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
+}
+.main-navigation ul li:hover ul,
+.main-navigation ul ul li:hover ul {
+  height: 0;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
+  -webkit-transition: opacity 0.4s ease-in-out;
+  -moz-transition: opacity 0.4s ease-in-out;
+  -o-transition: opacity 0.4s ease-in-out;
+  -ms-transition: opacity 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
+}
+.main-navigation ul ul li {
+  clear: both;
+}
+.main-navigation ul ul a {
+  background: #53a1b8;
+  color: #ffffff;
+  height: 3em;
+  border-top: 1px solid #53a1b8;
+}
+.main-navigation ul ul li:hover a,
+.main-navigation ul ul li:hover ul a {
+  background: #77b5c7;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+.main-navigation ul ul ul {
+  border-top: 0;
+}
+.main-navigation ul ul > li.current-menu-item > a:before {
+  border: 0;
+}
+.main-navigation ul ul ul li a {
+  position: relative;
+  top: -3em;
+}
+/* No left padding on first menu item if the larger menu is displayed */
+@media only screen and (min-width: 599px) {
+  .main-navigation > div > ul > li:first-child > a {
+    padding-left: 0;
+  }
+}
+/*********************************** 
+ *  5.1 Post and Paging Navigation
+ **********************************/
+.paging-navigation {
+  clear: both;
+  display: block;
+}
+.paging-navigation,
+.post-navigation {
+  border: 3px solid #53a1b8;
+  background-color: #53a1b8;
+  background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8) 25px, rgba(255, 255, 255, 0.9) 25px, rgba(255, 255, 255, 0.9) 50px);
+}
+.post-navigation .nav-previous,
+.comment-navigation .nav-previous,
+.paging-navigation .nav-previous {
+  float: left;
+  padding: 0;
+  width: auto;
+  margin: 1em 0.5em 1em 0;
+  text-transform: uppercase;
+  font-family: "Noto serif", "Open Sans", "Helvetica Neue", serif;
+}
+.post-navigation .nav-next,
+.comment-navigation .nav-next,
+.paging-navigation .nav-next {
+  text-align: right;
+  margin: 1em 0;
+  padding: 0;
+  width: auto;
+  text-transform: uppercase;
+  font-family: "Noto serif", "Open Sans", "Helvetica Neue", serif;
+}
+.nav-links a {
+  color: #53a1b8;
+  word-break: break-word;
+  line-height: 1.5em;
+}
+.nav-links .nav-previous a {
+  padding: 0.5em;
+}
+/* Arrows */
+.nav-arrowleft {
+  margin: 1em 0;
+  padding: 0;
+  float: left;
+}
+.post-navigation .nav-previous:before,
+.post-navigation .nav-next:after,
+.paging-navigation .nav-previous:before,
+.paging-navigation .nav-next:after,
+.nav-arrowleft:before {
+  font: 200 1em/1 dashicons;
+  vertical-align: bottom;
+}
+.paging-navigation .nav-previous:before,
+.nav-arrowleft:before {
+  content: "\f341";
+  color: #ffffff;
+  background: #53a1b8;
+  padding: 10em 1em;
+  font-size: 1.5em;
+}
+.paging-navigation .nav-next:after,
+.post-navigation .nav-next:after {
+  content: "\f345";
+  color: #ffffff;
+  background: #53a1b8;
+  padding: 10em 1em;
+  margin-left: 0.5em;
+  font-size: 1.5em;
+}
+.post-navigation .meta-nav {
+  display: none;
+}
+/*********************************** 
+ *  5.3 Mobile Menu
+ **********************************/
+@media only screen and (max-width: 599px) {
+  .main-navigation {
+    padding: 0;
+    height: auto;
+  }
+  .main-navigation li {
+    background: #53a1b8;
+    clear: left;
+    width: 100%;
+    border: 1px solid #53a1b8;
+    border-top: 1px solid #ffffff;
+  }
+  .main-navigation li:first-child {
+    border-top: none;
+  }
+  .main-navigation li a:hover {
+    background: #53a1b8;
+    color: #ffffff;
+  }
+  .main-navigation .ccb_navsearch {
+    position: relative;
+  }
+}
+/** Hide menu icons by default **/
+.menu-ccb-tags,
+.menu-ccb-search,
+.menu-ccb-context {
+  display: none;
+}
+/** Show menu icons on mobile **/
+@media only screen and (max-width: 599px) {
+  .menu-ccb-tags,
+  .menu-ccb-search,
+  .menu-ccb-context {
+    display: block;
+  }
+  .ccb_navsearch {
+    width: 25%!important;
+    height: 46px;
+    background: #53a1b8;
+  }
+  .ccb_navsearch #searchform #s {
+    font-size: 12px!important;
+  }
+  .ccb_navsearch #searchform #s:focus {
+    left: auto!important;
+    width: 390%!important;
+  }
+  .ccb_navsearch #searchform:after {
+    position: relative;
+    font-size: 1em!important;
+    z-index: 9999;
+    top: 3px;
+    left: 1em;
+    cursor: pointer;
+  }
+  button.menu-toggle,
+  button.menu-ccb-tags,
+  button.menu-ccb-context,
+  button.menu-toggle:focus,
+  button.menu-ccb-tags:focus,
+  button.menu-ccb-context:focus,
+  button.menu-toggle:active,
+  button.menu-ccb-tags:active,
+  button.menu-ccb-context:active,
+  button.menu-toggle:visited,
+  button.menu-ccb-tags:visited,
+  button.menu-ccb-context:visited,
+  button.menu-ccb-tags:hover,
+  button.menu-ccb-context:hover,
+  button.menu-toggle:hover {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border: none;
+    background: #53a1b8;
+    color: #ffffff;
+    height: 46px;
+    text-shadow: none;
+    font: 200 1em/1 dashicons;
+    float: left;
+    -webkit-appearance: none;
+    width: 25%;
+  }
+  .menu-toggle:before {
+    content: '\f333';
+  }
+  .menu-ccb-tags:before {
+    content: '\f323';
+  }
+  .menu-ccb-context:before {
+    content: '\f242';
+  }
+  .menu-ccb-search:before {
+    content: '\f179';
+  }
+}
+/*********************************** 
+ *  6.0 Grid
+ **********************************
+ * HTML structure of grid:
+ * <#container>
+ *   <.grid-sizer>
+ *	 <.row>
+ * 		<.entry>
+ *			<.entry-border>
+ *				<.details>
+ *					<.post-title>
+ *					<.excerpt>
+ * 						<.thumb>
+ * 							<.thumbcrop>
+ *								<.thumbtext>
+ * 								<.thumbimg> 
+ */
+#container {
+  width: 100%;
+  clear: both;
+  position: relative;
+  float: left;
+}
+.col {
+  max-width: auto;
+  min-width: 100px;
+}
+.col.col1 {
+  width: 100%;
+}
+.col.col2 {
+  width: 50%;
+}
+.col.col3 {
+  width: 33.33%;
+}
+.col3.double {
+  width: 66.66%;
+}
+.col.col4 {
+  width: 25%;
+}
+.col4.double {
+  width: 50.00%;
+}
+.col4.triple {
+  width: 75.00%;
+}
+.col.col5 {
+  width: 20%;
+}
+.col5.double {
+  width: 40.00%;
+}
+.col5.triple {
+  width: 60.00%;
+}
+.col.col6 {
+  width: 16.66%;
+  /* Rounded down */
+}
+.col6.double {
+  width: 33.33%;
+}
+.col6.triple {
+  width: 50.00%;
+}
+.col.col7 {
+  width: 14.42%;
+}
+.col.col8 {
+  width: 12.5%;
+}
+.col.col9 {
+  width: 11.1%;
+}
+.col.col10 {
+  width: 10%;
+}
+.entry {
+  width: 100%;
+}
+.entry-border {
+  border: 1px solid #cccccc;
+  padding: 0;
+  margin: .5em;
+  background-color: #ffffff;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.entry {
+  float: left;
+  position: relative;
+  opacity: 1;
+  margin: 0;
+}
+.entry .thumbcrop {
+  position: relative;
+}
+.entry p {
+  word-break: break-all;
+  word-break: break-word;
+  hyphens: auto;
+  margin: 0;
+  cursor: pointer;
+}
+.entry .post-title {
+  font-family: "Oswald", "Bodoni Poster", "Raleway", arial, sans-serif;
+  word-break: break-word;
+  text-transform: uppercase;
+  font-size: 1em;
+  line-height: 2em;
+}
+.entry:hover {
+  cursor: pointer;
+}
+.entry-meta {
+  display: inline;
+  font-size: 0.75em;
+}
+/** Entry meta left on wider screens */
+@media only screen and (min-width: 599px) {
+  .site-main .single .entry-metas {
+    margin-left: -150px;
+    width: 150px;
+    margin-top: 5px;
+    float: left;
+  }
+}
+@media only screen and (min-width: 599px) {
+  .site-main .single .entry-meta {
+    display: block;
+    /* below each other */
+    float: left;
+    clear: both;
+    word-break: break-word;
+  }
+}
+.single .entry-meta,
+.single .entry-meta a {
+  color: #df5b57;
+}
+.single .entry-footer {
+  margin-bottom: 2em;
+}
+/*********************************** 
+ *  6.1 Squares
+ **********************************/
+.squares.entry {
+  padding-bottom: 100%;
+  margin-bottom: 10px;
+}
+.squares.entry.col {
+  min-width: 50px;
+  min-height: 50px;
+}
+.squares.entry.col.col2 {
+  padding-bottom: 50%;
+}
+.squares.entry.col.col3 {
+  padding-bottom: 33%;
+}
+.squares.entry.col.col4 {
+  padding-bottom: 25%;
+}
+.squares.entry.col.col5 {
+  padding-bottom: 20%;
+}
+.squares.entry.col.col6 {
+  padding-bottom: 16.66%;
+}
+.squares.entry.col.col7 {
+  padding-bottom: 14.42%;
+}
+.squares.entry.col.col8 {
+  padding-bottom: 12.5%;
+}
+.squares.entry.col.col9 {
+  padding-bottom: 11.11%;
+}
+.squares.entry.col.col10 {
+  padding-bottom: 10%;
+}
+.squares .entry-border {
+  position: absolute!important;
+  float: left;
+  height: 90%;
+  width: 90%;
+  margin: .5em;
+}
+.squares .details {
+  position: absolute;
+  overflow: hidden;
+  padding: 0;
+  height: 200%;
+  width: 100%;
+  top: 100%;
+  -webkit-transform: translate(0, -3em);
+  -moz-transform: translate(0, -3em);
+  -ms-transform: translate(0, -3em);
+  -o-transform: translate(0, -3em);
+}
+.squares .details .post-title {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.75);
+  height: 3em;
+  padding: .5em;
+  bottom: 0;
+}
+.squares .details .excerpt {
+  background: rgba(255, 255, 255, 0.75);
+  height: 100%;
+  padding: 0 5%;
+}
+.squares .details:hover {
+  top: 0;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+}
+.squares .details:hover .post-title {
+  height: auto;
+  overflow: visible;
+  margin-top: 0;
+  position: static;
+}
+.squares .details:hover .excerpt {
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
+  color: #333333;
+}
+.squares .thumbcrop {
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
+  margin: 5%;
+  width: 90%;
+  height: 90%;
+}
+.squares .thumbcrop img {
+  position: absolute;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
+}
+/*********************************** 
+ *  6.2 Mobile Grid
+ **********************************/
+@media only screen and (max-width: 599px) {
+  .col {
+    width: 100%!important;
+  }
+}
+/*********************************** 
+ *  7.0 Thumbnails
+ **********************************/
+.thumb {
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  text-align: center;
+}
+.thumbcrop {
+  position: absolute;
+  margin: 0;
+  width: 100%;
+  max-height: 50vw;
+  background-position: center center;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+/* Set the image to fill its parent and make transparent */
+.thumbcrop img {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  -ms-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+  -webkit-transform: rotate(0) scale(1.2) skew(0) translate(0);
+  -moz-transform: rotate(0) scale(1.2) skew(0) translate(0);
+  -o-transform: rotate(0) scale(1.2) skew(0) translate(0);
+  -ms-transform: rotate(0) scale(1.2) skew(0) translate(0);
+  transform: rotate(0) scale(1.2) skew(0) translate(0);
+}
+.thumbcrop img:hover {
+  -webkit-transform: rotate(0) scale(1.25) skew(0) translate(0);
+  -moz-transform: rotate(0) scale(1.25) skew(0) translate(0);
+  -o-transform: rotate(0) scale(1.25) skew(0) translate(0);
+  -ms-transform: rotate(0) scale(1.25) skew(0) translate(0);
+  transform: rotate(0) scale(1.25) skew(0) translate(0);
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  -ms-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+}
+/*********************************** 
+ *  8.0 Listing (index)
+ **********************************/
+.listing {
+  margin: 0 0 1.5em 0;
+}
+.listing .post-title {
+  text-align: center;
+  padding: 0.5em;
+}
+.listing img.featured {
+  width: 100%;
+}
+/* Triangle effect on 1/6 */
+.listing .thumbcrop:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 16%;
+  border: 0.6em solid #ffffff;
+  border-color: #ffffff transparent transparent transparent;
+  z-index: 1;
+}
+.listing img.featuredwrapper {
+  max-height: 332px;
+  overflow: hidden;
+}
+.listing .entry-title,
+.listing .entry-content {
+  padding: 0 7%;
+}
+.listing .entry-border {
+  margin: 0 5% 0 0;
+}
+.listing footer {
+  padding: 1em 7%;
+}
+.listing .excerpt {
+  padding: .5em;
+  word-break: break-word;
+}
+.listing footer,
+.listing .entry-metas {
+  background: #f2f2f2;
+  padding: 0.5em;
+}
+.listing .entry-meta,
+.listing .entry-meta a {
+  color: #999999;
+}
+/*********************************** 
+ *  9.0 Widgets
+ **********************************/
+.widget {
+  position: relative;
+  margin: 0 0.5em 1.5em;
+  padding: 2em;
+  float: left;
+  width: 100%;
+}
+.widget-title {
+  border-bottom: 2px solid #53a1b8;
+}
+.widget-title,
+.widget-title a {
+  font-family: "Oswald", "Bodoni Poster", "Raleway", arial, sans-serif;
+  font-size: 1em;
+  padding: 0.5em 1em;
+  margin: 0 0 .5em;
+  text-transform: uppercase;
+  color: #53a1b8;
+}
+.widget_categories .cat-item {
+  display: block;
+}
+.cat-links a,
+.cat-links a:hover {
+  text-decoration: none;
+}
+/*********************************** 
+ *  9.1 Headbar Widget Area
+ **********************************/
+.ccb_headbar {
+  background: #f2f2f2;
+  width: 100%;
+  z-index: 99999;
+}
+.ccb_headbar.fixed {
+  top: 58px;
+}
+.admin-bar .ccb_headbar.fixed {
+  top: 90px;
+}
+.ccb_headbar .widget {
+  position: static;
+  float: none;
+  margin: 0;
+  border-bottom: 2px solid #53a1b8;
+  display: none;
+}
+.ccb_headbar h2 {
+  display: none;
+  /* Hide widget headers */
+}
+/*********************************** 
+ *  10.0 Content
+ **********************************/
+/*********************************** 
+ *  10.1 Posts and Pages
+ **********************************/
+.site-main .single {
+  margin: 1.5em 0 0 150px;
+}
+.entry-header {
+  padding-top: 1em;
+}
+.entry-title,
+.entry-title a {
+  font-family: "Oswald", "Bodoni Poster", "Raleway", arial, sans-serif;
+  color: #333333;
+  padding: 0;
+  margin: 0.5em 0 0.2em;
+}
+.page .entry-title {
+  color: #ffffff;
+  padding: .5em;
+  margin: 0.5em 0 1.2em;
+  background: #df5b57;
+  text-align: center;
+}
+.entry-content {
+  color: #333333;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: .5em 0 0;
+}
+.entry-content img {
+  border: 1px solid #ddd;
+  padding: 2px;
+  background: #ffffff;
+}
+.entry-footer {
+  font-family: "Noto serif", "Open Sans", "Helvetica Neue", serif;
+  word-break: break-word;
+}
+/*********************************** 
+ *  10.2 Quotes
+ **********************************/
+blockquote,
+cite {
+  font-family: "Noto serif", "Open Sans", "Helvetica Neue", serif;
+  color: #df5b57 !important;
+}
+blockquote {
+  margin: 0.5em 1.5em;
+}
+cite {
+  margin: 0 .25em;
+}
+blockquote:before,
+.post.format-quote p:before {
+  font: 200 1em/1 dashicons;
+  position: absolute;
+  content: '\f122';
+  -webkit-font-smoothing: antialiased;
+  float: left;
+  margin-left: -1.1em;
+  margin-top: -0.2em;
+  color: #f2f2f2;
+}
+blockquote.highlight {
+  width: 33%;
+  float: left;
+  padding: 1em;
+  margin: 10px 30px 0 -10%;
+  border-top: 4px solid #53a1b8;
+}
+/*********************************** 
+ *  10.3 Categories, Tags, etc
+ **********************************/
+.ccb_taglist:before {
+  font: 200 1em/1 dashicons;
+  content: '\f323';
+}
+.posted-on:before {
+  font: 200 1em/1 dashicons;
+  content: '\f145';
+}
+.byline:before {
+  font: 200 1em/1 dashicons;
+  content: '\f110';
+}
+.edit-link:before {
+  font: 200 1em/1 dashicons;
+  content: '\f464';
+}
+.cat-link:before,
+.ccb_catlist:before {
+  font: 200 1em/1 dashicons;
+  content: '\f318';
+}
+.wp-caption .wp-caption-text {
+  margin: 0.5em 0;
+  font-size: 0.75em !important;
+}
+.ccb_taglist span,
+.ccb_catlist span {
+  padding-left: 4px;
+  /* Align with other meta elements */
+}
+/*********************************** 
+ *  10.4 Comments
+ **********************************/
+h2.comments-title {
+  margin: 1em 0 0.5em;
+}
+h3#reply-title {
+  margin: 1em 0 .5em;
+  font-size: 1.2em;
+}
+.comment-form label {
+  width: 150px;
+  /* Align with metas on single post */
+  display: inline-block;
+  line-height: 3.5em;
+  text-transform: uppercase;
+  color: #999999;
+  font-size: 1em;
+}
+.comment-form input {
+  vertical-align: top;
+}
+/*********************************** 
+ *  10.5 Formats: Quote
+ **********************************/
+.format-quote .entry-border {
+  background: #53a1b8;
+  color: #ffffff;
+}
+.format-quote .excerpt {
+  padding: 10%;
+  font-family: "Pacifico", "Oswald", "Bodoni Poster", "Raleway", arial, sans-serif, sans-serif;
+  font-style: italic;
+  font-size: 2em;
+}
+.format-quote .excerpt a {
+  color: #ffffff;
+}
+.format-aside .entry-border {
+  border: 0;
+  background: rgba(255, 255, 255, 0);
+}
+.format-aside .excerpt,
+.format-aside .excerpt a,
+.format-aside .post-title {
+  color: #df5b57;
+}
+.format-aside .post-title {
+  border-top: 2px solid #df5b57;
+  margin-top: 1.5em;
+  margin-bottom: -1.5em;
+}
+.format-aside .post-title span {
+  top: -1.5em;
+  position: relative;
+  padding: 0 0.5em;
+  background: #fafafa;
+}
+/*********************************** 
+ *  10.6 Entry Metas
+ **********************************/
+.post-meta {
+  list-style: none;
+  font-size: smaller;
+  font-family: "Noto serif", "Open Sans", "Helvetica Neue", serif;
+  color: #999999;
+  display: block;
+}
+ul.post-meta li {
+  width: 100%;
+}
+ul.post-meta span {
+  min-width: 50%;
+  text-transform: uppercase;
+  display: inline-block;
+}
+/*********************************** 
+ *  11.0 Forms
+ **********************************/
+button,
+input[type="text"],
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+button:focus,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="submit"]:focus,
+button:active,
+input[type="button"]:active,
+input[type="reset"]:active,
+input[type="submit"]:active {
+  border: 2px solid #53a1b8;
+  background: #ffffff;
+  box-shadow: none;
+  /* Reset */
+  -webkit-appearance: none;
+  font-size: 1.5em;
+  line-height: 1em;
+  padding: 0.5em;
+  text-shadow: none;
+  color: #53a1b8;
+  font-family: "Oswald", "Bodoni Poster", "Raleway", arial, sans-serif;
+  height: 2.5em;
+  text-transform: uppercase;
+}
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+  border: 2px solid #53a1b8;
+  box-shadow: none;
+  color: #df5b57;
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  -ms-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+}
+input[type="text"] {
+  font-family: "Noto serif", "Open Sans", "Helvetica Neue", serif;
+  line-height: 1.5em;
+  background-repeat: no-repeat;
+  text-transform: none;
+  background-image: none;
+  background-position: center right 0.5em;
+  background-size: 1.5em;
+}
+p.form-submit {
+  text-align: center;
+}
+input#searchsubmit {
+  margin: 0.5em 0;
+}
+/*********************************** 
+ *  12.3 Slider
+ *********************************
+.slidercontainer {
+	width							: 90%;
+}
+.withsidebar .slidercontainer {
+	width							: 100%;
+}
+
+a.unslider-arrow {
+ font								: @dashicons;
+} 
+a.unslider-arrow.next:before {
+	content							: '\f345';
+}
+a.unslider-arrow.prev:before {
+	content							: '\f341';
+}
+*/
+/*********************************** 
+ *  13.0 Extras & Tweaks
+ **********************************/
+.fullwidth .sharedaddy {
+  display: none;
+  /* Hide sharing buttons */
+}
+input:-webkit-autofill {
+  /* Override useragent stylesheet */
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  color: #666666 !important;
+  /* Chrome */
+  -webkit-text-fill-color: #666666;
+  /* Mozilla */
+}
+@media only screen and (max-width: 599px) {
+  input:-webkit-autofill {
+    /* Override useragent stylesheet */
+    -webkit-box-shadow: 0 0 0px 1000px #53a1b8 inset;
+    color: #ffffff !important;
+    /* Chrome */
+    -webkit-text-fill-color: #ffffff;
+    /* Mozilla */
+  }
+  input:-webkit-input-placeholder {
+    color: #ffffff;
+  }
+  input:-moz-placeholder {
+    color: #ffffff;
+  }
+}
+div.sharedaddy h3.sd-title,
+div#jp-relatedposts h3.jp-relatedposts-headline {
+  margin: 0!important;
+  line-height: 1.2!important;
+  font-size: inherit!important;
+  font-weight: inherit!important;
+}
+img#wpstats {
+  display: none;
+}
+/** Specific Widgets **/
+.widget_recent_entries .post-date {
+  font-size: small;
+}
+/** Buttons group **/
+div.button-group {
+  margin: 1em 0;
+}
+/* Infinite scroll loading */
+#infscr-loading {
+  text-align: center;
+  z-index: 100;
+  position: fixed;
+  left: 45%;
+  bottom: 40px;
+  width: 200px;
+  padding: 10px;
+  background: #ffffff;
+  border: 4px solid #53a1b8;
+  -webkit-opacity: 0.8;
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+  color: #53a1b8;
+}
+/** Fixed wpadminbar, taller on mobile screens as per admin-bar.min.css 
+  * - Fixed ccb_headbar for mobile
+  **/
+#wpadminbar {
+  position: fixed;
+}
+@media only screen and (max-width: 599px) {
+  .admin-bar .main-navigation.fixed {
+    top: 46px;
+  }
+  .ccb_headbar.fixed {
+    top: 46px;
+  }
+}
+/* Breadcrumb trail */
+.breadcrumbs {
+  padding: 0.5em 46px;
+  border-bottom: 2px solid #53a1b8;
+  background-color: #53a1b8;
+  background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8) 20px, rgba(255, 255, 255, 0.9) 20px, rgba(255, 255, 255, 0.9) 40px);
+}
+/* Embeds */
+.tumbr-embed {
+  height: 300px;
+}
+/*********************************** 
+ *  14.0 Search Form
+ **********************************/
+/* http://themesandco.com/snippet/adding-an-html5-search-form-in-your-wordpress-menu/ */
+.ccb_navsearch {
+  float: right!important;
+  padding: 0.5em;
+  right: 0;
+  width: 10%;
+  z-index: 99999;
+  position: absolute;
+}
+@media only screen and (min-width: 599px) {
+  .main-navigation .ccb_navsearch {
+    position: absolute;
+  }
+}
+#searchform #s {
+  background-position: center left 0.5em;
+  background-repeat: no-repeat;
+  background-size: 1em;
+  padding: 0 1em 0 0.5em;
+  font-size: 1.5em;
+  color: #53a1b8;
+  border: 2px solid #53a1b8;
+  border-radius: 2px;
+}
+.widget #searchform #s {
+  width: 100%;
+}
+.ccb_navsearch #searchform #s {
+  padding: 0.5em 2em;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  width: 2em;
+  right: 0;
+  margin-right: -1000%;
+  outline: 0;
+  font-size: 1em;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.ccb_navsearch #searchform:after {
+  font: 200 1em/1 dashicons;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  content: '\f179';
+  color: #ffffff;
+  padding: 0.5em;
+  cursor: pointer;
+}
+.ccb_navsearch #searchform #s:focus {
+  width: 980%;
+  right: 10%;
+  left: auto;
+  padding: 0.5em;
+  margin-right: 0;
+  border-left: 4px solid #df5b57;
+  background-color: #ffffff;
+  -webkit-transition: all 0.4s cubic-bezier(0.66, 0.25, 0.37, 0.86);
+  -moz-transition: all 0.4s cubic-bezier(0.66, 0.25, 0.37, 0.86);
+  -o-transition: all 0.4s cubic-bezier(0.66, 0.25, 0.37, 0.86);
+  -ms-transition: all 0.4s cubic-bezier(0.66, 0.25, 0.37, 0.86);
+  transition: all 0.4s cubic-bezier(0.66, 0.25, 0.37, 0.86);
+  -webkit-transition: background-color 0.2s ease-in;
+  -moz-transition: background-color 0.2s ease-in;
+  -o-transition: background-color 0.2s ease-in;
+  -ms-transition: background-color 0.2s ease-in;
+  transition: background-color 0.2s ease-in;
+  cursor: text;
+}
+.ccb_navsearch #searchform #searchsubmit {
+  display: none;
+}
+/*********************************** 
+ *  14.1 Mobile Search Form
+ *********************************
+@media @mobile {
+	.main-navigation {
+	background					: @color1;
+	}
+}
+.menu-ccb-search  {
+	position					: absolute;
+	right						: 0;
+	width						: 25%;
+	overflow					: hidden;
+	padding-right				: 25%;
+	background					: @color1;
+	.transition(width,@delay,ease-in);
+}
+.menu-ccb-search:hover
+ {
+	width:100%;
+	.transition(width, @delay,ease-in);
+}
+
+.menu-ccb-search:before {
+	font						: @dashicons;
+	content						: '\f179';
+	color						: @bkg;
+	margin						: 16px;
+	z-index						: 9999;
+	position					: absolute;
+	display						: inline-block;
+}
+
+.menu-ccb-search #searchform #s+ .icon,
+.menu-ccb-search #searchform #s:focus + .icon,
+.menu-ccb-search #searchform #s:active + .icon {
+	display						: none;
+}
+.menu-ccb-search #searchform #s {
+  height						: 46px;
+  width							: 200%;
+  background					: @color1;
+  border						: 0;
+  padding-left					: 32px;
+  color							: @bkg;
+  padding-left					: 32px;
+  font-size						: 24px;
+  line-height					: 32px;
+  cursor						: text;
+}
+
+.menu-ccb-search #searchform #s:focus {
+	.transition(width,@delay,ease-in-out);
+}
+.menu-ccb-search #searchsubmit
+ {
+	display						: none;
+}
+*/
+/*********************************** 
+ *  15.0 Media Queries
+ **********************************/
+/* Mobile Phone*/
+@media only screen and (max-width: 599px) {
+  .fixed {
+    position: inherit;
+  }
+  .site-main {
+    padding: 0 4px;
+    /* Minimal padding */
+  }
+  .site-main .single {
+    margin: 1.5em 0;
+  }
+  /* Sidebar fullwidth on mobile devices */
+  .withsidebar .widget-area,
+  .withsidebar #sidebar {
+    width: 100%;
+  }
+  .withsidebar .content-area {
+    margin: 0 -100% 0 0;
+  }
+  .withsidebar .site-main {
+    display: none;
+  }
+  /* Separator hidden on small screen and newline */
+  footer .sep {
+    visibility: hidden;
+    float: right;
+    width: 300px;
+  }
+}
+/* Mobiles in Portrait mode 
+@media only screen
+and (max-width : 320px) {
+    .nav-menu-mobile {
+        display						: block;
+     }
+     .nav-menu-mobile a{
+        border						: solid;
+        padding						: 5px;
+    }
+    .nav-menu {
+        display						: none;
+    }
+}
+
+@media only screen
+and (min-width : 321px)
+and (max-width : 480px) {
+ 
+    .nav-menu-mobile {
+        display					: block;
+     }
+     .nav-menu-mobile a{
+        border					: solid;
+        padding					: 5px;
+    }
+    .nav-menu {
+        display					: none;
+    }
+}
+*/
+/* Extra wide screens: center content */
+/******* Experimental CSS. To be checked and integrated.
+  * Look for the best and most flexible way to control css for individual page temp
+  * Responsive?
+  * Modular?
+**************/
+/* Landing Page */
+.page-template-landingpage-php .site-main {
+  background: rgba(255, 255, 255, 0.75);
+}
+/* Hide some page elements on landing page*/
+.page-template-landingpage-php .site-header,
+.page-template-landingpage-php .footercontainer,
+.page-template-landingpage-php .breadcrumb-trail,
+.page-template-landingpage-php .faded {
+  display: none;
+}
+.admin-bar .main-navigation.fixed {
+  top: 0;
+}
+/** Navigation **/
+.main-navigation {
+  padding: 0;
+  height: auto;
+}
+.main-navigation li {
+  clear: left;
+  width: 100%;
+  border: 1px solid #53a1b8;
+  border-top: none;
+}
+.main-navigation li:first-child {
+  border-top: 1px solid #53a1b8;
+}
+.main-navigation li:hover {
+  background: #53a1b8;
+  color: #ffffff;
+}
+.main-navigation ul ul li {
+  border: none;
+}
+.main-navigation .ccb_navsearch {
+  position: relative;
+  background: #ffffff;
+  color: #53a1b8;
+}
+/** Headbar **/
+.admin-bar .ccb_headbar.fixed {
+  top: 84px;
+}
+/** Content **/
+.post.listing {
+  margin: 0;
+}
+.col {
+  min-width: 50px;
+  min-height: 50px;
+}
+/** Sidebar **/
+.withsidebar .content-area {
+  margin: 0;
+}
+.withsidebar .site-main {
+  margin: 0;
+}
+.withsidebar .ccb_headbar {
+  width: 100%;
+}
+#sidebar {
+  width: 100%;
+}
