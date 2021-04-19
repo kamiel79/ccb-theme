@@ -19,8 +19,8 @@ $noexcerpt_formats = explode(",",CCB_NOEXCERPT_FORMATS);
 $sharer_formats = explode(",",CCB_SHARER_FORMATS);
 
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class("entry squares col col{$ccb_cols}"); ?> >
-	<div class="entry-border" >
+<article id="post-<?php the_ID(); ?>" <?php post_class("entry shapes col col{$ccb_cols}"); ?> >
+	<div class="entry-border" style="clip-path: url(#clip_<?php echo CCB_CLIP_SHAPE; ?>)">
 			<?php $thumburl = ccb_thumburl($post->blog_id, $post->ID, "medium"); ?>
 			<div class='thumbcrop'
 				<?php if (!has_post_format( $noimg_formats )) : ?>
@@ -28,22 +28,14 @@ $sharer_formats = explode(",",CCB_SHARER_FORMATS);
 					<img src="<?php echo $thumburl; ?>"></img>
 				<?php else : echo ">"; 	
 				endif; ?>				
-				<div class="details <?php if (has_post_format( $noimg_formats )) echo "textonly" ?>">
+					<div class='titlesign'>
 						<?php if (!has_post_format( $notitle_formats )) : ?>
 							<a href="<?php ccb_permalink($post->blog_id, $post->ID) ?>" title="<?php the_title(); ?>">
 							<h5 class="post-title"><span><?php the_title(); ?></span></h5>
 							</a>
 						<?php endif;?><!--/ notitle formats-->
-					
-						<?php if (!has_post_format( $noexcerpt_formats )) : ?>
-						<div class='excerpt'>
-						<?php 
-							echo get_the_excerpt();
-						 ?>
-						</div>
-						<?php endif; ?><!-- / noexcerpt_formats -->
-					</a>
-				</div><!-- /.details -->
+
+					</div>
 			</div><!--/.thumbcrop-->
 		</a>
 	</div><!--/.entry-border-->

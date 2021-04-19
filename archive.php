@@ -7,6 +7,7 @@
  * @package Creative Choice Blog
  */
 
+define (CCB_GRID,"list");
 get_header(); ?>
 
 	<section id="primary" class="content-area">
@@ -79,7 +80,7 @@ get_header(); ?>
 					?>
 			</header><!-- .page-header -->
 
-			<div id="container" class="<?php echo CCB_GRID; ?>">
+			<div id="container" class="grid-<?php echo CCB_GRID; ?>">
 			<?php /* The grid-sizer has the same classes for column width as the entries. This is useful for targeting elements */ ?>
 			<div class='grid-sizer col col<?php echo CCB_COLS; ?>'></div>
 			<?php 

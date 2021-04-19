@@ -1,34 +1,35 @@
 @import "settings.less";			/* Theme-specific settings */
 
 /*********************************** 
- *  6.1 Squares
+ *  Shapes
  ***********************************/
-.squares.entry {
+.shapes.entry {
 	padding-bottom				: 100%;
 	margin-bottom				: 10px;
 }
-.squares.entry.col {
+.shapes.entry.col {
 	min-width					: @square-min;
 	min-height					: @square-min;
 }	
-.squares.entry.col.col2 { padding-bottom: 50%; }
-.squares.entry.col.col3 { padding-bottom: 33%; }
-.squares.entry.col.col4 { padding-bottom: 25%; }
-.squares.entry.col.col5 { padding-bottom: 20%; }
-.squares.entry.col.col6 { padding-bottom: 16.66%; }
-.squares.entry.col.col7 { padding-bottom: 14.42%; }
-.squares.entry.col.col8 { padding-bottom: 12.5%; }
-.squares.entry.col.col9 { padding-bottom: 11.11%; }
-.squares.entry.col.col10 { padding-bottom: 10%; }
+.shapes.entry.col.col2 { padding-bottom: 50%; }
+.shapes.entry.col.col3 { padding-bottom: 33%; }
+.shapes.entry.col.col4 { padding-bottom: 25%; }
+.shapes.entry.col.col5 { padding-bottom: 20%; }
+.shapes.entry.col.col6 { padding-bottom: 16.66%; }
+.shapes.entry.col.col7 { padding-bottom: 14.42%; }
+.shapes.entry.col.col8 { padding-bottom: 12.5%; }
+.shapes.entry.col.col9 { padding-bottom: 11.11%; }
+.shapes.entry.col.col10 { padding-bottom: 10%; }
 
-.squares .entry-border {
+.shapes .entry-border {
 	position					: absolute!important;
 	float						: left;
-	height						: 90%;
-	width						: 90%;
+	border 						: 0;
 	margin						: @margin;
+	width:100%;
+	height:100%;
 }
-.squares .details {
+.shapes .details {
 	position					: absolute;
 	overflow					: hidden;
 	padding						: 0;
@@ -40,7 +41,7 @@
 	.translate(0,-3em);
 	.transition(all, @delay, ease-in-out);
 }
-.squares .details .post-title {
+.shapes .details .post-title {
 	width						: 100%;
 	text-align					: center;
 	overflow					: hidden;
@@ -48,44 +49,50 @@
 	padding						: @padding;
 	bottom						: 0;
 }
-.squares .details .excerpt {
+.shapes .details .excerpt {
 	height						: 100%;
 	padding						: 0 5%;
 	font-size					: 1em;
 }
-.squares .details.textonly {
+.shapes .details.textonly {
 	background-color			: @color1;
 	color						: @bkg;
 }
 
-.squares .details.textonly .post-title{
+.shapes .details.textonly .post-title{
 	color						: @bkg;
     font-size					: 1em;
 }
-.squares .details:hover, .squares .details.textonly {
+.shapes .details:hover, .shapes .details.textonly {
 	top							: 0;
 	.opacity(@transparent);
 	.translate(0,0);
 	.transition(all, @delay, ease-in-out);
 }
-.squares .details:hover  .post-title,
-.squares .details.textonly .post-title {
+.shapes .details:hover  .post-title,
+.shapes .details.textonly .post-title {
 	height						: auto;
 	overflow					: visible;
 	margin-top					: 0;
 	position 					: static;
 }
-.squares .details:hover .excerpt,
-.squares .details.textonly .excerpt {
+.shapes .details:hover .excerpt,
+.shapes .details.textonly .excerpt {
 	.opacity(1);
 }
-.squares .thumbcrop  {
+.shapes .thumbcrop  {
 	.opacity (1);
-	margin 						: 5%;
-	width						: 90%;
-	height						: 90%;
+	height						: 100%;
 }
-.squares .thumbcrop img {
+.shapes .thumbcrop img {
 	position					: absolute;
 	.opacity (0);
+}
+.shapes .titlesign {
+	background-color: rgba(255,255,255,.7);
+	padding:@margin;
+	width: 100%;
+	position: absolute;
+	top: 16%;
+	text-align:center;
 }

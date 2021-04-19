@@ -21,7 +21,8 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="hfeed site <?php ccb_mobile_class(); if (!wp_is_mobile() && (CCB_SIDEBARINITIAL || is_archive() || (is_page() && get_post_meta(get_the_ID(), 'ccb_sidebar') !=''))) echo "withsidebar" ?>">
+
+<div id="page<?php echo CCB_SIDEBARINITIAL; ?>" class="hfeed site <?php ccb_mobile_class(); if (!wp_is_mobile() && (CCB_SIDEBARINITIAL || is_archive() || (is_page() && get_post_meta(get_the_ID(), 'ccb_sidebar') !=''))) echo "withsidebar" ?>">
 	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'ccb' ); ?></a>
 	
 	<header id="masthead" class="site-header" role="banner">
@@ -62,7 +63,17 @@
 	</header>
 	<?php /* Display the headbar for switchable widgets */
 		ccb_headbar(); 
-	?>
+		/* Where to place this? Think! In a hook in functions, find out which one */
+		if(CCB_CLIP_SHAPE == "heart") {
+			?>
+			<svg width="0" height="0" viewBox="0 0 100 100">
+		    	<clipPath id="clip_heart" clipPathUnits="objectBoundingBox" transform="scale(0.03 0.03)">
+		        <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"></path>
+		  		</clipPath>
+			<?php
+		}
+		?>
+	
 	<div id="content" class="site-content">
 	<?php if (CCB_BREADCRUMB) breadcrumb_trail(); ?>
 	

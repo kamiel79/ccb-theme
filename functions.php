@@ -123,6 +123,7 @@ function ccb_setup() {
 	/*
 	 * Add automatic menu items for tags and context if ! wp_is_mobile() and set in options()
 	 * May 2015. Added random tag to engage visitors
+	 * April 2021. Moved option to Customizer
 	 */		
 	function ccb_nav_menu_items($items, $args) {
 	$link=""; $infocus="";$context="";$taglink="";	
@@ -130,14 +131,15 @@ function ccb_setup() {
 		$taglink = '<li id="menu-item-tags" class="toggletags1 menu-item"><a>' . __('Tags', 'ccb') . '</a></li>';
 	}
 	if( $args->theme_location == 'primary' and ! wp_is_mobile() and CCB_MENU_CONTEXT){
-  		$context = '<li id="menu-item-context" class="menu-item show_sidebar refresh"><a>' . __('Context','ccb') . '</a></li>';
+		$context_link_text = (CCB_SIDEBARINITIAL) ? __('No context','ccb') : __('Context','ccb');
+  		$context = '<li id="menu-item-context" class="menu-item show_sidebar refresh"><a>' . $context_link_text . '</a></li>';
 	}
 	if( $args->theme_location == 'primary' and CCB_MENU_INFOCUS) {
-		/* If !infocus pick random tag with >CCB_INFOCUS_MIN posts */
+		/* If !infocus pick random tag with > CCB_MENU_INFOCUS_MIN posts */
 		$the_tags = get_tags();
 		$ft= array();
 		foreach ($the_tags as $t) {
-			if ($t->count>CCB_INFOCUS_MIN) $ft[] = $t;
+			if ($t->count > CCB_MENU_INFOCUS_MIN) $ft[] = $t;
 		}
 		/* get a fixed random number for this week from our random array */
 		if ($ft>1) {
@@ -343,7 +345,8 @@ remove_filter( 'term_description', 'wp_kses_data' );
  
 
 /** ccb_pagesize
- *  Returns greatest possible pagesize filling up CCB_COLS < posts_per_page
+ *  Returns the pagesize < posts_per_page filling up all the CCB_COLS columns
+ *  @returns 
  */
 if (! function_exists('ccb_pagesize')) :
 	function ccb_pagesize() {
@@ -351,7 +354,7 @@ if (! function_exists('ccb_pagesize')) :
 		$p = get_option('posts_per_page');
 		$r = $p % CCB_COLS;
 		if ($p < $r) 
-			return false;
+			return $p;
 		else 
 			return ($p - $r);
 	}
@@ -612,7 +615,6 @@ if ( ! function_exists ( 'ccb_post_class' ) ) :
 function ccb_post_class ($classes) {
 	global $post;
 	if (is_single()) $classes[] = "single";
-	//if (CCB_SQUARES) $classes[] = "squares";
 	if (of_get_option("adjust_font_size")) $classes [] = "title_stretch";
 	if (get_post_meta($post->ID, "ccb_priority", true))
 		$classes[] = "priority-".get_post_meta($post->ID, "ccb_priority", true);
@@ -1047,7 +1049,6 @@ function ccb_between_link ($atts, $content="") {
 	return "<SPAN class='betweenlink'>" .$content."</BLOCKQUOTE>";
 }
 add_shortcode ('ccb_bli', 'ccb_between_link');
-
 
 
 ?>
