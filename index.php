@@ -12,18 +12,14 @@
  */
 
 get_header(); 
-if (is_front_page()) $the_grid = CCB_GRIDFRONT;
-else $the_grid = CCB_GRID;
 ?>
 
-	<section id="primary" class="content-area">
+	<section id="primary" class="content-area <?php ccb_classes('showsidebar'); ?>" >
 		<main id="main" class="site-main" role="main">
 
 		<?php if ( have_posts() ) : ?>
 
-			<div id="container" class="grid-<?php echo $the_grid; ?>">
-				<?php /* The grid-sizer has the same classes for column width as the entries. This is useful for targeting elements */ ?>
-				<div class='grid-sizer col col<?php echo CCB_COLS; ?>'></div>
+			<div id="container" class="grid-<?php echo CCB_GRID, " col", CCB_COLS; ?>">
 				<?php while ( have_posts() ) : the_post(); ?>
 
 				<?php
@@ -31,7 +27,7 @@ else $the_grid = CCB_GRID;
 					 * If you want to override this in a child theme, then include a file
 					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 					 */
-					get_template_part( 'content', $the_grid );
+					get_template_part( 'content', CB_GRID );
 				?>
 			
 				<?php endwhile; ?>

@@ -19,18 +19,27 @@
  * ccb_smart_search
  * ccb_trim_excerpt
  * ccb_trim_words
+ * ccb_featured_image_classes
+ * ccb_add_sri
+ * final_words
  */
 
-/* Options Framework */
-define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/options/inc/' );
-require_once dirname( __FILE__ ) . '/options/inc/options-framework.php';
-require_once get_template_directory() . '/options.php';
+/* Helper functions */
+	function returnConstants ($prefix) {
+	    foreach (get_defined_constants() as $key=>$value)
+	        if (substr($key,0,strlen($prefix))==$prefix)  $dump[$key] = $value;
+	    if(empty($dump)) { return; }
+	    else { return $dump; }
+	}
 
 /* Include Multisite class for site aggregation */
 if (is_multisite()) {
 	require_once get_template_directory() . '/inc/multisite.php';
-	global $mu_blogs;
-	$mu_blogs = of_get_option('mu_blogs');
+
+	$blogs = get_theme_mod ('ccb_multisite_blogs');
+
+	$multi = new multisite($blogs);
+	//$mu_blogs = of_get_option('mu_blogs');
 	
 	/* use /mp/999/ for pagination */
 	function ccb_rewrite_endpoint() {
@@ -38,7 +47,6 @@ if (is_multisite()) {
 	}
 	add_action('init', 'ccb_rewrite_endpoint');
 
-	
 } 
 
 /* include main settings file; in case of child theme, first include parent theme settings files */
@@ -50,10 +58,13 @@ if (is_child_theme() and file_exists (get_stylesheet_directory() . "/ccb-setting
 include get_template_directory() . "/ccb-settings.php";
 
 
-/* Flickr */
-if (FLICKR_IMG)
-	require_once get_template_directory() . '/inc/flickr.php';
-
+/** Check if development and otherwise serve minified files **/
+if (DEVELOPMENT == false) {
+	$min = ".min";	
+}
+else {
+	$min = "";
+}
 
 /* Include ccb Widgets */
 	require_once get_template_directory() . '/inc/ccb_widgets.php';
@@ -64,12 +75,12 @@ if (isset($_GET['from'])) $from	= $_GET['from']; else $from = "01-01-1970";
 if (isset($_GET['until'])) $until = $_GET['until']; else $until = date('d-m-Y');
 //if ($until =="") $until= date('d-m-Y');
 
-/* Add class for mobile */
+/* Add class for mobile 
 if ( !function_exists( 'ccb_mobile_class' ) ) {
 	function ccb_mobile_class() {
-		if ( wp_is_mobile() ) echo "mobile";
+		if ( wp_is_mobile() ) echo "mobile"; else echo "nomobile";
 	}
-}
+}*/
 
 
 /* Function to register style sheets 
@@ -77,10 +88,11 @@ if ( !function_exists( 'ccb_mobile_class' ) ) {
  */
 if ( !function_exists( 'ccb_register_style' ) ) {
 	function ccb_register_style($stylesheet, $deps='',$ver='1.0') {
+		global $min;
 		if (class_exists('WPLessPlugin'))		
 			wp_register_style( $stylesheet, get_template_directory_uri()."/css/{$stylesheet}.less", $deps);
 		else
-			wp_register_style( $stylesheet, get_template_directory_uri()."/css/{$stylesheet}.css", $deps);	
+			wp_register_style( $stylesheet, get_template_directory_uri()."/css/{$stylesheet}{$min}.css", $deps);	
 	}
 }
 	
@@ -121,36 +133,37 @@ function ccb_setup() {
 	add_theme_support( 'post-thumbnails' );
 		
 	/*
-	 * Add automatic menu items for tags and context if ! wp_is_mobile() and set in options()
+	 * Add automatic menu items for tags and context set in options()
 	 * May 2015. Added random tag to engage visitors
-	 * April 2021. Moved option to Customizer
+	 * April 2021. Moved option to Customizer. Removed wp_is_mobile()
 	 */		
 	function ccb_nav_menu_items($items, $args) {
-	$link=""; $infocus="";$context="";$taglink="";	
-	if( $args->theme_location == 'primary' and ! wp_is_mobile() and CCB_MENU_TAGS){
-		$taglink = '<li id="menu-item-tags" class="toggletags1 menu-item"><a>' . __('Tags', 'ccb') . '</a></li>';
-	}
-	if( $args->theme_location == 'primary' and ! wp_is_mobile() and CCB_MENU_CONTEXT){
-		$context_link_text = (CCB_SIDEBARINITIAL) ? __('No context','ccb') : __('Context','ccb');
-  		$context = '<li id="menu-item-context" class="menu-item show_sidebar refresh"><a>' . $context_link_text . '</a></li>';
-	}
-	if( $args->theme_location == 'primary' and CCB_MENU_INFOCUS) {
-		/* If !infocus pick random tag with > CCB_MENU_INFOCUS_MIN posts */
-		$the_tags = get_tags();
-		$ft= array();
-		foreach ($the_tags as $t) {
-			if ($t->count > CCB_MENU_INFOCUS_MIN) $ft[] = $t;
+
+		$link=""; $infocus="";$context="";$taglink="";
+		if( $args->theme_location == 'primary' and CCB_MENU_TAGS ){
+			$taglink = '<li id="menu-item-tags" class="toggletags1 menu-item"><a>' . __('Tags', 'ccb') . '</a></li>';
 		}
-		/* get a fixed random number for this week from our random array */
-		if ($ft>1) {
-			$tag = $ft[abs(CCB_LARGE_INTEGER * date("W") % sizeof($ft))];
-			$link = get_tag_link($tag->term_id); 
-			$infocus  = '<li id="menu-item-featured-tag" class="menu-item"><a href="'.$link.'">' . __('In focus: ', 'ccb')
-			. $tag->name.'</a></li>';
+		if( $args->theme_location == 'primary' and CCB_MENU_CONTEXT){
+			$context_link_text = (CCB_SIDEBARINITIAL) ? __('No context','ccb') : __('Context','ccb');
+	  		$context = '<li id="menu-item-context" class="menu-item show_sidebar refresh"><a>' . $context_link_text . '</a></li>';
 		}
-	}
-	$items = $taglink . $items . $infocus . $context;
-	return $items;
+		if( $args->theme_location == 'primary' and CCB_MENU_INFOCUS) {
+			/* If !infocus pick random tag with > CCB_MENU_INFOCUS_MIN posts */
+			$the_tags = get_tags();
+			$ft= array();
+			foreach ($the_tags as $t) {
+				if ($t->count > CCB_MENU_INFOCUS_MIN) $ft[] = $t;
+			}
+			/* get a fixed random number for this week from our random array */
+			if (sizeof($ft)>1) {
+				$tag = $ft[abs(CCB_LARGE_INTEGER * date("W") % sizeof($ft))];
+				$link = get_tag_link($tag->term_id); 
+				$infocus  = '<li id="menu-item-featured-tag" class="menu-item"><a href="'.$link.'">' . __('In focus: ', 'ccb')
+				. $tag->name.'</a></li>';
+			}
+		}
+		$items = $taglink . $items . $infocus . $context;
+		return $items;
 	}
 	add_filter( 'wp_nav_menu_items', 'ccb_nav_menu_items', 10, 2 );
 
@@ -158,7 +171,7 @@ function ccb_setup() {
 	 * Register nav menus
 	 */
 	function ccb_nav_menu() {
-		register_nav_menu( 'primary', __('Primary Menu', 'ccb') );	//mobile
+		register_nav_menu( 'primary', __('Primary Menu', 'ccb') );
 		register_nav_menu( 'top-menu', __('Top Menu', 'ccb') );
 	}
 	add_action("init", "ccb_nav_menu");
@@ -170,7 +183,7 @@ function ccb_setup() {
 	 */
 	 $args = array(
 	'default-color' => 'FFFFFF',
-	'default-image' => get_template_directory_uri().'/img/background.jpg',
+	'default-image' => get_template_directory_uri().'/img/background.png',
 	);
 	add_theme_support( 'custom-background', $args );
 
@@ -196,6 +209,8 @@ function ccb_setup() {
 	/* Add support for shortcodes in Widgets */
 	add_filter('widget_text', 'do_shortcode');
 	
+	
+
 	/* Add theme support for content_width (for scaling oEmbeds) */
 	if ( ! isset( $content_width ) ) {
 		$content_width = 600;
@@ -206,8 +221,8 @@ function ccb_setup() {
 	  *  Else except 
 	  ***/
 	function is_masonry() {
-		if (CCB_MASONRY && (!is_single() && !is_404() && !wp_is_mobile())
-			|| CCB_AJAX_SEARCH 
+		if (CCB_MASONRY && (!is_single() && !is_404())
+			|| CCB_AJAX_LOAD
 			) 
 			{ return TRUE; }
 		else 
@@ -335,6 +350,10 @@ if (! function_exists('ccb_generate_widget_area')) :
        return $content;
     }
 endif;
+
+//apply_filters( 'widget_archives_args', array $args, array $instance );
+apply_filters ( 'widget_archives_args', function( $title ) { return '<strong>' . $title . '</strong>'; } );
+
 /** 
  *  allow html in category and taxonomy descriptions
  */
@@ -360,6 +379,19 @@ if (! function_exists('ccb_pagesize')) :
 	}
 endif;
 
+/** ccb_cols
+ * Returns number of columns
+ */
+if (!function_exists('ccb_cols')) :
+	function ccb_cols() {
+		/* If fewer posts than CCB_GRID, make them larger to fill up the screen */
+		//if ($GLOBALS['wp_query']->post_count < CCB_COLS)
+			//$cols = $GLOBALS['wp_query']->post_count . " no-grid";
+		$cols = CCB_COLS;
+		return $cols;
+}
+endif;
+
 /** ccb_pagesize_filter
  *  Filters current query with ccb_pagesize
  */
@@ -376,21 +408,17 @@ add_action( 'pre_get_posts', 'ccb_pagesize_filter', 1 );
 
 
 /**
- * Enqueue scripts and styles. Google Fonts, conditional themes for mobile
+ * Enqueue scripts and styles. Google Fonts, conditional styles for mobile
  */
 function ccb_scripts() {
-
+	global $min;
 	/* Pass stylesheet directory on to the scripts */
 	$stylesheet_uri = array( 'stylesheet_directory_uri' => get_stylesheet_directory_uri());
 	
 	/* Register Main custom AND mobile stylesheet, that loads all else:
-	 * ../style.css		base underscores stylesheet
-	 * more.less		general mixins
-	 * settings.less	settings for this theme (overridden in child themes)
-	 *  Use WP LESS compiler if that class if found, otherwise use (minified) css
-	 */
 	/* Main custom theme style */
-	ccb_register_style("custom",'','1.1');	
+	ccb_register_style("custom",'','1.1');
+	ccb_register_style("mobile",'','1.1');
 
 	/* Style for the used grid */
 	ccb_register_style("grid-".CCB_GRID,'', '1.1');
@@ -400,27 +428,24 @@ function ccb_scripts() {
 	/* enqueue dashicons if non admin */
 	if (!is_admin()) wp_enqueue_style( 'dashicons' );
 		
-	/* Enqueue main ccb stylesheet.  */
-	wp_enqueue_style( 'custom');
+	/* Enqueue main ccb stylesheet  */
+	wp_enqueue_style( 'custom', array('jquery') );
+
+	/* Enqueue mobile stylesheet */
+	wp_enqueue_style( 'mobile', "", array('custom'), false, "only screen and (max-width: 599px)");
 	
 	/* Enqueue grid stylesheets. */
 	wp_enqueue_style( "grid-".CCB_GRID);
 	if (CCB_GRID != CCB_GRIDFRONT)
 		wp_enqueue_style( "grid-".CCB_GRIDFRONT);
 		
-	if (has_sidebar) wp_enqueue_style( 'content-sidebar' );
+	if (CCB_HAS_SIDEBAR) wp_enqueue_style( 'content-sidebar' );	/* not necessary */
 	else wp_enqueue_style( 'no-sidebar' );
-	wp_enqueue_script( 'ccb-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
+	wp_enqueue_script( 'ccb_navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery','ccb_custom'), '20120206', true );
 	if ( is_masonry()) {
 		wp_enqueue_script('masonry');
 	}
 	
-	/* Load isotope only on specific templates */
-	if (in_array(get_page_template_slug(), explode(",", CCB_TEMPLATE_ISOTOPE))) {
-		wp_enqueue_script( 'isotope', get_template_directory_uri() . '/js/isotope.pkgd.min.js', array('jquery', 'masonry'),'20141121', true );
-		wp_enqueue_script( 'isotope-init', get_template_directory_uri() . '/js/isotope-init.js', array('jquery', 'isotope'),'20141121', true );		
-	}
-
 	/* Load date picker for extended search only on search page */
 	wp_enqueue_script('jquery-ui-datepicker', array('jquery'));
 	wp_enqueue_style('jquery-style', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css');
@@ -429,42 +454,42 @@ function ccb_scripts() {
 	wp_enqueue_script( 'ccb-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 		
 	/* Load main custom js */
-	wp_enqueue_script( 'ccb_custom', get_template_directory_uri() . "/js/custom.js", array('jquery'), '20140624', true );
+	wp_enqueue_script( 'ccb_custom', get_template_directory_uri() . "/js/custom{$min}.js", array('jquery'), '20140624', true );
 
 	/* Load AJAX search script and history.js only if AJAX SEARCH enabled */
-	if (CCB_AJAX_SEARCH) {
-		wp_enqueue_script( 'searchajax', get_template_directory_uri() . "/js/searchajax.js", array('jquery'),'20170101', true );
-		wp_enqueue_script( 'history', get_template_directory_uri() . '/js/jquery.history.js', array('jquery'), '20170101', true);
+	if (CCB_AJAX_LOAD) {
+		wp_enqueue_script( 'searchajax', get_template_directory_uri() . "/js/searchajax{$min}.js", array('jquery'),'20170101', true );
+		wp_enqueue_script( 'history', get_template_directory_uri() . "/js/jquery.history{$min}.js", array('jquery'), '20170101', true);
 		wp_localize_script( 'searchajax', 'ccb_options', array(
 			'ccb_uri' => get_template_directory_uri(),
 			'search_uri' => home_url(),
 			'throbber' => CCB_THROBBER_URI)
 		);
 	}
+
 	
-	/* Load jquery form validation script only on single page */
-	if (is_singular()) {
-	wp_enqueue_script( 'form-validate','https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js', array('jquery'),'20170101',true);
+	/* Load jquery form validation script only on single page open for comments */
+	if (is_singular() && comments_open()) {
+		wp_enqueue_script( 'form-validate','https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js', array('jquery'),'20170101',true);
+		wp_enqueue_script( 'formvalidation', get_template_directory_uri() . "/js/formvalidation{$min}.js", array('jquery', 'form-validate'),'20210523',true);
+		wp_enqueue_script( 'comment-reply' );
 	}
 	
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-			wp_enqueue_script( 'comment-reply' );
-		}
 	/* Make the stylesheet directory available in JS */
 	$uri = array( 'stylesheet_directory_uri' => get_template_directory_uri());
 	
+
+
 	/* Make options available in javascript */
-	wp_localize_script( 'ccb_custom', 'ccb_custom_options', array(
-		'ccb_uri' => get_template_directory_uri(),
-		'ccb_postperpage' => get_option('posts_per_page'),
-		'ccb_font_sizing' => of_get_option('ccb_font_sizing'),
-		'ccb_fix_nav' => of_get_option('ccb_fix_nav'),
-		'ccb_metacolumnfloat' => of_get_option('ccb_metacolumnfloat'),
-		'ccb_pagesize' => ccb_pagesize(),
-		'ccb_ajax_load' => of_get_option('ccb_ajax_load'),
-		'home_url' => home_url(),
-		'ccb_sidebarinitial' => CCB_SIDEBARINITIAL)
-	);
+	$the_constants = returnConstants('CCB_');
+	$the_constants['ccb_uri'] = get_template_directory_uri();
+	$the_constants['ccb_postperpage'] = get_option('posts_per_page');
+	$the_constants['home_url'] = home_url();
+	$the_constants['pagesize'] = ccb_pagesize();
+	$the_constants['ADMINBARHEIGHT'] = (is_user_logged_in()?32:0);
+	$the_constants['DEVELOPMENT'] = DEVELOPMENT;
+	wp_localize_script( 'ccb_custom', 'ccb_custom_options', $the_constants);
+	wp_localize_script( 'ccb_navigation', 'ccb_custom_options', $the_constants);
 }
 add_action( 'wp_enqueue_scripts', 'ccb_scripts', 10 );
 
@@ -538,7 +563,7 @@ endif;
 add_action( 'wp_enqueue_scripts', 'ccb_highlighter' );
  
 /***************************************
- * Short excerpt for mobile phones
+ * Obsolete: Short excerpt for mobile devices
  */
 if (! function_exists('ccb_custom_excerpt_length') ) :
 function ccb_custom_excerpt_length( ) {
@@ -612,29 +637,51 @@ endif; // ! ccb_mobile_styles exists
 	 * - Highlight most viewed posts
 */
 if ( ! function_exists ( 'ccb_post_class' ) ) :
-function ccb_post_class ($classes) {
-	global $post;
-	if (is_single()) $classes[] = "single";
-	if (of_get_option("adjust_font_size")) $classes [] = "title_stretch";
-	if (get_post_meta($post->ID, "ccb_priority", true))
-		$classes[] = "priority-".get_post_meta($post->ID, "ccb_priority", true);
-	$count_posts = wp_count_posts();
-	$posts = $count_posts->publish;				//all published posts
-	$count_comments = get_comment_count();		//total number of comments
-	$comments  = $count_comments['approved'];	//all approved comments
-	$pop = round($comments/$posts);				//average # of comments
-	return $classes;
-}
-add_filter( 'post_class', 'ccb_post_class');
+	function ccb_post_class ($classes) {
+		global $post;
+		if (is_single()) $classes[] = "single";
+		if (get_post_meta($post->ID, "ccb_priority", true))
+			$classes[] = "priority-".get_post_meta($post->ID, "ccb_priority", true);
+		$count_posts = wp_count_posts();
+		$posts = $count_posts->publish;				//all published posts
+		$count_comments = get_comment_count();		//total number of comments
+		$comments  = $count_comments['approved'];	//all approved comments
+		$pop = round($comments/$posts);				//average # of comments
+		return $classes;
+	}
+	add_filter( 'post_class', 'ccb_post_class');
 endif;
 
+
+function ccb_classes($cls) {
+	switch ($cls) {
+		/* add class for sidebar */
+		case 'showsidebar':
+			//echo "movingparts";
+			if ((CCB_SIDEBARINITIAL || is_archive() || (is_page() && get_post_meta(get_the_ID(), 'ccb_sidebar') !=''))) echo " showsidebar";
+			break;	
+	}
+}
 	
 /* Logo; fallback is blog title */
-	function ccb_logo () {
-		$src = of_get_option("ccb_logo");
-		if ($src !="") echo "<img src='$src' />";
-		else bloginfo( 'name' );
-	}
+function ccb_logo () {
+	the_custom_logo();
+}
+/* Custom Logo */
+
+function config_custom_logo() {
+ 	 $defaults = array(
+        'height'               => 96,
+        'width'                => 96,
+        'flex-height'          => true,
+        'flex-width'           => true,
+        'header-text'          => array( 'site-title', 'site-description' ),
+        'unlink-homepage-logo' => true, 
+    );
+    add_theme_support( 'custom-logo', $defaults );
+ }
+ add_action( 'after_setup_theme' , 'config_custom_logo' );
+
 
 /***************************************
  *  Function Extract images
@@ -731,6 +778,11 @@ function ccb_thumburl ($blog_id, $post_id, $size='thumbnail', $persistent=true) 
 	return $thumburl;
 }
 
+/* Load Flickr support if needed */
+if (CCB_FLICKR_IMG)
+	require_once get_template_directory() . '/inc/flickr.php';
+
+
 /***************************************
  *  Function ccb_thumbnail
  *
@@ -769,7 +821,7 @@ function ccb_thumbnail ($postid, $size='thumbnail', $output='html', $classes='wp
 		}
 		$media = get_post_meta($post->ID, 'ccb_headmedia', true);
 		if ($src=="" && ''!=$media) return $media;
-		if ($src=="" && FLICKR_IMG) {
+		if ($src=="" && CCB_FLICKR_IMG) {
 			//get flickr file if configured
 			//load flickr image asynchronously to make server response faster
 			//return the keyword that will display nicely if JS unavailable
@@ -778,7 +830,7 @@ function ccb_thumbnail ($postid, $size='thumbnail', $output='html', $classes='wp
 			if ($tag) $src = '#'.$tag;
 		}
 	}
-	if ($src == "") return of_get_option('ccb_fallback_thumbnail');
+	if ($src == "") return CCB_FALLBACK_THUMBNAIL;
 	if ($src!="" && $output=='url') {
 		return $src;
 	}
@@ -786,7 +838,7 @@ function ccb_thumbnail ($postid, $size='thumbnail', $output='html', $classes='wp
 		$arr = @getimagesize($src);		
 		if (is_array($arr)) {
 			/* Check if portrait of landscape */
-			list($img_width, $img_height, $img_type, $img_attr) = getimagesize($src);
+			//list($img_width, $img_height, $img_type, $img_attr) = getimagesize($src);
 			$classes.=($arr[0] < $arr[1])?" tall":" wide";
 			if ($arr[0]>=CCB_THUMB_MIN_HEIGHT &&
 						$arr[1]>=CCB_THUMB_MIN_WIDTH) {	
@@ -805,20 +857,53 @@ function ccb_thumbnail ($postid, $size='thumbnail', $output='html', $classes='wp
 			}
 		}
 	}
-	return of_get_option('ccb_fallback_thumbnail');
+	return CCB_FALLBACK_THUMBNAIL;
 }
 
 
 /***************************************
- *  Dispaly Search box in menu bar when not wp_is_mobile()
+ * ccb_print_thumb
+ * 
+ * Prints the thumbnail
+ * 
+ */
+function ccb_print_thumb($id) {
+	global $post;
+	$thumburl = ccb_thumbnail($post->ID, "large", "url");
+	if ("" != $thumburl) :
+			$img_classes = get_post_meta($id, 'ccb_featured_image_classes', $single = true);
+				
+			if (false !== strpos($img_classes, "pngframe")) {
+
+				$cla = CCB_PNGFRAMES[substr($img_classes, 9)];
+				list($image_w, $image_h) = getimagesize($thumburl);
+				/* To do: make it work for all sizes, using the right technique. I am dumbest */
+				$imgstyle = "style='background-image:url(" . $thumburl . ");background-size:" . 
+				 0.85 * min($image_w, $image_h) . "px'";
+				$thumburl = "src='" . get_template_directory_uri() . "/img/" . $cla . "' style='height:	" . $image_h . "px; width:" . $image_w . "px'"; 
+			} 
+			else {
+				$thumburl = "src='". $thumburl . "'";
+			} ?>
+				<div class='thumbcrop <?php echo $img_classes; ?>'
+					<?php echo $imgstyle; ?>>
+					<IMG <?php echo $thumburl; ?> onerror="this.style.display='none'"></IMG>
+				</div><!--/.thumbcrop-->
+					<?php endif;
+}
+
+/***************************************
+ *  Search Functionality
+ * 
+ *  Display Search box in menu bar
  *
  *  @since 1.0
  */
 add_filter('wp_nav_menu_items','add_search_box_to_menu', 10, 2);
 function add_search_box_to_menu( $items, $args ) {
-    if( !($args->theme_location == 'primary') OR wp_is_mobile())
+    if( !($args->theme_location == 'primary'))
 		return $items;
-	return $items . '<li class="ccb_navsearch">' . get_search_form(false) . '</li>';
+	return $items . '<li class="toggletags2 ccb_navsearch"></li>'; //. get_search_form(false) . 
 }
 
 
@@ -995,16 +1080,39 @@ add_filter( 'get_the_excerpt', array( $wp_embed, 'autoembed' ), 999 );
 
 
 /***************************************
- *  Function ccb_headbarHeadbar
+ *  Function ccb_headbar
  *  Headbar for widgets that can be toggled 
- *
+ *  April 2021. We are customizing the search widget placeholder with a filter
  * @since 1.0
  */
+/* Change Search Widget placeholder text */
+function ccb_search_form( $html ) {
+        $html = str_replace( 'placeholder=Search', 'placeholder="'. __("What are you looking for?", "ccb").'"', $html );
+        return $html;
+}
 function ccb_headbar() {
 	echo "<div class='ccb_headbar'>";
+	add_filter( 'get_search_form', 'ccb_search_form' );
 	dynamic_sidebar('headbar-1');
+	remove_filter( 'get_search_form', 'ccb_search_form' );
 	echo "</div>";
 }
+
+/****************************************
+ * Function ccb_featured_image_classes
+ * Returns the classes in the post_meta to be used for styling the featured image
+
+function ccb_featured_image_classes($id) {
+	$img_classes = get_post_meta($id, 'ccb_featured_image_classes', $single = true);
+	if (str_contains($img_classes, "pngframe")) {
+		$imgstyle = "<style background-image:url('" +  />'
+		return "classes='" + $img_classes + "'" + $imgstyle; 
+	}
+	return "classes='" + $img_classes + '";
+}
+ */
+//get_template_directory_uri + "/img/" + substr($img_classes,7)')"
+
 
 /******************
  *  Template override
@@ -1049,6 +1157,63 @@ function ccb_between_link ($atts, $content="") {
 	return "<SPAN class='betweenlink'>" .$content."</BLOCKQUOTE>";
 }
 add_shortcode ('ccb_bli', 'ccb_between_link');
+
+
+/* SVG Support */
+function add_file_types_to_uploads($file_types){
+	$new_filetypes = array();
+	$new_filetypes['svg'] = 'image/svg+xml';
+	$file_types = array_merge($file_types, $new_filetypes );
+	return $file_types;
+}
+add_filter('upload_mimes', 'add_file_types_to_uploads');
+
+/**
+* add SRI attributes to registered scripts
+
+* @param string $html
+* @param string $handle
+* @return string
+*/
+add_filter( 'style_loader_tag', __NAMESPACE__ . '\add_ccb_sri', 10, 2 );
+add_filter( 'script_loader_tag', __NAMESPACE__ . '\add_ccb_sri', 10, 2 );
+
+function add_ccb_sri($html, $handle) : string {
+	switch ($handle) {
+		case 'leaflet-js':    
+        	$html = str_replace('></script>', ' integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>', $html);
+        	break;
+        case 'leaflet-css':
+        	$html = str_replace('></script>', '
+        		integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  				  crossorigin=""/>', $html);
+        	break;
+    }
+ 
+    return $html;
+}
+
+
+	
+/**************
+	Final Words: 
+	Write SVG if needed - issues with external SVG-file referencing because ObjectBoundingBox must be specified. Spielerei. April 2021
+	Add inline javascript after WP enqueued scripts, eg for leaflet
+*/
+function ccb_final_words() {
+	/* Calls all functions defined in the settings */
+	foreach (CCB_ADDED_JS as $f) {
+		if (function_exists($f))
+			$f();
+	}
+	
+	/* Include clippaths */
+	include (get_template_directory() . "/img/clippaths.svg");
+    
+}
+
+add_action('final_words', 'ccb_final_words');
+
 
 
 ?>

@@ -22,6 +22,9 @@
 if (!class_exists("multisite")) {
 class multisite {
 
+function __construct ($blogs = array(0=>1)) {
+	self::$mu_blogs = $blogs;
+}
 /* Blogs in the network to include */
 private static $mu_blogs;
 
@@ -33,10 +36,6 @@ private static $howmany;
 private static $totalposts;
 private static $found_posts;
 private static $offset;
-
-public static function mu_setblogs($blogs) {
-	self::$mu_blogs = $blogs;
-}
 
 public static function mu_permalink ($postid, $blogid) {
 /* returns the permalink of post $postid in $blogid 
@@ -120,7 +119,7 @@ function mu_dropdown_categories($id, $sel) {
 }
 
 static function mu_blog_names() {
-/* Return names of all blogs in the multisite 
+/* Return a keyed Array of id, names of all blogs in the multisite 
  * @param -
  * @return blog names
  */
@@ -130,7 +129,7 @@ static function mu_blog_names() {
 	$blogname = $wpdb->get_row("SELECT option_value FROM wp_options WHERE option_name='blogname' ");
 	$blognames[0] = $blogname->option_value; //Main Site
 	$blogs = $wpdb->get_results( "SELECT blog_id from $wpdb->blogs WHERE
-    public = '1' AND archived = '0' AND spam = '0' AND deleted = '0' AND blog_id <> '1';" );
+    public = '1' AND archived = '0' AND spam = '0' AND deleted = '0';" );
 	foreach ( $blogs as $blog ) {
 		$blogname = $wpdb->get_results("SELECT option_value FROM wp_".$blog->blog_id ."_options WHERE option_name='blogname' ");
 		foreach( $blogname as $name ) { 
@@ -165,28 +164,24 @@ function mu_blog_prefixes() {
 }
 
 public static function get_mu_tables() {
-/* return all blog tables of a multisite
+/* Returns all blog tables of the blogs in $mu_blogs
  * @since 	1.0
- * @return	keyed array of table names
+ * @return	keyed array of table names for posts
  *  
  */
-  $mu_blogs = self::$mu_blogs;
-  if ($mu_blogs==NULL) return;
-
+  if (self::$mu_blogs==NULL) return array();
+  
   global $wpdb;
-  /*$rows = $wpdb->get_results( "SELECT blog_id from $wpdb->blogs WHERE
-    public = '1' AND archived = '0' AND spam = '0' AND deleted = '0';" );
-*/
-	//if ( $rows ) :
-    $b = array();
-    foreach ( $mu_blogs as $bid => $included ) :
-		if ($included)
-			$b[$bid] = $wpdb->get_blog_prefix( $bid ) . 'posts';
-    endforeach;
-	
-	return $b;
 
-  //endif;	
+	$b = array();
+	/* Is main blog included? */
+	if (self::$mu_blogs[0]==0) $b[0] = 'wp_posts';
+	foreach ( self::$mu_blogs as $bid => $included ) :
+		if ($included)
+			$b[$included] = $wpdb->get_blog_prefix( $included ) . 'posts';
+	endforeach;
+	return $b;
+	
 }
 
 function mu_date_oldest_post() {
@@ -212,7 +207,7 @@ function mu_date_oldest_post() {
 }
 
 
-static function mu_posts($howmany, $paged, $search="", $from="01-01-1900", $until="DATE('d-m-Y')") {
+static function mu_posts($howmany, $paged, $search="", $from="01-01-1900", $until="") {
 /* 	returns array of posts from all blogs in $blogs, newer than $from
 *	older than $until, containing $search
 */
@@ -221,12 +216,15 @@ static function mu_posts($howmany, $paged, $search="", $from="01-01-1900", $unti
   global $wpdb;
   global $table_prefix;
   /* convert date into timestamps MySQL understands */
- // $from = strtotime($from);
+  //$from = strtotime($from);
   //$until = strtotime($until);
+  if ($until=="") $until = date("d-m-Y");
   self::$search = $search;	//save search for later use, eg in paging  
   $b = self::get_mu_tables();
+
   /* In case there are multisite tables to query */
   if ( count( $b ) > 0 ) :	//if at least 1 table
+
 	$query = ''; 
 	$i = 0;
 	$offset = max($paged-1, 0) * $howmany;			//calculate offset
@@ -239,8 +237,9 @@ static function mu_posts($howmany, $paged, $search="", $from="01-01-1900", $unti
 				/* limit results by search */
 				$query .= " AND ( post_content LIKE \"%{$search}%\" OR post_title LIKE \"%{$search}%\" )";
 			} // if $search
-			/* limit results by post_date */
-			$query .= " AND post_date BETWEEN STR_TO_DATE('$from','%d-%m-%Y') AND ADDDATE(STR_TO_DATE('$until', '%d-%m-%Y'), 1)";
+			/* limit results by post_date. note that the end date is not inclusive so we add 1 day */
+			$query .= " AND post_date BETWEEN STR_TO_DATE('{$from}','%d-%m-%Y') AND ADDDATE(STR_TO_DATE('{$until}','%d-%m-%Y'),1)";
+
 			$query.=")";
 		$i++;
 	      endforeach;
@@ -284,80 +283,13 @@ static function mu_posts($howmany, $paged, $search="", $from="01-01-1900", $unti
 }
 
 public static function mu_thumbnail ($postid, $blogid, $size='thumbnail', $output='tag', $classes='wp-post-image') {
-/*	returns thumbnail of $postid in $blogid, or else first occuring image
+/*	returns thumbnail of $postid in $blogid, or else first occuring image, or image from Flickr, or fallback
 *
 */
-	$src = "";
-	// Try to get the official thumbnail
 	switch_to_blog( $blogid );
-	
-	if (in_array(get_post_format($postid), explode(",", CCB_NOIMG_FORMATS))) return;
-
-	$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($postid), $size);
-	if ($thumb) $src = $thumb[0];
+	$thumb = ccb_thumbnail ($postid, $size, $output, $classes);
 	restore_current_blog();
-	
-	
-	if ($src!="") {
-		return $src;
-	}
-	// Else look for alternatives inside the post or from Flickr
-	else {
-		if (IN_POST_THUMBNAILS) {
-			/* get first image from post */
-			$post = get_blog_post($blogid,$postid);
-			
-			$src_pattern = "/<img[^>]+src=(['\"])(.+?)\\1/ix";
-		
-			$src = "";
-			$matches = array();
-			if(preg_match($src_pattern, $post->post_content, $matches)) {
-				//found, so replace the $src value
-				$found=false; $i=1;
-				while ($i-1<=count($matches)&& !$found) {
-					list($img_width, $img_height, $img_type, $img_attr) = @getimagesize(trim($matches[$i]));
-					if ($img_width>CCB_THUMB_MIN_WIDTH &&
-						$img_height>CCB_THUMB_MIN_HEIGHT) {
-							$src = trim($matches[$i]);
-							$found=true;
-					}
-					$i++;
-				}
-			}
-		}
-		if ($src == "" && FLICKR_IMG) {
-			//get flickr file if configured
-			$tag = self::ccb_mu_random_tag($postid, $blogid);	//get a random tag
-			if ($tag) $src = get_flickr_img($tag);
-		}
-	}
-	// Return the fallback thumbnail
-	if ($src == "") return of_get_option('ccb_fallback_thumbnail');
-	// Return the url
-	if ($src != "" && $output=='url') {
-		return $src;
-	}
-	// Return markup
-	$arr = @getimagesize($src);		//does file exist?
-	if (is_array($arr)) {
-		/* Check if portrait of landscape */
-		$classes.=($arr[0] < $arr[1])?" tall":" wide";
-		if ($arr[0]>=75 &&
-					$arr[1]>=75) {	
-			$img="<img src='$src'";
-			if ($arr[0] < $arr[1]) {	//tall
-				$s2 = (int)(($arr[1]*100)/$arr[0]);
-				$img.=" width='$s' style='height:{$s2}%'";
-			}
-			else {	//wide
-				$s2 = (int)(($arr[0]*100)/$arr[1]);
-				$mar = (int)(($s2-100)/2);	//margin to center image
-				$img.=" height='$s' style='width:{$s2}%; margin-left:-{$mar}%'";
-			}
-			$img.=" class='$classes' />";
-			return $img;
-		}
-	}
+	return $thumb;
 }
 
 

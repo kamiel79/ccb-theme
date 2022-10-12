@@ -1,15 +1,15 @@
 @import "settings.less";			/* Theme-specific settings */
 
 /*********************************** 
- *  6.1 Squares
+ *  Squares in a Grid
  ***********************************/
 .squares.entry {
 	padding-bottom				: 100%;
 	margin-bottom				: 10px;
 }
 .squares.entry.col {
-	min-width					: @square-min;
-	min-height					: @square-min;
+	min-width					: 100px;
+	min-height					: 100px;
 }	
 .squares.entry.col.col2 { padding-bottom: 50%; }
 .squares.entry.col.col3 { padding-bottom: 33%; }
@@ -28,7 +28,7 @@
 	width						: 90%;
 	margin						: @margin;
 }
-.squares .details {
+.squares.format-standard .details {
 	position					: absolute;
 	overflow					: hidden;
 	padding						: 0;
@@ -36,7 +36,7 @@
 	width						: 100%;
 	top							: 100%;
 	background-color			: @bkg;
-	.opacity(@transparent);
+	.opacity(1);
 	.translate(0,-3em);
 	.transition(all, @delay, ease-in-out);
 }
@@ -53,27 +53,42 @@
 	padding						: 0 5%;
 	font-size					: 1em;
 }
-.squares .details.textonly {
-	background-color			: @color1;
+
+/** Post Formats **/
+.squares.format-quote .details {
+	background-color			: @color2;
 	color						: @bkg;
+	font-size					: @font-size-quote;
+	padding 					: 10%;
+	height 						: 100%;
+	vertical-align 				: middle;
+	display 					: grid;
+}
+.squares.format-quote .post-title {
+	color 						: @bkg;
+}
+.squares.format-aside .details {
+	background-color			: @bkg;
+	color						: @color2;
+	padding 					: @padding;
 }
 
-.squares .details.textonly .post-title{
-	color						: @bkg;
-    font-size					: 1em;
-}
-.squares .details:hover, .squares .details.textonly {
-	top							: 0;
-	.opacity(@transparent);
-	.translate(0,0);
+
+.squares .details:hover {
+	.opacity(.5);
 	.transition(all, @delay, ease-in-out);
 }
-.squares .details:hover  .post-title,
+
 .squares .details.textonly .post-title {
 	height						: auto;
 	overflow					: visible;
 	margin-top					: 0;
-	position 					: static;
+	padding 					: 1em 0;
+    background 					: #a22;
+    color 						: white;
+    margin 						: @margin;
+    transform 					: skewY(359deg);
+    font-weight 				: bold;
 }
 .squares .details:hover .excerpt,
 .squares .details.textonly .excerpt {

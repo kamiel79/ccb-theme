@@ -31,7 +31,7 @@ global $until;
 				$posts = multisite::mu_posts(intval(get_query_var( 'posts_per_page' )), $current, $s, $from, $until); 
 				if ($posts) : ?>
 					<div id="container" class="<?php echo CCB_GRID; ?>">
-						<div class='grid-sizer col col<?php echo CCB_COLS; ?>'></div>
+						
 						<?php
 						foreach ($posts as $post) :
 							setup_postdata($post);

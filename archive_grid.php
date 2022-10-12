@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-	<section id="primary" class="content-area">
+	<section id="primary" class="content-area <?php ccb_classes('showsidebar'); ?>">
 
 		<main id="main" class="site-main archive" role="main">
 		<?php if ( have_posts() ) : ?>
@@ -80,8 +80,7 @@ get_header(); ?>
 			</header><!-- .page-header -->
 
 			<div id="container" class="<?php echo CCB_GRID; ?>">
-			<?php /* The grid-sizer has the same classes for column width as the entries. This is useful for targeting elements */ ?>
-			<div class='grid-sizer col col<?php echo CCB_COLS; ?>'></div>
+
 			<?php 
 				while ( have_posts() ) : the_post();
 					get_template_part( 'content', CCB_GRID);

@@ -9,13 +9,13 @@
 const FLICKR_API_KEY = "cbf4af9da8fa6d913d2340b54f180686"; 
 $tag = substr($_GET['tag'],1);
 
-function get_flickr_img($tag, $count=1, $m="_m", $format="") {
+function get_flickr_img ($tag, $count=1, $m="_m", $format="") {
   $tag 			= urlencode($tag);
   $thumb_url 	= "";
   $url 			= 'https://api.flickr.com/services/rest/?';
   $url 			.= 'method=flickr.photos.search&api_key='.FLICKR_API_KEY.'&tags='.$tag.'&per_page='.$count;
   $url 			.= 'format='.$format;
-  $xml = @simplexml_load_file($url);
+  $xml = simplexml_load_file($url);
   if (!$xml) return false;
 # http://www.flickr.com/services/api/misc.urls.html
 # http://farm{farm-id}.static.flickr.com/{server-id}/{id}_{secret}.jpg
@@ -38,4 +38,5 @@ return $thumb_url;
 } // get_flickr_img
 
 echo get_flickr_img($tag);	//Print resulting url of the image
+
 ?>

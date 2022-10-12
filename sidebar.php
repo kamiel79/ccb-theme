@@ -6,7 +6,7 @@
  * 
  */
 ?>
-<div id="sidebar">
+<div id="sidebar" class="<?php ccb_classes('showsidebar'); ?>">
 	<div id="secondary" class="widget-area" role="complementary">
 	
 		<?php if ( ! dynamic_sidebar( 'sidebar-1' ) ) : ?>

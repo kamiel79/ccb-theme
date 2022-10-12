@@ -6,11 +6,12 @@
  */
 
 function get_flickr_img($tag, $count=1, $m="_m", $format="") {
+  if (!defined('CCB_FLICKR_API_KEY')) return;	
   $tag 			= urlencode($tag);
   //$api_key 		= "cbf4af9da8fa6d913d2340b54f180686";   //secret 65e156de8ff20ea7
   $thumb_url 	= "";
   $url 			= 'https://api.flickr.com/services/rest/?';
-  $url 			.= 'method=flickr.photos.search&api_key='.FLICKR_API_KEY.'&tags='.$tag.'&per_page='.$count;
+  $url 			.= 'method=flickr.photos.search&api_key='.CCB_FLICKR_API_KEY.'&tags='.$tag.'&per_page='.$count;
   $url 			.= 'format='.$format;
 
   if (!wp_remote_get( $url )) return;
@@ -32,7 +33,6 @@ if (count ($xml->photos->photo)>0) {
 	  else $thumb_url = "http://farm{$farmid}.static.flickr.com/{$serverid}/{$id}_{$secret}{$m}.jpg";
 	  }
 	}
-
 return $thumb_url;
 
 } // get_flickr_img

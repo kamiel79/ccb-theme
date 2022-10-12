@@ -11,6 +11,8 @@
  *		glidejs widget
  *		social share widget
  *		extended search widget
+ *		ccb_small_map
+ *
  *  == Shortcodes ==
  *  	age_func
 */
@@ -49,7 +51,7 @@ class ccb_Widget extends WP_Widget {
  * One Post widget 
  */
 if (!class_exists("onepost_widget")) :
-class onepost_widget extends WP_Widget {
+class onepost_widget extends ccb_Widget {
 	
 	function __construct() {
 		parent::__construct(
@@ -137,32 +139,32 @@ class onepost_widget extends WP_Widget {
 endif;
 
 if (!class_exists("category_description_widget")) :
-class category_description_widget extends WP_Widget {
-	function __construct() {
-		parent::__construct(
-		// Base ID of your widget
-		'category_description_widget', 
-		// Widget name will appear in UI
-		__('Category Description Widget', 'ccb'), 
-		// Widget description
-		array( 'description' => __( 'Category Description Widget', 'ccb' ),'' ) 
-		);
-	}
+	class category_description_widget extends WP_Widget {
+		function __construct() {
+			parent::__construct(
+			// Base ID of the widget
+			'category_description_widget', 
+			// Widget name will appear in UI
+			__('Category Description Widget', 'ccb'), 
+			// Widget description
+			array( 'description' => __( 'Category Description Widget', 'ccb' ),'' ) 
+			);
+		}
 
-	public function widget( $args, $instance ) {
-		global $post;
-		$cat = get_the_category($post->ID);
-		if ($cat)
-			$category_id = $cat[0]->term_id;
-		else $category_id="";
-		echo $args['before_widget'];
-		echo $args['before_title'];
-		echo get_cat_name($category_id);
-		echo $args['after_title'];
-		echo category_description($category_id );
-		echo $args['after_widget'];
-	}	// Widget
-}	// end of category_desciption_widget
+		public function widget( $args, $instance ) {
+			global $post;
+			$cat = get_the_category($post->ID);
+			if ($cat)
+				$category_id = $cat[0]->term_id;
+			else $category_id="";
+			echo $args['before_widget'];
+			echo $args['before_title'];
+			echo get_cat_name($category_id);
+			echo $args['after_title'];
+			echo category_description($category_id );
+			echo $args['after_widget'];
+		}	// Widget
+	}	// end of category_desciption_widget
 endif;
 
 
@@ -178,7 +180,7 @@ class extended_search_widget extends ccb_Widget {
 		parent::__construct(
 		'extended_search_widget_widget', 
 		__('Extended Search Widget', 'ccb'), 
-		array( 'description' => __( 'Search using a date period and ...', 'ccb' )) 
+		array( 'description' => __( 'Search using a date period', 'ccb' )) 
 		);
 	}
 
@@ -188,15 +190,17 @@ class extended_search_widget extends ccb_Widget {
 		<?php parent::widget_title( $args, $instance ); ?>
 		<?php $n = $this->number; /* Instance number */ ?>
 		<div class="searchwrapper">
-			<form role="search" method="get" id="searchform" class="searchform" action="<?php echo home_url('/'); ?>">
+			<form role="search" method="get" id="ext_searchform" class="searchform" action="<?php echo home_url('/'); ?>">
 				<label class="screen-reader-text" for="s"><?php _e("Search for:","ccb") ?></label>
-				<table><tr><td colspan="2">
-				<input type="text" value="<?php echo trim( get_search_query() ); ?>" placeholder=<?php _e("Search term...", 'ccb'); ?> name="s" id="s" />
+				<table><tr><td>
+					<?php _e("Find", "ccb"); ?>
+				</td><td>
+				<input type="text" value="<?php echo trim( get_search_query() ); ?>" placeholder=<?php _e("Search term...", 'ccb'); ?> name="s" id="ext_s" />
 				</td></tr><tr><td><?php _e("From", "ccb"); 
 				echo "</td><td><input class=\"mydate from\" id='mydate{$n}from' name='from' id='from' type='text' value=''></td></tr><tr><td>"; 
 				_e("Until", "ccb"); 
 				echo "</td><td><input class=\"mydate until\" id=\"mydate{$n}until\" name=\"until\" id=\"until\" type=\"text\" value=\"" . date('d-m-Y') . "\"></td></tr><tr><td>"; ?>
-				<input type="submit" id="searchsubmit" value="<?php _e("Search","ccb") ?>" />
+				<input type="submit" id="ext_searchsubmit" value="<?php _e("Search","ccb") ?>" />
 				</td></tr></table>
 			</form>
 		</div>
@@ -224,6 +228,85 @@ class extended_search_widget extends ccb_Widget {
 }
 endif;
 
+
+
+/********************************
+ *   CCB SmallMap Widget
+ * 	 Shows a Leaflet.js map with stamen tiles
+ *   Based on the custom files geo_latitude, geo_longitude and ccb_map_zoom
+ **********************************/
+
+if (!class_exists("ccb_small_map_widget")) :
+	class ccb_small_map_widget extends CCB_Widget {
+		function __construct() {
+			parent::__construct(
+			// Base ID of the widget
+			'ccb_small_map_widget', 
+			// Widget name will appear in UI
+			__('CCB Small Map Widget', 'ccb'), 
+			// Widget description
+			array( 'description' => __( 'Shows OSM map with post location', 'ccb' ),'' ) 
+			);
+		}
+		function ccb_map_script(){ ?>
+					<script type="text/javascript" src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script> 
+					<script type="text/javascript" src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js?v1.3.0"></script> 
+					<script>
+				 	<?php 
+				 		global $post;
+				 		
+				 		echo "lat = " . get_post_meta($post->ID,"geo_latitude",true) . ";";
+				 		echo "lon = " . get_post_meta($post->ID,"geo_longitude",true). ";";
+							 		
+				 		if (get_post_meta($post->ID,"ccb_map_zoom",true) != "") {
+				 			echo "zoomlevel = " . get_post_meta($post->ID,"ccb_map_zoom",true) . ";";
+				 		}
+				 		else echo "zoomlevel = " . CCB_DEFAULT_MAP_ZOOMLEVEL . ";"; 
+				 	?>
+				 	var myIcon = L.icon({
+					    iconUrl: '<?php echo get_template_directory_uri() . '/img/iconman.png'; ?>',
+					    iconSize: [30, 57],
+					    iconAnchor: [30, 57],
+					    popupAnchor: [-3, 50],
+					    shadowUrl: '',
+					    shadowSize: [32, 60],
+					    shadowAnchor: [32, 60]
+					});
+					var layer = new  L.StamenTileLayer("terrain");
+					var mymap = L.map('mapid').setView([lat, lon], zoomlevel);
+					L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+					    maxZoom: 16,
+					    id: 'mapbox/streets-v11',
+					    tileSize: 512,
+					    zoomControl:false,
+					    accessToken: 'pk.eyJ1Ijoia2FtaWVsY2hvaSIsImEiOiJja2dwamtzZzYwNmYwMnVzMm04Y2R5cjVkIn0.clYhxYsZ9HcDtg2JSeTJsA'
+					}).addTo(mymap);
+					mymap.addLayer(layer);
+					var marker = L.marker([lat, lon], {icon: myIcon}).addTo(mymap);
+					</script>
+			<?php }
+
+		public function widget( $args, $instance ) {
+			global $post;
+			if (!(get_post_meta($post->ID,"geo_latitude",true) !="" and get_post_meta($post->ID,"geo_longitude",true)!=""))
+				return;
+
+			wp_enqueue_style ('leaflet-css', 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css', array(), null, false );
+			
+			parent::widget_title( $args, $instance );
+			?>
+			<div class="svg_shadow">
+				<div id="mapid"></div>
+			</div>
+			<?php
+			$this->ccb_map_script();
+			
+		}	// Widget
+	}	// end of ccb_simple_map widget
+endif;
+
+
+
 /********************************
  *   Register and load the widgets
  **********************************/
@@ -232,6 +315,7 @@ if (!function_exists('ccb_load_widgets')) :
 		register_widget( 'onepost_widget' );
 		register_widget( 'category_description_widget' );
 		register_widget( 'extended_search_widget' );
+		register_widget( 'ccb_small_map_widget' );
 	}
 	add_action( 'widgets_init', 'ccb_load_widgets' );
 endif;

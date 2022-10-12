@@ -7,15 +7,16 @@
  * @package Creative Choice Blog
  */
 
-define (CCB_GRID,"list");
+
 get_header(); ?>
 
-	<section id="primary" class="content-area">
+	<section id="primary" class="content-area <?php ccb_classes('showsidebar'); ?>">
 
 		<main id="main" class="site-main archive" role="main">
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
+				<div class="triangle"></div>
 				<h1 class="page-title">
 					<?php
 						if ( is_category() ) :
@@ -80,9 +81,7 @@ get_header(); ?>
 					?>
 			</header><!-- .page-header -->
 
-			<div id="container" class="grid-<?php echo CCB_GRID; ?>">
-			<?php /* The grid-sizer has the same classes for column width as the entries. This is useful for targeting elements */ ?>
-			<div class='grid-sizer col col<?php echo CCB_COLS; ?>'></div>
+			<div id="container" class="<?php echo CCB_GRID, " col", ccb_cols(); ?>">
 			<?php 
 				while ( have_posts() ) : the_post();
 					get_template_part( 'content', CCB_GRID);

@@ -1,36 +1,90 @@
 @import "settings.less";
 
 /*********************************** 
- * 	Updated: November 2018
+ * 	Updated: November 2018, May 2021
  *  Grid:: Grid with text and images)
  **********************************/
+
+
+.col {
+	max-width					: @col-max-width;
+	min-width					: @col-min-width;
+}
+.grid2.col1 {
+	column-count 				: 1!important;
+}
+.grid2.col2 {
+	column-count 				: 2;
+}
+.grid2.col3 {
+	column-count 				: 3;
+}
+.grid2.col3.double {width: 66.66%;}
+.grid2.col.col4 {
+	column-count 				: 4!important;
+}
+.grid2.col4.double {width: 50.00%;}
+.grid2.col4.triple {width: 75.00%;}
+.grid2.col5 {
+	column-count 				: 5!important;
+}
+.grid2.col5.double {width: 40.00%;}
+.grid2.col5.triple {width: 60.00%;}
+.grid2.col.col6 {
+	column-count 				: 6;
+}
+.grid2.col6.double {width: 33.33%;}
+.grid2.col6.triple {width: 50.00%;}
+.grid2.col7 {
+	width						: 14.42%;
+}
+.grid2.col8 {
+	width						: 12.5%;
+}
+.grid2.col9 {
+	width						: 11.1%;
+}
+.grid2.col10 {
+	width						: 10%;
+}
+
 .listing {
 	margin						: 0 0 @padding*3 0;
 }
 .listing .post-title {
-	padding						: .33em @padding;
-	font-size					: 1.3em;
-    line-height					: 1.5em;
+	font-size					: 1.2em;
+	line-height					: 1em;
     padding-bottom				: 0;
+    text-align 					: center;
+    padding 					: 0 @padding;
 }
 .listing img.featured {
 	width						: 100%;
 }
-/* Triangle effect on 1/6 
-.listing .thumbcrop:before {
-	content						: "";
-	display						: block;
-	position					: absolute;
-	left						: 16%;
-	border						: .6em solid @bkg;
-	border-color				: @bkg transparent transparent transparent;
-	z-index						: 1;
-	left						: 16%;
+.listing .cat_name {
+    margin: @margin 0 0;
+    color: @color2;
+    text-transform: uppercase;
+    font-family: @font3;
+    padding: 4px;
+    font-size: @font-small;
+    text-align:center;
 }
-*/
+.listing .posted-on {
+	text-align: center;
+    font-size: @font-tiny;
+    margin:auto;
+    padding:@padding;
+    display:block;
+    font-family: @font3;
+}
 .listing img.featuredwrapper {
 	max-height					: @maxheightfeaturedimage;
 	overflow					: hidden;
+}
+.listing .thumbcrop img:hover {
+	.transform(0,1.25,0,0);
+	.transition(all, @delay);
 }
 
 .listing .entry-title,
@@ -38,37 +92,40 @@
 	padding						: 0 7%;
 }
 
+.listing .entry-meta {
+	display						: inline;
+	margin-bottom				: @margin;
+}
+
 .listing  .entry-border {
 	margin						: 0 5%;
-	box-shadow					: 2px 2px 2px @menulight;
+	border						: 1px solid @bordercolor;
+	padding						: 0;
+	background-color			: @bkg;
+	.box-shadow(@shadowline);
 }
 .listing footer  {
 	padding						: 1em 7%;
 }
-.listing  .excerpt {
-	padding						: .5em;
-	word-break					: break-word;
-}
-.listing footer,
-.listing .entry-metas
+
+.listing .entry-footer
  {
-	background					: @bkg;
+	background					: @bkg2;
 	font-size					: @font-small;
 	padding						: @padding;
-	line-height					: 1.25em;
 	color						: @txtcolorL;
-	letter-spacing				: 1px;
-	text-transform				: uppercase;
-	border-top					: 1px solid @menulight;
+	font-family 				: @font3;
+	border-top 					: 1px solid @lightgrey;
 }
-.listing .entry-meta,
-.listing .entry-meta a {
-	color						: @txtcolor2;
-	display						: inline-block;
-	font						: @font2;
+.listing .tag-list a {
+	color 						: @txtcolorL;
 }
 
 /** Post Formats **/
+.listing.format-quote .entry-content {
+	padding 					: 10% 2em;
+}
+
 .listing.format-aside .entry-border {
 	border						: 0;
 	background					: rgba(255,255,255,0);
@@ -79,13 +136,18 @@
 	margin-top					: @font-size*1.5;
 	margin-bottom				: -@font-size*1.5;
 }
+.listing.format-aside .entry-content {
+    padding 					: 2*@padding;
+   	font-family					: @font1;
+    color 						: @color2;
+}
 .listing.format-aside .post-title  span {
-	top							: -@font-size*1.5;
+	top							: -@font-size;
 	position					: relative;
 	padding						: 0 @padding;
 	background-color			: @bkg;
 }
 .listing.format-aside .excerpt {
-	font-family					: @font1;
 	color						: @color2;
 }
+

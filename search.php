@@ -6,10 +6,10 @@ global $until;
 global $current;
 ?>
 
-	<section id="primary" class="content-area">
+	<section id="primary" class="content-area <?php ccb_classes('showsidebar'); ?>">
 		<main id="main" class="site-main search" role="main">
 
-		<header class="page-header">
+		<header class="page-header"><div class="triangle"></div>
 			<h1 class="page-title"><?php printf( __('Search Results for: %s', 'ccb' ), '<span>' . get_search_query() . '</span>' ); ?>
 			<?php 	
 
@@ -27,23 +27,24 @@ global $current;
 		<?php 
 			/* Multisite? */
 			if (CCB_MULTISITE) :
-		
-			/* Get the multisite grid */
-			get_template_part ("mu-grid");
+			
+				/* Get the multisite grid */
+				get_template_part ("mu-grid");
 			
 			else :
 			if ( have_posts() ) : ?>
+				<?php
+				/* If fewer posts than CCB_GRID, make them larger to fill up the screen */
+				if ($GLOBALS['wp_query']->post_count < CCB_COLS)
+					$cols = $GLOBALS['wp_query']->post_count . " no-grid";
+				else $cols = CCB_COLS;
 				
-				<div id="container" class="grid-<?php echo CCB_GRID; ?>">
-					
-						<div class="grid-sizer col col<?php echo CCB_COLS;?>"></div>
-						<?php 
+				?>
+				<div id="container" class="col <?php echo CCB_GRID, " col", $cols; ?>"><?php 
 							while ( have_posts() ) : the_post(); 
-							get_template_part( 'content', CCB_GRID);
+								get_template_part( 'content', CCB_GRID);
 							endwhile; 
-						?>
-						
-				</div>
+						?></div>
 				<?php ccb_paging_nav(); ?>
 
 			<?php else : ?>

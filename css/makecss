@@ -1,0 +1,33 @@
+#!/usr/bin/bash
+# command line args: https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script
+# Find: https://stackoverflow.com/questions/16085958/find-the-files-that-have-been-changed-in-last-24-hours
+# Extract filename: https://stackoverflow.com/questions/965053/extract-filename-and-extension-in-bash
+time=1440
+while getopts ":t:x:": flag
+do
+    case "${flag}" in
+        t) time=${OPTARG};;
+		    x) min=${OPTARG};;
+        \?) echo "Usage: makecss [-t {minutes}] [-x {minify extension}]";;
+        :) echo "Invalid option: $OPTARG requires an argument" 1>&2
+    esac
+done
+
+readarray -d '' FILES < <(find . -name "*.less" -mmin -$time) #compile files changed less than mmin minutes ago
+
+for f in $FILES
+do
+  filename=$(basename -- "$f")
+  extension="${filename##*.}"
+  filename="${filename%.*}"
+  
+  if [ "$min" == "" ]
+  then
+      echo "Processing $f file... Saving as ${filename}.css"
+  		success=$(lessc ${filename}.less ${filename}.css)
+  else
+    echo "Processing $f file... Saving as ${filename}.${min}.css"
+		success=$(lessc ${filename}.less ${filename}.${min}.css -x)
+  fi
+done
+if [ "$success" == "" ]; then echo "Way to go, $(whoami)!"; fi

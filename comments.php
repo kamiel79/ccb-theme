@@ -28,7 +28,6 @@ if ( post_password_required() ) {
 					'post_id' => $post->ID, 
 					'count'   => true // Return only the count
 				);
-				$c = get_comments( $args );
 
 				printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $c, 'comments title', 'ccb' ),
 					number_format_i18n( $c ), '<span>' . get_the_title() . '</span>' );
@@ -89,9 +88,16 @@ if ( post_password_required() ) {
 		'<input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) .
 		'" size="30" /></p>',
 	  'comment_field' =>
-		'<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" minlength=10 aria-required="true" required></textarea></p>'
+		'<p class="comment-form-comment"><textarea id="comment" name="comment" cols="45" rows="8" minlength=10 aria-required="true" required></textarea></p>',
+	  'submit_button' =>
+	     '<div class="fancy_btn_container"><button class="fancy_btn">
+        <svg width="180px" height="60px" viewBox="0 0 180 60" class="fancy_btn_svg">
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+        </svg><input name="%1$s" type="submit" id="%2$s" class="%3$s" value="%4$s" />
+      </button></div>'
 	);
-
+//        <input name="%1$s" type="submit" id="%2$s" class="%3$s" value="%4$s" />
 	//$comments_args = array(
 	//	'fields' => apply_filters( 'comment_form_default_fields', $fields ),
 	//	'comment_notes_after' => ''

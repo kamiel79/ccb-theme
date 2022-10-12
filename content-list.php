@@ -13,6 +13,7 @@ $nofooter_formats = explode(",",CCB_NOFOOTER_FORMATS);
 $notitle_formats = explode(",",CCB_NOTITLE_FORMATS);
 $noexcerpt_formats = explode(",",CCB_NOEXCERPT_FORMATS);
 $sharer_formats = explode(",",CCB_SHARER_FORMATS);
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("entry"); ?>>
@@ -20,7 +21,7 @@ $sharer_formats = explode(",",CCB_SHARER_FORMATS);
 		<header class="entry-header">
 			<?php if ( 'post' == get_post_type() ) : ?>
 			<div class="entry-meta">
-				<?php ccb_posted_on(); ?>
+				<?php ccb_posted_on("", false); ?>
 			</div><!-- .entry-meta -->
 			<div class="line"></div>
 			<div class="entry-meta category">
@@ -36,19 +37,19 @@ $sharer_formats = explode(",",CCB_SHARER_FORMATS);
 				
 			<h5><a href="<?php ccb_permalink($post->blog_id, $post->ID) ?>" title="<?php the_title(); ?>"><span class="post-title"> <?php the_title(); ?></span></a></h5>
 			<?php if (!has_post_format( $noimg_formats )) : ?>
-			
+			<!-- show img for formats with images -->
 					<a href="<?php ccb_permalink($post->blog_id, $post->ID) ?>" title="<?php the_title(); ?>">
-					<?php $thumburl = ccb_thumbnail($post->ID, "large", "url"); 
-					if ("" != $thumburl) : 	?>
-					<div class='thumbcrop' style='<?php //echo "background-image: url(". $thumburl.")";?>'>
-						<IMG src="<?php echo $thumburl; ?>" onerror="this.style.display='none'"></IMG>
-					</div><!--/.thumbcrop-->
-					<?php endif; ?>
+
+					<?php 
+					ccb_print_thumb($post->ID);
+					?>
 					</a>		
 			<?php endif;?><!--/ noimg formats-->
-			<div class="post-excerpt">
-				<?php the_excerpt();
-			?>
+			<!-- show the excerpt -->
+			<div class="post-excerpt <?php if (has_post_format( "quote" )) echo 'clip_lines'; ?>">
+				<a href="<?php ccb_permalink($post->blog_id, $post->ID) ?>" title="<?php the_title(); ?>">
+					<?php the_excerpt();?>
+				</a>
 			</div><!--.post-excerpt-->
 
 		</div><!--/.entry-details -->  
@@ -61,7 +62,7 @@ $sharer_formats = explode(",",CCB_SHARER_FORMATS);
 				if ( $tags_list ) :
 			?>
 			<span class="tags-links">
-				<?php printf( __( 'Tagged %1$s', 'ccb' ), $tags_list ); ?>
+				<?php printf( __( '%1$s', 'ccb' ), $tags_list ); ?>
 			</span>
 			<?php endif; // End if $tags_list ?>
 		<?php endif; // End if 'post' == get_post_type() ?>

@@ -3,12 +3,12 @@
   */
 
 /** Import Google fonts **/
-@import url(https://fonts.googleapis.com/css?family=Oswald:300|Lora|Lato);
+@import url(https://fonts.googleapis.com/css?family=Playfair+display:300|Oswald:200|Domine|Lato);
 
 @import "../../ccb/css/more.less";
 
 /** Nice Fonts
- *	Headers:		Oswald, Century Gothic, Knockout, Bodoni Poster, Steinem
+ *	Headers:		Playfair Display, Oswald, Century Gothic, Knockout, Bodoni Poster, Steinem
 					Lato, Raleway, Amaranth, Signika, Josephine slab, Tikal sans, Italiana, Arsenal
  *	Good reading:	Noto serif, Open sans, Droid sans, Lora, Libre Baskerville
 					Old Standard, Vollkorn, EB Garamond
@@ -25,76 +25,200 @@
 
   
 /** Measures **/
- @adminbarheight				: 32px;						/* Standard adminbar height */
+ @adminbarheight				    : 32px;						/* Standard adminbar height */
  @adminbarheightmobile			: 46px;						/* Standard Mobile height */
- @brandingpaddingtop			: 4vw;						/* Padding for logo or title */
- @buttonheight					: 40px;						/* Set explicitly for precision */
- @col-max-width					: 500px;
- @col-min-width					: 100px;
- @headbartop					: 58px;
- @margin						: .5em;						/*.5*/ 
- @margin-buttons				: 5px;
+ @brandingpaddingtop		  	: 4vw;						/* Padding for logo or title */
+ @buttonheight				     	: 40px;						/* Set explicitly for precision */
+ @col-max-width			  	   	: 100%;          
+ @col-min-width			    		: 100px;
+ @navigationheight          : 3.5em;
+ @headbartop				      	: @navigationheight;
+ @margin						        : .5em;						/*.5*/ 
+ @margin-buttons			     	: 5px;
  @maxheightfeaturedimage		: 332px;
- @metacolumn					: 300px;					/* Meta info floats left on larger screens */
- @metainfoheight				: 250px;
- @metainfowidth					: 200px;
- @mobilewidth					: 600px;
- @mediumwidth					: 950px;
- @menubuttonwidth				: 25%;						/* % width of mobile buttons */
- @navigationheight				: auto;
- @padding						: .5em;	
- @sidebarvw						: 25vw;						
- @sidebarwidth					: 25%;						/* Default sidebar width */
- @sitemargin					: 2em 0;					/* Main site margin */
- @sitepadding					: 3%;						/* Main site padding */
- @sitepaddingbottom				: 2em;
- @square-min					: 100px;					/* Minimal size for square layout grid1 */
- @thumbnailmaxheight			: 150px;					/* Prevent too tall thumbnails */
- @gridimagemaxheight			: 480px;
+ @metacolumn					      : 300px;					/* Meta info floats left on larger screens */
+ @metainfoheight		      	: 250px;
+ @metainfowidth			    		: 200px;
+ @mobilewidth					      : 600px;
+ @mediumwidth				       	: 950px;
+ @menubuttonwidth			    	: 25%;						/* % width of mobile buttons */
+
+ @padding						        : .5em;           /* Don't change this */	
+ @sidebarvw					      	: 25vw;						
+ @sidebarwidth			   		  : 25%;						/* Default sidebar width */
+ @sitemargin				      	: 2em 0;					/* Main site margin */
+ @sitepadding					      : 3%;						/* Main site padding */
+ @sitepaddingbottom			   	: 2em;
+ @gridmin	    				      : 100px;					/* Minimal size for square layout grid1 */
+ @thumbnailmaxheight	   		: 150px;					/* Prevent too tall thumbnails */
+ @gridimagemaxheight	   		: 480px;
  
 /** Colors **/
- @bkg							: #fff;						/* Background and text on color1 */
- @bkg2							: darken(@bkg, 2%);			/* Background site */
- @bkg3							: darken(@bkg, 5%);			/* Background overlayed element */
- @bordercolor					: darken(@bkg, 20%);		/* Border */
- @color1						: #111;						/* #53a1b8; */
- @color1L						: lighten(@color1, 10%);	/* Lightened color1 */
- @color2						: #A22; 				 /* Complementary color */
- @color2L						: lighten(@color2, 10%);
- @colorerror					: red;
- @highlighted					: @color2;					/* Highlighting eg. in searches */
- @menubkg						: @bkg;
- @menulight						: #f4f4f4;
- @menutext						: #333;
- @transparent					: rgba(255,255,255,.65);	/* Standard transparency */
- @txtcolor						: #333;						/* Readable dark grey */
- @txtcolor2						: #666;						/* Lightened txtcolor */
- @txtcolor3						: #A22;						/* Lightened txtcolor */
- @txtcolorL						: #AAA;
+ @bkg						           	: #fff;						/* Background and text on color1 */
+ @bkg2					         		: darken(@bkg, 2%);			/* Background site */
+ @bkg3							        : darken(@bkg, 5%);			/* Background overlayed element */
+ @bordercolor					      : darken(@bkg, 20%);		/* Border */
+ @color1						        : #111;						/* #53a1b8; */
+ @color1L					        	: lighten(@color1, 10%);	/* Lightened color1 */
+ @color2					         	: #a22; 
+ @color2L						        : lighten(@color2, 10%);
+ @colorerror				      	: red;
+ @highlighted				       	: @color2;					/* Highlighting eg. in searches */
+ @menubkg						        : @bkg;
+ @almostwhite               : #fdfdfd;
+ @lightgrey					      	: #f4f4f4;
+ @midgrey 						      : #eee;
+ @menutext						      : #333;
+ @transparent					      : rgba(255,255,255,.65);	/* Standard transparency */
+ @txtcolor						      : #333;						/* Readable dark grey */
+ @txtcolor2						      : #666;						/* Lightened txtcolor */
+ @txtcolor3					       	: #A22;						/* Lightened txtcolor */
+ @txtcolorL					      	: #AAA;
  
 /** Fonts **/
- @font1							: "Lora", serif;			/* Main font */
- @font2							: "Oswald", arial, sans-serif;			/* Header */
- @font3							: "Lato", arial, sans-serif;					/* for entry meta */
- @font-quote					: "Lora", @font2, sans-serif;
- @font-aside					: @font-quote;
- @font-site-title				: @font2;
- @font-content					: 1.1rem;								/* 15pt */
- @font-size						: 1rem;
- @font-small					: .75em;
- @font-large					: 32pt;
- @font-title					: 2rem;
- @font-size-nav					: 1em;
- @font-size-buttons				: 16px;
- @font-size-widgettitle			: 20pt;
- @padding-buttons				: 10px;
- @font-size-quote				: 20pt;
- @line-height					: 1.5em;
- @sitetitlesize					: 4em;
+ @font1						         	: "Domine", serif;				            /* Main font */
+ @font2							        : "Oswald", sans-serif;			          /* Menu etc */
+ @font3						   	      : "Lato", arial, sans-serif;					/* for entry meta */
+ @font-quote					      : "Domine", @font2, sans-serif;
+ @font-title					      : "Playfair Display", serif;
+ @font-aside					      : @font-quote;
+ @font-site-title			    	: @font-title;
+ @font-content					    : 1rem;								/* 15pt */
+ @font-size					      	: 1rem;
+ @font-tiny                 : .5em;
+ @font-small					      : .75em;
+ @font-large				      	: 32pt;
+ @font-size-title			      : 3rem;
+ @font-size-title-mobile    : 2.50rem;
+ @font-size-nav					    : 1em;
+ @font-size-buttons				  : 16px;
+ @font-size-widgettitle			: 1.15em;
+ @padding-buttons			    	: 10px;
+ @font-size-quote				    : 1.2em;
+ @line-height					      : 1.5em;
+ @font-size-site-title			: 4em;
 
 /** Icons, delays, transitions **/
- @dashicons						: 200 @line-height/1 dashicons;		/* Standard size dashicons */
- @delay							: .5s;						 	/* Standard transition delay */
- @boxshadow						: none; 						/*2px 2px 4px @txtcolor; */
- @transitionbezier				: cubic-bezier(0.66, 0.25, 0.37, 0.86);
- @searchthrobber				: "../img/load.gif";
+ @dashicons				       		: 200 @line-height/1 dashicons;		/* Standard size dashicons */
+ @delay							        : .5s;						               	/* Standard transition delay */
+ @shadowline                : 0px 1px 3px -3px rgba(0,0,0,0.2);
+ @thickshadowline           : 0 3px 3px -3px rgba(0,0,0,.5);
+ @transitionbezier			   	: cubic-bezier(0.66, 0.25, 0.37, 0.86);
+ @searchthrobber				    : "../img/load.gif";
+ @linear                    : linear-gradient(45deg,rgba(255,255,255,0.90),rgba(255,255,255,0.95));
+
+/** z-indices */
+ @z-front                   : 9999;
+ @z-1000                    : 1000;
+ @z-0                       : 0;
+
+/** SVG patterns 
+	https://www.heropatterns.com/ **/
+
+@jigsaw   : url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'%3E%3Cpath fill='%23cccccc' fill-opacity='0.4' d='M192 15v2a11 11 0 0 0-11 11c0 1.94 1.16 4.75 2.53 6.11l2.36 2.36a6.93 6.93 0 0 1 1.22 7.56l-.43.84a8.08 8.08 0 0 1-6.66 4.13H145v35.02a6.1 6.1 0 0 0 3.03 4.87l.84.43c1.58.79 4 .4 5.24-.85l2.36-2.36a12.04 12.04 0 0 1 7.51-3.11 13 13 0 1 1 .02 26 12 12 0 0 1-7.53-3.11l-2.36-2.36a4.93 4.93 0 0 0-5.24-.85l-.84.43a6.1 6.1 0 0 0-3.03 4.87V143h35.02a8.08 8.08 0 0 1 6.66 4.13l.43.84a6.91 6.91 0 0 1-1.22 7.56l-2.36 2.36A10.06 10.06 0 0 0 181 164a11 11 0 0 0 11 11v2a13 13 0 0 1-13-13 12 12 0 0 1 3.11-7.53l2.36-2.36a4.93 4.93 0 0 0 .85-5.24l-.43-.84a6.1 6.1 0 0 0-4.87-3.03H145v35.02a8.08 8.08 0 0 1-4.13 6.66l-.84.43a6.91 6.91 0 0 1-7.56-1.22l-2.36-2.36A10.06 10.06 0 0 0 124 181a11 11 0 0 0-11 11h-2a13 13 0 0 1 13-13c2.47 0 5.79 1.37 7.53 3.11l2.36 2.36a4.94 4.94 0 0 0 5.24.85l.84-.43a6.1 6.1 0 0 0 3.03-4.87V145h-35.02a8.08 8.08 0 0 1-6.66-4.13l-.43-.84a6.91 6.91 0 0 1 1.22-7.56l2.36-2.36A10.06 10.06 0 0 0 107 124a11 11 0 0 0-22 0c0 1.94 1.16 4.75 2.53 6.11l2.36 2.36a6.93 6.93 0 0 1 1.22 7.56l-.43.84a8.08 8.08 0 0 1-6.66 4.13H49v35.02a6.1 6.1 0 0 0 3.03 4.87l.84.43c1.58.79 4 .4 5.24-.85l2.36-2.36a12.04 12.04 0 0 1 7.51-3.11A13 13 0 0 1 81 192h-2a11 11 0 0 0-11-11c-1.94 0-4.75 1.16-6.11 2.53l-2.36 2.36a6.93 6.93 0 0 1-7.56 1.22l-.84-.43a8.08 8.08 0 0 1-4.13-6.66V145H11.98a6.1 6.1 0 0 0-4.87 3.03l-.43.84c-.79 1.58-.4 4 .85 5.24l2.36 2.36a12.04 12.04 0 0 1 3.11 7.51A13 13 0 0 1 0 177v-2a11 11 0 0 0 11-11c0-1.94-1.16-4.75-2.53-6.11l-2.36-2.36a6.93 6.93 0 0 1-1.22-7.56l.43-.84a8.08 8.08 0 0 1 6.66-4.13H47v-35.02a6.1 6.1 0 0 0-3.03-4.87l-.84-.43c-1.59-.8-4-.4-5.24.85l-2.36 2.36A12 12 0 0 1 28 109a13 13 0 1 1 0-26c2.47 0 5.79 1.37 7.53 3.11l2.36 2.36a4.94 4.94 0 0 0 5.24.85l.84-.43A6.1 6.1 0 0 0 47 84.02V49H11.98a8.08 8.08 0 0 1-6.66-4.13l-.43-.84a6.91 6.91 0 0 1 1.22-7.56l2.36-2.36A10.06 10.06 0 0 0 11 28 11 11 0 0 0 0 17v-2a13 13 0 0 1 13 13c0 2.47-1.37 5.79-3.11 7.53l-2.36 2.36a4.94 4.94 0 0 0-.85 5.24l.43.84A6.1 6.1 0 0 0 11.98 47H47V11.98a8.08 8.08 0 0 1 4.13-6.66l.84-.43a6.91 6.91 0 0 1 7.56 1.22l2.36 2.36A10.06 10.06 0 0 0 68 11 11 11 0 0 0 79 0h2a13 13 0 0 1-13 13 12 12 0 0 1-7.53-3.11l-2.36-2.36a4.93 4.93 0 0 0-5.24-.85l-.84.43A6.1 6.1 0 0 0 49 11.98V47h35.02a8.08 8.08 0 0 1 6.66 4.13l.43.84a6.91 6.91 0 0 1-1.22 7.56l-2.36 2.36A10.06 10.06 0 0 0 85 68a11 11 0 0 0 22 0c0-1.94-1.16-4.75-2.53-6.11l-2.36-2.36a6.93 6.93 0 0 1-1.22-7.56l.43-.84a8.08 8.08 0 0 1 6.66-4.13H143V11.98a6.1 6.1 0 0 0-3.03-4.87l-.84-.43c-1.59-.8-4-.4-5.24.85l-2.36 2.36A12 12 0 0 1 124 13a13 13 0 0 1-13-13h2a11 11 0 0 0 11 11c1.94 0 4.75-1.16 6.11-2.53l2.36-2.36a6.93 6.93 0 0 1 7.56-1.22l.84.43a8.08 8.08 0 0 1 4.13 6.66V47h35.02a6.1 6.1 0 0 0 4.87-3.03l.43-.84c.8-1.59.4-4-.85-5.24l-2.36-2.36A12 12 0 0 1 179 28a13 13 0 0 1 13-13zM84.02 143a6.1 6.1 0 0 0 4.87-3.03l.43-.84c.8-1.59.4-4-.85-5.24l-2.36-2.36A12 12 0 0 1 83 124a13 13 0 1 1 26 0c0 2.47-1.37 5.79-3.11 7.53l-2.36 2.36a4.94 4.94 0 0 0-.85 5.24l.43.84a6.1 6.1 0 0 0 4.87 3.03H143v-35.02a8.08 8.08 0 0 1 4.13-6.66l.84-.43a6.91 6.91 0 0 1 7.56 1.22l2.36 2.36A10.06 10.06 0 0 0 164 107a11 11 0 0 0 0-22c-1.94 0-4.75 1.16-6.11 2.53l-2.36 2.36a6.93 6.93 0 0 1-7.56 1.22l-.84-.43a8.08 8.08 0 0 1-4.13-6.66V49h-35.02a6.1 6.1 0 0 0-4.87 3.03l-.43.84c-.79 1.58-.4 4 .85 5.24l2.36 2.36a12.04 12.04 0 0 1 3.11 7.51A13 13 0 1 1 83 68a12 12 0 0 1 3.11-7.53l2.36-2.36a4.93 4.93 0 0 0 .85-5.24l-.43-.84A6.1 6.1 0 0 0 84.02 49H49v35.02a8.08 8.08 0 0 1-4.13 6.66l-.84.43a6.91 6.91 0 0 1-7.56-1.22l-2.36-2.36A10.06 10.06 0 0 0 28 85a11 11 0 0 0 0 22c1.94 0 4.75-1.16 6.11-2.53l2.36-2.36a6.93 6.93 0 0 1 7.56-1.22l.84.43a8.08 8.08 0 0 1 4.13 6.66V143h35.02z'%3E%3C/path%3E%3C/svg%3E");
+@cogs     : url("../img/floating-cogs.svg");
+@topo     : url("../img/topography.svg");
+@bahn     : url("../img/bahn.svg");
+@mountains: url("../img/mountains.svg");
+@clip_map : path("M 10.701635,26.832017 78.339952,44.95565 147.25043,26.491144 191.78252,52.201754 V 245.58094 L 144.34001,218.19 84.860306,234.12753 11.370421,214.43598 Z");
+@hectagon : polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+.blob img {
+  transform           : translateX(-2%) rotate(-2deg)!important;  /* No spaces! */
+  clip-path           : url(#clip_blob);
+}
+.clip_blob2 {
+  clip-path : url(#clip_blob2);
+}
+@grunge   : url(data:image/png;base64,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);
+
+/** PNG frames **/
+.pngframe-paper {
+  width:auto;
+  background-origin:10% 10%;
+
+}
+
+
+/** Keyframes **/
+@keyframes pulse {
+  0% {
+    transform   : scale(0.95);
+    box-shadow  : 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+
+  70% {
+    transform   : scale(1);
+    box-shadow  : 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform   : scale(0.95);
+    box-shadow  : 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+@keyframes fadeon {
+  0% {
+    opacity     : 0;
+  }
+ 100% {
+    opacity     : 1;
+  }
+}
+@keyframes fadeoff {
+  0% {
+    opacity     : 0;
+  }
+ 100% {
+    opacity     : 1;
+  }
+}
+@-webkit-keyframes bounce {
+  0% {
+  -webkit-transform:translateY(-100%);
+    opacity     : 0;
+  }
+  5% {
+    -webkit-transform:translateY(-100%);
+    opacity     : 0;
+  }
+  15% {
+    -webkit-transform:translateY(0);
+    padding-bottom: 5px;
+  }
+  30% {
+    -webkit-transform:translateY(-50%);
+  }
+  40% {
+    -webkit-transform:translateY(0%);
+    padding-bottom: 6px;
+  }
+  50% {
+    -webkit-transform:translateY(-30%);
+  }
+  70% {
+    -webkit-transform:translateY(0%);
+    padding-bottom: 7px;
+  }
+  80% {
+    -webkit-transform:translateY(-15%);
+  }
+  90% {
+    -webkit-transform:translateY(0%);
+    padding-bottom: 8px;
+  }
+  95% {
+    -webkit-transform:translateY(-10%);
+  }
+  97% {
+    -webkit-transform:translateY(0%);
+    padding-bottom: 9px;
+  }
+  99% {
+    -webkit-transform:translateY(-5%);
+  }
+  100% {
+    -webkit-transform:translateY(0);
+    padding-bottom: 9px;
+    opacity: 1;
+  }
+}

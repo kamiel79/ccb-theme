@@ -30,7 +30,7 @@ require_once get_template_directory() . '/options.php';
 if (is_multisite()) {
 	require_once get_template_directory() . '/inc/multisite.php';
 	global $mu_blogs;
-	$mu_blogs = of_get_option('mu_blogs');
+	//$mu_blogs = of_get_option('mu_blogs');
 	
 	/* use /mp/999/ for pagination */
 	function ccb_rewrite_endpoint() {
@@ -462,11 +462,11 @@ function ccb_scripts() {
 	wp_localize_script( 'ccb_custom', 'ccb_custom_options', array(
 		'ccb_uri' => get_template_directory_uri(),
 		'ccb_postperpage' => get_option('posts_per_page'),
-		'ccb_font_sizing' => of_get_option('ccb_font_sizing'),
-		'ccb_fix_nav' => of_get_option('ccb_fix_nav'),
-		'ccb_metacolumnfloat' => of_get_option('ccb_metacolumnfloat'),
+		//'ccb_font_sizing' => of_get_option('ccb_font_sizing'),
+		//'ccb_fix_nav' => of_get_option('ccb_fix_nav'),
+		//'ccb_metacolumnfloat' => of_get_option('ccb_metacolumnfloat'),
 		'ccb_pagesize' => ccb_pagesize(),
-		'ccb_ajax_load' => of_get_option('ccb_ajax_load'),
+		//'ccb_ajax_load' => of_get_option('ccb_ajax_load'),
 		'home_url' => home_url(),
 		'ccb_sidebarinitial' => CCB_SIDEBARINITIAL)
 	);
@@ -621,7 +621,7 @@ function ccb_post_class ($classes) {
 	global $post;
 	if (is_single()) $classes[] = "single";
 	//if (CCB_SQUARES) $classes[] = "squares";
-	if (of_get_option("adjust_font_size")) $classes [] = "title_stretch";
+	//if (of_get_option("adjust_font_size")) $classes [] = "title_stretch";
 	if (get_post_meta($post->ID, "ccb_priority", true))
 		$classes[] = "priority-".get_post_meta($post->ID, "ccb_priority", true);
 	$count_posts = wp_count_posts();
@@ -637,7 +637,7 @@ endif;
 	
 /* Logo; fallback is blog title */
 	function ccb_logo () {
-		$src = of_get_option("ccb_logo");
+		//$src = of_get_option("ccb_logo");
 		if ($src !="") echo "<img src='$src' />";
 		else bloginfo( 'name' );
 	}
@@ -784,7 +784,7 @@ function ccb_thumbnail ($postid, $size='thumbnail', $output='html', $classes='wp
 			if ($tag) $src = '#'.$tag;
 		}
 	}
-	if ($src == "") return of_get_option('ccb_fallback_thumbnail');
+	//if ($src == "") return of_get_option('ccb_fallback_thumbnail');
 	if ($src!="" && $output=='url') {
 		return $src;
 	}
@@ -811,7 +811,7 @@ function ccb_thumbnail ($postid, $size='thumbnail', $output='html', $classes='wp
 			}
 		}
 	}
-	return of_get_option('ccb_fallback_thumbnail');
+	//return of_get_option('ccb_fallback_thumbnail');
 }
 
 

@@ -19,11 +19,17 @@ $tags_list = get_the_tag_list('<span class="tags_list">',', ', '</span>');
 
 			$thumburl = ccb_thumburl($post->blog_id, $post->ID, "large");
 
-			if ( ( $large_image_dimension[1] ) < CCB_FULLWIDTH && '' == get_post_meta($post->ID, 'ccb_headmedia', true)) {
-				echo "<img src='" . $thumburl . "' />";
-			}
+			if ( ( $large_image_dimension[1] ) < CCB_FULLWIDTH && '' == get_post_meta($post->ID, 'ccb_headmedia', true)) { ?>
+				
+				<div><img src='<?php echo $thumburl; ?>' class='<?php echo ccb_featured_image_classes($post->ID) ?>' />
+					<?php 
+						$ccb_byline = get_post_meta($post->ID, 'ccb_byline', $single = true);
+						if ($ccb_byline) { echo "<div class='ccb_byline'>" . $ccb_byline . "</div>"; }
+					?>			
+				</div>
+			<?php }
 		}
-		/** Show Post Title if not show above **/
+		/** Show Post Title if not shown above **/
 		$ccb_titleonimage = get_post_meta($post->ID, 'ccb_titleonimage', $single = true);
 		if (!$ccb_titleonimage) { 
 			?>
@@ -39,22 +45,40 @@ $tags_list = get_the_tag_list('<span class="tags_list">',', ', '</span>');
 			</h1>
 			</a>
 		<?php } ?> 	
-		
+		<?php if ( !wp_is_mobile()): ?>
 		<div id="metacolumn" class="metacolumn entry-metas">
+				<div class="entry-meta avatar">
+					<?php if (get_avatar(get_the_author())) echo get_avatar (get_the_author(), 40); ?>
+				</div>		
 				<div class="entry-meta posted_by">
-					<?php ccb_posted_by(__("By", "ccb"));	?>
+					<?php ccb_posted_by(__("", "ccb"));	?>
 				</div>
 				<div class="entry-meta posted_on">
-					<?php ccb_posted_on(__("On", 'ccb'), __("Updated", 'ccb'), false);	?>
+					<?php ccb_posted_on(__("", 'ccb'), __("Updated", 'ccb'), false);	?>
 				</div>
 				
 				<?php if ($tags_list) echo "<div class=\"entry-meta \">". $tags_list . "</div>";	?>
 				<?php if ($category_list) echo "<div class=\"entry-meta \">". $category_list . "</div>";	?>
 		
-			<?php if ( ! dynamic_sidebar( 'entrymetawidgets' ) ) : ?>
-			<?php endif; ?>
+				<?php if ( ! dynamic_sidebar( 'entrymetawidgets' ) ) : ?>
+				<?php endif; ?>
 		</div>
+		<?php else: ?>
+			<div id="metacolumn" class="mobile_metacolumn entry-metas">
+				<div class="entry-meta avatar">
+					<?php if (get_avatar(get_the_author())) echo get_avatar (get_the_author(), 64); ?>
+				</div>
 
+				<div class="entry-meta posted_by">
+					<?php ccb_posted_by();	?>
+				</div>
+				<div class="entry-meta posted_on">
+					<?php ccb_posted_on(__("", 'ccb'), __("updated", 'ccb'), false);	?>
+				</div>
+				<?php if ($category_list) echo "<div class=\"entry-meta \">". __("", 'ccb') . $category_list . "</div>";	?>
+		
+			</div>
+		<?php endif; ?>	
 	</header><!-- .entry-header -->
 	<div class="entry-content">
 		<?php 

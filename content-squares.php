@@ -19,7 +19,7 @@ $noexcerpt_formats = explode(",",CCB_NOEXCERPT_FORMATS);
 $sharer_formats = explode(",",CCB_SHARER_FORMATS);
 
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class("entry squares col col{$ccb_cols}"); ?> >
+<article id="post-<?php the_ID(); ?>" <?php post_class("entry squares col col" . ccb_cols()); ?> >
 	<div class="entry-border" >
 			<?php $thumburl = ccb_thumburl($post->blog_id, $post->ID, "medium"); ?>
 			<div class='thumbcrop'

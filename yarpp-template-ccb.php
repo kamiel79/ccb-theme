@@ -19,14 +19,17 @@ $cnt = min($related_query->query["showposts"], $related_query->found_posts);
 	<li class="col col<?php echo $cnt ?>"><h2><?php the_title(); ?></h2>
 		<?php 
 		$size = (3-floor($cnt/3))*100;	/* Calculate size of thumbnail */
-		if (has_post_thumbnail()) : the_post_thumbnail( array($size, $size) );
+		if (has_post_thumbnail()) : 
+			echo "<div style='position:relative'class='thumbcrop yarpp-image'>";
+			the_post_thumbnail( array($size, $size) );
+			echo "</div>";
 		else :
 			$thumburl = ccb_thumburl($post->blog_id, $post->ID, "medium");
 			if ("" != $thumburl) : 	?>
-			<div class="yarpp-image"><img src="<?php echo $thumburl; ?>" height="<?php echo $size;?>" width="<?php echo $size;?>"></img></div>
+			<div style="position:relative" class="thumbcrop yarpp-image"><img src="<?php echo $thumburl; ?>" height="<?php echo $size;?>" width="<?php echo $size;?>"></img></div>
 			<?php endif;
 		endif; ?>
-		<p><?php echo sanitize_text_field(get_the_excerpt()); ?></p>
+		<p><?php //echo sanitize_text_field(get_the_excerpt()); ?></p>
 	</li>
 	</a>
 	<?php endwhile; ?>
