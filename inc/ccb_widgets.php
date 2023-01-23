@@ -306,6 +306,75 @@ if (!class_exists("ccb_small_map_widget")) :
 endif;
 
 
+/********************************
+ *   CCB Multisite Tags
+ * 	 Shows a tag cloud for all tags in the multisite
+ *   Use proper caching technique
+ **********************************/
+
+if (!class_exists("ccb_multisite_tag_cloud")) :
+	class ccb_multisite_tag_cloud extends CCB_Widget {
+		function __construct() {
+			parent::__construct(
+			// Base ID of the widget
+			'ccb_multisite_tag_cloud', 
+			// Widget name will appear in UI
+			__('CCB Multisite Tag Cloud', 'ccb'), 
+			// Widget description
+			array( 'description' => __( 'Displays tag cloud for multisite', 'ccb' ),'' ) 
+			);
+		}
+		
+		function ccb_multitagcloud(){ ?>
+				<aside id="multisite_tag_cloud" class="widget widget_tag_cloud">
+				<div id="tagcloud">
+				<?php
+					/* Loop through all relevant blogs to gather tags */
+					$tags = array();
+					$freq = array();
+					$prefixes = multisite::mu_blog_prefixes();
+					global $wpdb;
+					foreach (multisite::mu_blog_names() as $blogid => $blogname) {
+						switch_to_blog( $blogid );
+						$t = get_tags();
+						$pre = $prefixes[$blogid];
+						$pre = $wpdb->get_blog_prefix();
+						restore_current_blog();	
+						foreach ($t as $tag) {
+							$q = "SELECT count from {$pre}term_taxonomy WHERE term_id = '{$tag->term_id}'";
+							$res = $wpdb->get_row($q);
+							if (!array_key_exists($tag->name, $freq)) $freq[$tag->name] = 0;
+							$freq[$tag->name] += $res->count;
+							$tags[] = $tag->name;
+						}
+					}
+					$tags = array_unique ($tags);
+					asort($tags);
+					if ( $tags ) :
+					//use the structure of the site, default was CCB_MULTITAG_PAGE . '?tag=
+						foreach ( $tags as $term_id=>$name ) : ?>
+							<a href="<?php echo '/keyword/' . $name; ?>" class="tag-cloud-link"
+							style="font-size:<?php echo 8+$freq[esc_attr( $name )] * 3 ?>pt" title="<?php echo esc_attr( $name ); ?>"><?php echo esc_html( $name ); ?></a> 
+						<?php endforeach; ?>
+					<?php endif; 
+					
+				
+				?>
+				</div>
+				</aside>
+		<?php }
+		
+		public function widget( $args, $instance ) {
+			global $post;
+			if (!is_multisite()) return;
+			
+			parent::widget_title( $args, $instance );
+			$this->ccb_multitagcloud();
+			
+		}	// Widget
+	}	// end of ccb_multisite_tag_cloud widget
+endif;
+
 
 /********************************
  *   Register and load the widgets
@@ -316,6 +385,7 @@ if (!function_exists('ccb_load_widgets')) :
 		register_widget( 'category_description_widget' );
 		register_widget( 'extended_search_widget' );
 		register_widget( 'ccb_small_map_widget' );
+		register_widget( 'ccb_multisite_tag_cloud' );
 	}
 	add_action( 'widgets_init', 'ccb_load_widgets' );
 endif;

@@ -21,7 +21,7 @@ function get_flickr_img($tag, $count=1, $m="_m", $format="") {
 # http://www.flickr.com/services/api/misc.urls.html
 # http://farm{farm-id}.static.flickr.com/{server-id}/{id}_{secret}.jpg
 
-if (count ($xml->photos->photo)>0) {
+if (is_countable ($xml->photos->photo) && count ($xml->photos->photo)>0) {
 	foreach ($xml->photos->photo as $photo) {
 	  $title 	= $photo['title'];	
 	  $farmid 	= $photo['farm'];
@@ -29,7 +29,7 @@ if (count ($xml->photos->photo)>0) {
 	  $id		= $photo['id'];
 	  $secret 	= $photo['secret'];
 	  $owner 	= $photo['owner'];
-	  if ($count>1) $thumb_url[] = "http://farm{$farmid}.static.flickr.com/{$serverid}/{$id}_{$secret}{$m}.jpg";
+	  if (is_countable($count) && $count>1) $thumb_url[] = "http://farm{$farmid}.static.flickr.com/{$serverid}/{$id}_{$secret}{$m}.jpg";
 	  else $thumb_url = "http://farm{$farmid}.static.flickr.com/{$serverid}/{$id}_{$secret}{$m}.jpg";
 	  }
 	}

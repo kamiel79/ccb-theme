@@ -102,7 +102,7 @@ jQuery(document).ready(function($) {
 
 
 
-	/* Load default image if image in entry-content doesn't load */
+	/* Load default image if image in entry-content doesn't load
 	(function ccb_onerror_default_image(el) {
 		if ($(el).length) {
 			var the_post = $(el);
@@ -110,7 +110,7 @@ jQuery(document).ready(function($) {
 			new_html.replace("<img", "<img onerror='this.onerror=null;this.src=\"" + ccb_custom_options.ccb_uri + "/img/placehodler.svg\"'");
 			the_post.html(new_html);
 		}
-	})(".post .entry-content");
+	})(".post .entry-content"); */
 
 
 

@@ -7,6 +7,9 @@
 	@multisite enabled
 */
 
+global $ccb_cols;
+if (!isset($ccb_cols)) $ccb_cols = CCB_COLS;	//override number of columns
+
 /* prepare arrays for special treatment of post formats */
 if (!isset($noimg_formats)) $noimg_formats = explode(",",CCB_NOIMG_FORMATS);
 $nofooter_formats = explode(",",CCB_NOFOOTER_FORMATS);
@@ -21,15 +24,21 @@ $cat = get_the_category();
 if ( ! empty( $cat ) ) 	$cat_name = $cat [0]->cat_name;
 else $cat_name = __("General", "ccb");
 
-$tag_list = get_the_tag_list( '<span class="tags_list"><span>', ' ', '</span></span>' );
+$tag_list = '<span class="tags_list"><span>'; //get_the_tag_list( '<span class="tags_list"><span>', ' ', '</span></span>' );
+$terms = get_the_terms ($post->ID, 'post_tag');
 
+if ($terms !== false) {
+	foreach ( $terms as $term=>$obj ) {
+		$tag_list .= "<a href='/keyword/{$obj->name}'>{$obj->name}</a>"; 
+	}
+}
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class("entry listing"); ?> >
+<article id="post-<?php the_ID(); ?>" <?php post_class("entry grid2 col col" . ccb_cols()); ?> >
 
 	<div class="entry-border">
 
 		<?php if (!has_post_format( $notitle_formats )) : ?>
-			<?php ccb_posted_on("",false);	?>
+			<?php ccb_posted_on("","",false);	?>
 			<a href="<?php ccb_permalink($post->blog_id, $post->ID) ?>" title="<?php the_title(); ?>">
 			<h5 class="post-title"><span><?php the_title(); ?></span></h5>
 			</a>

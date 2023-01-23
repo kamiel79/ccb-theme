@@ -36,10 +36,12 @@ $sharer_formats = explode(",",CCB_SHARER_FORMATS);
 						<?php endif;?><!--/ notitle formats-->
 					
 						<?php if (!has_post_format( $noexcerpt_formats )) : ?>
+						<a href="<?php ccb_permalink($post->blog_id, $post->ID) ?>" title="<?php the_title(); ?>">
 						<div class='excerpt'>
 						<?php 
 							echo get_the_excerpt();
 						 ?>
+						 </a>
 						</div>
 						<?php endif; ?><!-- / noexcerpt_formats -->
 					</a>

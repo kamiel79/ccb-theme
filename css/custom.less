@@ -731,8 +731,11 @@ html, .site {
     float: left;
  }
 .col3 .col {
-    width: 33%;
+    width: 100%; /* we use column-count */
     float: left;
+}
+#container.col3 {
+	column-count: 3;
 }
 .listing.entry {
 	display:inline-block;
@@ -862,7 +865,6 @@ html, .site {
 	position					: absolute;
 	margin 						: 0;
 	width						: 100%;
-	line-height 				: 0;
 	max-height					: @gridimagemaxheight;
     background-position			: center center;
 	overflow					: hidden;
@@ -1095,7 +1097,7 @@ blockquote.highlight {
     color 						: @txtcolorL;
     text-transform 				: uppercase;
     font-size 					: 10px;
-    padding-right 				: 2px;
+    padding-right 				: 6px;
     letter-spacing 				: -0.4px;
 }
 .tagcloud a:hover {

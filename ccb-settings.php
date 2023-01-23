@@ -8,10 +8,9 @@
 * @package Creative Choice Blog
 */
 
-define ( 'DEVELOPMENT', true);
-define ( 'CCB_LAYOUT_STYLES', array('list'=>'List', 'squares'=>'Squares', 'grid2'=>'Grid 2', 'shapes'=>'Shapes'));
+define ( 'DEVELOPMENT', false);
+define ( 'CCB_LAYOUT_STYLES', array('listing'=>'Listing', 'squares'=>'Squares', 'grid2'=>'Grid 2', 'shapes'=>'Shapes'));
 define ( 'CCB_CLIP_SHAPES', array(''=>'None', 'heart'=>'Heart', 'star'=>'Star'));
-define ( 'CCB_COLOR1',get_theme_mod('ccb_color1','#dd9933') );	//Main accent color
 
 define ( 'CCB_FALLBACK_THUMBNAIL', get_theme_mod('ccb_fallback_thumbnail') );
 define ( 'IN_POST_THUMBNAILS', get_theme_mod('ccb_inpostthumbnails') );
@@ -38,29 +37,29 @@ define ( 'CCB_THROBBER_URI', get_template_directory_uri() . "/img/load.gif");
 /* Multisite */
 define ( 'CCB_MULTISITE', get_theme_mod('ccb_multisite_on'));
 define ( 'CCB_MULTISITEBLOGS', get_theme_mod('ccb_multisite_blogs'));
+define ( 'CCB_MULTITAG_PAGE', get_permalink(get_page_by_path('multisite-tags'))); //get_theme_mod('ccb_multitag_page'));
 
 define ( 'CCB_HEADER_IMAGE', get_theme_mod('ccb_header_image'));
 
 /* Layout grid */
-define ( 'CCB_GRID', get_theme_mod('ccb_grid', 'squares'));
+define ( 'CCB_GRID', get_theme_mod('ccb_grid', 'grid2'));
 define ( 'CCB_GRIDFRONT', get_theme_mod('ccb_gridfront', 'list'));
 define ( 'CCB_COLS', max(1,(int)get_theme_mod('ccb_cols')));			
 define ( 'CCB_CLIP_SHAPE', get_theme_mod('ccb_clip_shape'));
 define ( 'CCB_POETRY_CAT', "gedichten, poetry, Gedichte");
 define ( 'CCB_SHARER_FORMATS', "quote, aside, audio, video, status");			// shared straight from the grid
-define ( 'CCB_TEMPLATE_ISOTOPE', "ccb-portfolio.php");
 define ( 'CCB_THUMB_MIN_HEIGHT',100);
 define ( 'CCB_THUMB_MIN_WIDTH',100);
 define ( 'CCB_HAS_SIDEBAR', true);
 define ( 'CCB_SIDEBARINITIAL', get_theme_mod('ccb_sidebarinitial'));
 define ( 'CCB_SIDEBARDELAY', get_theme_mod('ccb_sidebardelay',500));
 define ( 'CCB_NOIMG_FORMATS', "quote, link, aside");				// PHP 5.6+ const array
+define ( 'CCB_METACOLUMNFLOAT', get_theme_mod('ccb_metacolumnfloat'));
 define ( 'CCB_NOFOOTER_FORMATS', "image, aside, quote");
 define ( 'CCB_NOTITLE_FORMATS', "quote");
 define ( 'CCB_NOEXCERPT_FORMATS', "image");
 define ( 'CCB_LARGE_INTEGER', 412013);
 define ( 'CCB_FULLWIDTH', 1200);
-define ( 'CCB_PORTFOLIOCATEGORY', 'category');									//the category used for portfolio
 define ( 'CCB_BREADCRUMB', get_theme_mod('ccb_breadcrumb'));
 define ( 'CCB_MASONRY', false);
 

@@ -64,7 +64,8 @@ endif;
 if ( ! function_exists( 'ccb_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
- * When false is passed as 2nd argument, the byline is skipped.
+ * When false is passed as 3nd argument, the byline is skipped.
+ * Updated_text is empty, updated_date is not displayed
  */
 function ccb_posted_on($posted_on_text = "", $updated_text = "", $byline_text = "") {
 	/** Prepare <time> tags **/
@@ -77,14 +78,17 @@ function ccb_posted_on($posted_on_text = "", $updated_text = "", $byline_text = 
 		'<span class="posted-on"><a href="' . esc_url( ccb_get_permalink() ) . '" rel="bookmark">' . $time_string . '</a></span>');
 	
 	// If a NEWER modified date, share modified date, use get_the_time for time comparison
-	if ( strtotime(get_the_date( 'U' )) < strtotime(get_the_modified_date( 'U' )) ) {
-		$time_string2 = '<time class="updated" datetime="%1$s">%2$s</time>';
-		$time_string2 = sprintf ($time_string2,
-		esc_attr( get_the_modified_date( 'c' ) ),
-		esc_html( get_the_modified_date() )
-		);
-		$posted_on .= "<span class='updated-on'>".sprintf ($updated_text." "._x( '%s', 'modified date', 'ccb'),
-		'<a href="' . esc_url( ccb_get_permalink() ) . '" rel="bookmark">' . $time_string2 . '</a></span>');
+	if ($updated_text !="") {
+		echo "kiekeboe!";
+		if ( strtotime(get_the_date( 'U' )) < strtotime(get_the_modified_date( 'U' )) ) {
+			$time_string2 = '<time class="updated" datetime="%1$s">%2$s</time>';
+			$time_string2 = sprintf ($time_string2,
+			esc_attr( get_the_modified_date( 'c' ) ),
+			esc_html( get_the_modified_date() )
+			);
+			$posted_on .= "<span class='updated-on'>".sprintf ($updated_text." "._x( '%s', 'modified date', 'ccb'),
+			'<a href="' . esc_url( ccb_get_permalink() ) . '" rel="bookmark">' . $time_string2 . '</a></span>');
+		}
 	}
 	$byline="";
 	if ($byline_text) {
