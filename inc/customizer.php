@@ -9,7 +9,7 @@
  * Add postMessage support for site title and description for the Theme Customizer.
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
-/* Setting up the Customizer
+ * Setting up the Customizer
  * Using https://codex.wordpress.org/Theme_Customization_API
  * April 2021, dumb as ever & October 2022
  */
@@ -153,7 +153,7 @@ function ccb_customize_register( $wp_customize ) {
 		array('label' => __( 'Use Flickr to find images', 'ccb'), 'section' => 'ccb_extras',
 			'settings' => 'ccb_flickr', 'type' => 'checkbox') ));
 	$wp_customize->add_setting( 'ccb_flickr_api_key' , array('default' => '', 'transport' => 'refresh',
-		'sanitize_callback' => 'ccb_sanitize_api_key') );
+		'sanitize_callback' => 'wp_filter_nohtml_kses') ); /*Allow all text */
 	$wp_customize->add_control( new WP_Customize_Control ($wp_customize, 'ccb_flickr_api_key',
 		array('label' => __( 'Flickr API key', 'ccb'), 'section' => 'ccb_extras',
 			'settings' => 'ccb_flickr_api_key', 'type' => 'text') ));

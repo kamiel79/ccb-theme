@@ -1,0 +1,195 @@
+@import "settings.less";
+
+/** Stylesheet for grid list; (chronological) list of posts
+*   The design shows a vertical line and layouts for Standard, Aside, Quote, Image
+*	November 2018
+*   Updated March 2021, April 2021
+*/
+
+#container.listing {
+	margin 						: 0 25%;
+	width 						: 75%;
+    columns 					: 1 @gridmin;
+}
+
+.withsidebar #container.listing{
+	 width 						: 100%;
+}
+
+
+.listing .entry-meta {
+	text-align 					: right;
+	margin  					: 1em 0;
+}
+.listing .posted-on {
+	margin-right 				: 16px;
+	top 						: 12px;
+	position					: relative;
+}
+.listing .posted-on a{
+	font-size 					: 12px;
+	color 						: @color2;
+	font-style 					: italic;
+}
+.listing .posted-on:before {
+	display 					: none;
+}
+
+.listing .entry {
+	border-left 				: 2px solid @color2;
+	padding 					: 0 30px;
+	padding-bottom 				: 40px;		/*exact pixel value */
+	margin-left 				: 0;
+	width 						: 75%;
+}
+
+.listing .entry .post-title {
+	font-size 					: 1.6rem;
+	line-height 				: 1.2;
+	display 					: flex;
+    padding 					: .5em 0;
+}
+.listing .entry-header {
+	height 						: 0;		/* on larger screens, for alignment of the element to the right */
+	margin-left 				: -300px;
+	width 						: 250px;
+	float 						: left;
+	position 					: relative;
+}
+.listing .details {
+	float 						: left;
+	margin 						: 0 0 10px 0;
+}
+.listing .post-standard a {
+	color 						: @color1L;
+}
+.listing .thumbcrop {
+	float 						: right;
+	clear 						: both;
+	margin 						: @margin 0;
+	max-width 					: 100%;
+	max-height 					: 39vw;					/* Max width of image */
+}
+.listing .thumbcrop img {
+	width 						: auto;
+}
+.listing .category a {
+	font-family 				: @font3;
+	color 						: @color2;
+	word-break 					: break-word;	/* for multi-word category names */
+	text-transform 				: uppercase;
+}
+.listing .entry-footer {
+	border-bottom 				: 1px solid @lightgrey;
+	font-size 					: @font-small;
+	color 						: @color1L;
+	padding						: @padding 0;
+	display 					: flow-root;
+	clear						: both;
+	width 						: 100%;
+	border-top 					: 1px solid @lightgrey;
+	font-family 				: @font3;
+}
+.listing .entry-footer a {
+	color 						: @color1L;
+}
+.listing .comments-link {
+	float 						: right;
+}
+.listing .line {
+	border-bottom 				: 2px solid @color2;
+	position 					: absolute;
+	width 						: 30px;
+	right 						: 0;
+	margin-top 					: -16px;
+	margin-right				: -20px;
+}
+.line:after {
+	font 						: 300 32px/2 dashicons;
+	content 					: "\f141";
+	color 						: @color2;
+	margin-left					: 8px;
+	top  						: -31px;
+	position					: absolute;
+}
+.listing .sticky .post-title {
+	background					: @color2;
+	color 						: @bkg;
+	position	 				: relative; 	/* for absolute positioning of pseudo el triangle */
+	padding 					: @padding;
+	margin-left 				: -32px;
+	padding-left 				: 32px;
+}
+.listing .sticky .post-title:after {
+    border-bottom: 1em solid white;
+    border-left: 1em solid transparent;
+    bottom: 0px;
+    content: '';
+    right: 0px;
+    height: 0;
+    width: 0;
+    position: absolute;
+}
+.listing .sticky .post-excerpt {
+	margin-top 					: 1em;
+}
+.listing .updated {
+	display 					: none;
+}
+
+/* Styles for Post Formats */
+.listing .format-aside .entry-content,
+.listing .format-aside .post-excerpt,
+.listing .format-aside .post-excerpt a {
+	font-family					: @font-aside;
+	color						: @color2;
+	width 						: 61.5%;
+}
+.listing .format-aside .post-title,
+.listing .format-quote .post-title {
+	color 						: @color2;
+	transform 					: skewx(172deg);
+	font-weight 				: bold;
+}
+.listing .format-quote .post-excerpt:before {
+    content: "“";
+    font-family: 'Lora';
+    font-size: 2.5em;
+    margin-top: -@padding;
+    position: absolute;
+    float: left;
+    margin-left: -@padding;
+}
+
+
+/* Mobile style */
+@media @mobile {
+	#container.listing {
+		margin 					: 0;
+		width 					: 100%;
+	}
+	.listing .entry {
+		width 					: 100%;
+		margin-left 			: 0;
+		padding-bottom 			: 50px;
+	}
+	.listing .entry-header {
+		height 					: auto;
+		margin-left 			: 0;
+	}
+	.listing .line {
+		right 					: auto;
+		margin-left 			: -30px;
+	}
+	.listing .line:after{
+		content 				: "\f139";
+		margin-left				: -14px;
+	}
+	.listing .entry .post-title {
+		font-size 				: 1.4rem;
+		line-height 			: 1;
+	}
+	.listing .entry-meta {
+		text-align: left;
+	}
+}

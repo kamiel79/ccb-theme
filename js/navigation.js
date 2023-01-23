@@ -8,6 +8,7 @@
  * Handles toggling the navigation menu for small screens.
  */
 
+if (ccb_custom_options == 'undefined') ccb_custom_options = array();
 
 ( function($) {
 	if (IS_MOBILE.matches) {
@@ -256,9 +257,10 @@ function FM1(refresh=false) {
 			} 
 		}
 } //FM1
-
+	console.log(ccb_custom_options);
 if ($("#metacolumn").length>0 && ccb_custom_options.CCB_METACOLUMNFLOAT 
 	&& $("#metacolumn").outerHeight() < window.innerHeight) {
+
 	$(window).scroll(function(e) {
 		FM1(false);
 	});

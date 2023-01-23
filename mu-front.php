@@ -36,7 +36,7 @@ $current			= 1;	/* start with page 1 */
 			  $posts = multisite::mu_posts(CCB_COLS * 2, $current, $s); 
 			
 			  if ($posts) : ?>
-				<div id="container" class="<?php echo CCB_GRID, " col", ccb_cols(); ?>">	
+				<div id="container" class="<?php echo CCB_GRIDFRONT, " col", ccb_cols(); ?>">	
 					<?php
 					
 					foreach ($posts as $post) :

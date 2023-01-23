@@ -139,12 +139,12 @@ static function mu_blog_names() {
 	return $blognames;
 }
 
-function mu_blog_prefixes() {
+public static function mu_blog_prefixes() {
 /* return all blog prefixes of a multisite
  * @param -
  * @return array of prefixes
 */
-  $mu_blogs = self::mu_blogs;
+  $mu_blogs = self::$mu_blogs;
 
   global $wpdb;
   global $table_prefix;
@@ -152,7 +152,7 @@ function mu_blog_prefixes() {
     public = '1' AND archived = '0' AND spam = '0' AND deleted = '0';" );
 
   if ( $rows ) :
-    $b = array();
+    $b = array(0=>"wp_");
     foreach ( $rows as $row ) :
 		if (in_array($row->blog_id, $mu_blogs)) {
 			$b[$row->blog_id] = $wpdb->get_blog_prefix( $row->blog_id );
@@ -207,7 +207,7 @@ function mu_date_oldest_post() {
 }
 
 
-static function mu_posts($howmany, $paged, $search="", $from="01-01-1900", $until="") {
+static function mu_posts($howmany, $paged, $search="", $from="01-01-1900", $until="", $tag="") {
 /* 	returns array of posts from all blogs in $blogs, newer than $from
 *	older than $until, containing $search
 */
@@ -221,7 +221,8 @@ static function mu_posts($howmany, $paged, $search="", $from="01-01-1900", $unti
   if ($until=="") $until = date("d-m-Y");
   self::$search = $search;	//save search for later use, eg in paging  
   $b = self::get_mu_tables();
-
+  /* Get all blog prefixes if needed */
+  if ($tag!="") $prefixes = self::mu_blog_prefixes();
   /* In case there are multisite tables to query */
   if ( count( $b ) > 0 ) :	//if at least 1 table
 
@@ -237,6 +238,16 @@ static function mu_posts($howmany, $paged, $search="", $from="01-01-1900", $unti
 				/* limit results by search */
 				$query .= " AND ( post_content LIKE \"%{$search}%\" OR post_title LIKE \"%{$search}%\" )";
 			} // if $search
+			if ($tag!="") {
+				/* limit results by tag */
+				$pre = $prefixes[$blogId];
+				$query .= " AND ID IN (SELECT {$pre}posts.ID
+					FROM $tableName, {$pre}term_relationships, {$pre}terms
+					WHERE {$pre}posts.ID = {$pre}term_relationships.object_id
+					AND {$pre}terms.term_id = {$pre}term_relationships.term_taxonomy_id
+					AND {$pre}terms.name = '{$tag}')";			
+				
+			}
 			/* limit results by post_date. note that the end date is not inclusive so we add 1 day */
 			$query .= " AND post_date BETWEEN STR_TO_DATE('{$from}','%d-%m-%Y') AND ADDDATE(STR_TO_DATE('{$until}','%d-%m-%Y'),1)";
 
@@ -307,7 +318,7 @@ static function mu_paging_nav($p, $search="") {
 	
 	$search = self::$search;
 	/* Determine name of current page */
-	$current_url =  home_url( '/' ) . CCB_MULTIPAGE;
+	$current_url =  get_permalink( get_the_ID() );//home_url( '/' ) . CCB_MULTIPAGE;
 	
 	/* Output pretty link if used */
 	//$mp = ($wp_rewrite->using_permalinks())?"mp/":"?mp=";

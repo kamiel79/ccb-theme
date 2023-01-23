@@ -24,7 +24,9 @@
  * final_words
  */
 
-/* Helper functions */
+/* Helper functions
+ * Returns an array of the constants, that can be passed to Javascript
+ */
 	function returnConstants ($prefix) {
 	    foreach (get_defined_constants() as $key=>$value)
 	        if (substr($key,0,strlen($prefix))==$prefix)  $dump[$key] = $value;
@@ -39,7 +41,6 @@ if (is_multisite()) {
 	$blogs = get_theme_mod ('ccb_multisite_blogs');
 
 	$multi = new multisite($blogs);
-	//$mu_blogs = of_get_option('mu_blogs');
 	
 	/* use /mp/999/ for pagination */
 	function ccb_rewrite_endpoint() {
@@ -58,13 +59,8 @@ if (is_child_theme() and file_exists (get_stylesheet_directory() . "/ccb-setting
 include get_template_directory() . "/ccb-settings.php";
 
 
-/** Check if development and otherwise serve minified files **/
-if (DEVELOPMENT == false) {
-	$min = ".min";	
-}
-else {
+/** Don't serve minified files **/
 	$min = "";
-}
 
 /* Include ccb Widgets */
 	require_once get_template_directory() . '/inc/ccb_widgets.php';
@@ -216,10 +212,12 @@ function ccb_setup() {
 		$content_width = 600;
 	}
 	
+	
+ 
 	/**  Define where masonry is used:
 	  *  Everywhere if AJAX search is on
 	  *  Else except 
-	  ***/
+	  **
 	function is_masonry() {
 		if (CCB_MASONRY && (!is_single() && !is_404())
 			|| CCB_AJAX_LOAD
@@ -228,10 +226,31 @@ function ccb_setup() {
 		else 
 			{ return FALSE; }
 	}
-	
+	*/
 }
 endif; // ccb_setup
 add_action( 'after_setup_theme', 'ccb_setup' );
+
+/**
+ * Customizer CSS
+ * @Since October 2022
+ * See: https://www.cssigniter.com/how-to-create-a-custom-color-scheme-for-your-wordpress-theme-using-the-customizer/
+ */
+function ccb_get_customizer_css() {
+    ob_start();
+
+    $ccb_color1 = get_theme_mod( 'ccb_color1', '' );
+    if ( ! empty( $ccb_color1) ) {
+      ?>
+      .site-branding {
+			background-color:  <?php echo sanitize_hex_color($ccb_color1); ?>;
+      }
+      <?php
+    }
+
+    $css = ob_get_clean();
+    return $css;
+}
 
 /**
  * Register widget areas.
@@ -406,19 +425,16 @@ if (! function_exists('ccb_pagesize_filter')) :
 endif;
 add_action( 'pre_get_posts', 'ccb_pagesize_filter', 1 );
 
-
 /**
- * Enqueue scripts and styles. Google Fonts, conditional styles for mobile
+ * Enqueue styles. 
  */
-function ccb_scripts() {
-	global $min;
-	/* Pass stylesheet directory on to the scripts */
-	$stylesheet_uri = array( 'stylesheet_directory_uri' => get_stylesheet_directory_uri());
-	
+function ccb_enqueue_styles() {
 	/* Register Main custom AND mobile stylesheet, that loads all else:
 	/* Main custom theme style */
 	ccb_register_style("custom",'','1.1');
 	ccb_register_style("mobile",'','1.1');
+	/* Pass stylesheet directory on to the scripts */
+	$stylesheet_uri = array( 'stylesheet_directory_uri' => get_stylesheet_directory_uri());
 
 	/* Style for the used grid */
 	ccb_register_style("grid-".CCB_GRID,'', '1.1');
@@ -427,10 +443,8 @@ function ccb_scripts() {
 		
 	/* enqueue dashicons if non admin */
 	if (!is_admin()) wp_enqueue_style( 'dashicons' );
-		
-	/* Enqueue main ccb stylesheet  */
-	wp_enqueue_style( 'custom', array('jquery') );
-
+	
+	wp_enqueue_style( 'custom',  get_stylesheet_uri() ); // This is where you enqueue your theme's main stylesheet
 	/* Enqueue mobile stylesheet */
 	wp_enqueue_style( 'mobile', "", array('custom'), false, "only screen and (max-width: 599px)");
 	
@@ -442,15 +456,33 @@ function ccb_scripts() {
 	if (CCB_HAS_SIDEBAR) wp_enqueue_style( 'content-sidebar' );	/* not necessary */
 	else wp_enqueue_style( 'no-sidebar' );
 	wp_enqueue_script( 'ccb_navigation', get_template_directory_uri() . '/js/navigation.js', array('jquery','ccb_custom'), '20120206', true );
-	if ( is_masonry()) {
-		wp_enqueue_script('masonry');
-	}
-	
+
 	/* Load date picker for extended search only on search page */
 	wp_enqueue_script('jquery-ui-datepicker', array('jquery'));
 	wp_enqueue_style('jquery-style', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css');
+
+	/* Add CSS from customizer */
+	$extra_css = ccb_get_customizer_css();
+	wp_add_inline_style( 'custom', $extra_css );
+}
+
+add_action( 'wp_enqueue_scripts', 'ccb_enqueue_styles', 5 );
+
+/**
+ * Enqueue scripts and styles. Google Fonts, conditional styles for mobile
+ */
+function ccb_scripts() {
+	global $min;
+		
+	/* Enqueue main ccb stylesheet  */
+	//wp_enqueue_style( 'custom', array('jquery') );
+
+		/*if ( is_masonry()) {
+		wp_enqueue_script('masonry');
+	}*/
 	
-	/* Load other scripts */
+		
+	/* Load Scripts */
 	wp_enqueue_script( 'ccb-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 		
 	/* Load main custom js */
@@ -471,7 +503,7 @@ function ccb_scripts() {
 	/* Load jquery form validation script only on single page open for comments */
 	if (is_singular() && comments_open()) {
 		wp_enqueue_script( 'form-validate','https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js', array('jquery'),'20170101',true);
-		wp_enqueue_script( 'formvalidation', get_template_directory_uri() . "/js/formvalidation{$min}.js", array('jquery', 'form-validate'),'20210523',true);
+		//wp_enqueue_script( 'formvalidation', get_template_directory_uri() . "/js/formvalidation{$min}.js", array('jquery', 'form-validate'),'20210523',true);
 		wp_enqueue_script( 'comment-reply' );
 	}
 	
@@ -486,8 +518,10 @@ function ccb_scripts() {
 	$the_constants['ccb_postperpage'] = get_option('posts_per_page');
 	$the_constants['home_url'] = home_url();
 	$the_constants['pagesize'] = ccb_pagesize();
-	$the_constants['ADMINBARHEIGHT'] = (is_user_logged_in()?32:0);
+	$the_constants['LARGESCREENWIDTH'] = 1024;
 	$the_constants['DEVELOPMENT'] = DEVELOPMENT;
+	$the_constants['ADMINBARHEIGHT'] = (is_user_logged_in()?32:0);
+
 	wp_localize_script( 'ccb_custom', 'ccb_custom_options', $the_constants);
 	wp_localize_script( 'ccb_navigation', 'ccb_custom_options', $the_constants);
 }
@@ -826,8 +860,9 @@ function ccb_thumbnail ($postid, $size='thumbnail', $output='html', $classes='wp
 			//load flickr image asynchronously to make server response faster
 			//return the keyword that will display nicely if JS unavailable
 			$tag = ccb_random_tag($post->ID);	//get a random tag from the tags
-			//return #tag to load Flickr image later with AJAX
-			if ($tag) $src = '#'.$tag;
+			//return Flickr image
+			if ($tag)
+				$src = get_flickr_img($tag);
 		}
 	}
 	if ($src == "") return CCB_FALLBACK_THUMBNAIL;
@@ -870,16 +905,20 @@ function ccb_thumbnail ($postid, $size='thumbnail', $output='html', $classes='wp
 function ccb_print_thumb($id) {
 	global $post;
 	$thumburl = ccb_thumbnail($post->ID, "large", "url");
+
 	if ("" != $thumburl) :
+			list($image_w, $image_h) = @getimagesize($thumburl);
+			$imgstyle = "";	//;style='background-image:url(" . $thumburl . ");background-size:" . 
+						//0.85 * min($image_w, $image_h) . "px'";
+	
 			$img_classes = get_post_meta($id, 'ccb_featured_image_classes', $single = true);
 				
 			if (false !== strpos($img_classes, "pngframe")) {
 
 				$cla = CCB_PNGFRAMES[substr($img_classes, 9)];
-				list($image_w, $image_h) = getimagesize($thumburl);
-				/* To do: make it work for all sizes, using the right technique. I am dumbest */
-				$imgstyle = "style='background-image:url(" . $thumburl . ");background-size:" . 
-				 0.85 * min($image_w, $image_h) . "px'";
+				
+				/* To do: make it work for all sizes, using the right technique. */
+				
 				$thumburl = "src='" . get_template_directory_uri() . "/img/" . $cla . "' style='height:	" . $image_h . "px; width:" . $image_w . "px'"; 
 			} 
 			else {
@@ -1076,7 +1115,7 @@ add_filter('get_the_excerpt', 'ccb_trim_excerpt', 1);
 
 /* Filter to show oEmbeds in excerpt. Notice that masonry etc might have to wait until this is loaded */
 global $wp_embed;
-add_filter( 'get_the_excerpt', array( $wp_embed, 'autoembed' ), 999 );
+//add_filter( 'get_the_excerpt', array( $wp_embed, 'autoembed' ), 999 );
 
 
 /***************************************
@@ -1101,17 +1140,17 @@ function ccb_headbar() {
 /****************************************
  * Function ccb_featured_image_classes
  * Returns the classes in the post_meta to be used for styling the featured image
-
+ */
 function ccb_featured_image_classes($id) {
 	$img_classes = get_post_meta($id, 'ccb_featured_image_classes', $single = true);
-	if (str_contains($img_classes, "pngframe")) {
-		$imgstyle = "<style background-image:url('" +  />'
-		return "classes='" + $img_classes + "'" + $imgstyle; 
-	}
-	return "classes='" + $img_classes + '";
+	//if (str_contains($img_classes, "pngframe")) {
+	//	$imgstyle = "<style background-image:url('" +  />'
+	//	return "classes='" + $img_classes + "'" + $imgstyle; 
+	//}
+	return "class='" . $img_classes . "'";
 }
- */
-//get_template_directory_uri + "/img/" + substr($img_classes,7)')"
+
+//get_template_directory_uri + "/img/" + substr($img_classes,7);
 
 
 /******************
@@ -1194,6 +1233,38 @@ function add_ccb_sri($html, $handle) : string {
 }
 
 
+/**
+ * Register a rewrite endpoint for the API for Multisite Tags.
+*/
+function prefix__init() {
+					 // '([\-\w+]*)/animal/([\w+]*)/?$', 
+        flush_rewrite_rules( true );
+
+	add_rewrite_tag( '%keyword%', '([\w+]*)/?$', 'keyword='	);//
+
+	add_rewrite_rule( 'keyword/([\sA-Za-zÄÖÜÀÁÒÓÈÉÙÚäàáéèóòùúçñëöüß]+)[/]?$', 'index.php?keyword=$matches[1]', 'top' );
+
+    // create URL rewrite
+    add_rewrite_rule( 'keyword/([\w+]*)/?$', 'http://blog.test/multisite-tags?keyword=$1', 'top' );
+
+    // required once after rules added/changed
+ }
+
+add_action( 'init', 'prefix__init');
+
+add_filter('query_vars', function($vars){
+   $vars[] = 'keyword';
+    return $vars;
+});
+
+add_action( 'template_include', function( $template ) {
+    if ( get_query_var( 'keyword' ) == false || get_query_var( 'keyword' ) == '' ) {
+        return $template;
+    }
+
+    return get_template_directory() . '/mu-tags.php';
+} );
+
 	
 /**************
 	Final Words: 
@@ -1201,6 +1272,9 @@ function add_ccb_sri($html, $handle) : string {
 	Add inline javascript after WP enqueued scripts, eg for leaflet
 */
 function ccb_final_words() {
+	
+	 global $wp_query;
+	
 	/* Calls all functions defined in the settings */
 	foreach (CCB_ADDED_JS as $f) {
 		if (function_exists($f))

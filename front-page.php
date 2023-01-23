@@ -19,9 +19,11 @@ if( isset($_REQUEST['s'])) :
 endif;
 ?>
 
-	<section id="primary" class="content-area">
+	<section id="primary" class="content-area <?php ccb_classes('showsidebar'); ?>" >
 		<main id="main" class="site-main" role="main">
-		<?php while ( have_posts() ) : the_post(); ?>
+		<?php 
+			if (is_main_site()) :
+				while ( have_posts() ) : the_post(); ?>
 
 				<?php get_template_part( 'content', 'page' ); ?>
 
@@ -32,9 +34,11 @@ endif;
 					endif;
 				?>
 
-		<?php endwhile; // end of the loop. ?>
+		<?php endwhile; // end of the loop.
+			  wp_reset_postdata();
+			  endif; ?>
 		<?php 
-			wp_reset_postdata();
+
 			// Show a secondary query is set in options
 			$paged = (get_query_var('page')?get_query_var('page'):1);
 			$args = array(
@@ -46,7 +50,7 @@ endif;
 			$ccb_posts = new WP_Query($args);
 			if ( $ccb_posts->have_posts() ) : ?>
 
-			<div id="container" class="grid-<?php echo $the_grid; ?>">
+			<div id="container" class="<?php echo $the_grid; ?>">
 				<?php /* The grid-sizer has the same classes for column width as the entries. This is useful for targeting elements */ ?>
 				<div class='grid-sizer col col<?php echo CCB_COLS; ?>'></div>
 				<?php while ( $ccb_posts->have_posts() ) : $ccb_posts->the_post(); ?>

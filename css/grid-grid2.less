@@ -10,6 +10,7 @@
 	max-width					: @col-max-width;
 	min-width					: @col-min-width;
 }
+/*
 .grid2.col1 {
 	column-count 				: 1!important;
 }
@@ -33,6 +34,7 @@
 .grid2.col.col6 {
 	column-count 				: 6;
 }
+*/
 .grid2.col6.double {width: 33.33%;}
 .grid2.col6.triple {width: 50.00%;}
 .grid2.col7 {
@@ -48,20 +50,20 @@
 	width						: 10%;
 }
 
-.listing {
+.grid2 {
 	margin						: 0 0 @padding*3 0;
 }
-.listing .post-title {
+.grid2 .post-title {
 	font-size					: 1.2em;
 	line-height					: 1em;
     padding-bottom				: 0;
     text-align 					: center;
     padding 					: 0 @padding;
 }
-.listing img.featured {
+.grid2 img.featured {
 	width						: 100%;
 }
-.listing .cat_name {
+.grid2 .cat_name {
     margin: @margin 0 0;
     color: @color2;
     text-transform: uppercase;
@@ -70,7 +72,7 @@
     font-size: @font-small;
     text-align:center;
 }
-.listing .posted-on {
+.grid2 .posted-on {
 	text-align: center;
     font-size: @font-tiny;
     margin:auto;
@@ -78,37 +80,37 @@
     display:block;
     font-family: @font3;
 }
-.listing img.featuredwrapper {
+.grid2 img.featuredwrapper {
 	max-height					: @maxheightfeaturedimage;
 	overflow					: hidden;
 }
-.listing .thumbcrop img:hover {
+.grid2 .thumbcrop img:hover {
 	.transform(0,1.25,0,0);
 	.transition(all, @delay);
 }
 
-.listing .entry-title,
-.listing .entry-content {
+.grid2 .entry-title,
+.grid2 .entry-content {
 	padding						: 0 7%;
 }
 
-.listing .entry-meta {
+.grid2 .entry-meta {
 	display						: inline;
 	margin-bottom				: @margin;
 }
 
-.listing  .entry-border {
+.grid2  .entry-border {
 	margin						: 0 5%;
 	border						: 1px solid @bordercolor;
 	padding						: 0;
 	background-color			: @bkg;
 	.box-shadow(@shadowline);
 }
-.listing footer  {
+.grid2 footer  {
 	padding						: 1em 7%;
 }
 
-.listing .entry-footer
+.grid2 .entry-footer
  {
 	background					: @bkg2;
 	font-size					: @font-small;
@@ -117,37 +119,37 @@
 	font-family 				: @font3;
 	border-top 					: 1px solid @lightgrey;
 }
-.listing .tag-list a {
+.grid2 .tag-list a {
 	color 						: @txtcolorL;
 }
 
 /** Post Formats **/
-.listing.format-quote .entry-content {
+.grid2.format-quote .entry-content {
 	padding 					: 10% 2em;
 }
 
-.listing.format-aside .entry-border {
+.grid2.format-aside .entry-border {
 	border						: 0;
 	background					: rgba(255,255,255,0);
 }
-.listing.format-aside .post-title {
+.grid2.format-aside .post-title {
 	border-top					: 2px solid @color2;
 	color						: @color2;
 	margin-top					: @font-size*1.5;
 	margin-bottom				: -@font-size*1.5;
 }
-.listing.format-aside .entry-content {
+.grid2.format-aside .entry-content {
     padding 					: 2*@padding;
    	font-family					: @font1;
     color 						: @color2;
 }
-.listing.format-aside .post-title  span {
+.grid2.format-aside .post-title  span {
 	top							: -@font-size;
 	position					: relative;
 	padding						: 0 @padding;
 	background-color			: @bkg;
 }
-.listing.format-aside .excerpt {
+.grid2.format-aside .excerpt {
 	color						: @color2;
 }
 
